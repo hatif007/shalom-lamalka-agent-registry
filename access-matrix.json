@@ -1,0 +1,44 @@
+[
+  {
+    "agent": "Growth Manager",
+    "source": "Wix",
+    "access": "READ_ONLY_WHERE_AVAILABLE",
+    "status": "PARTIAL"
+  },
+  {
+    "agent": "Growth Manager",
+    "source": "Google Search Console",
+    "access": "READ_ONLY",
+    "status": "VERIFIED_FOR_TESTED_READS"
+  },
+  {
+    "agent": "Growth Manager",
+    "source": "GA4",
+    "access": "READ_ONLY_WHERE_AVAILABLE",
+    "status": "PARTIAL_UNRESOLVED"
+  },
+  {
+    "agent": "Data Agent",
+    "source": "Wix",
+    "access": "READ_ONLY",
+    "status": "PARTIAL"
+  },
+  {
+    "agent": "SEO Agent",
+    "source": "Google Search Console",
+    "access": "READ_ONLY",
+    "status": "VERIFIED_FOR_TESTED_READS"
+  },
+  {
+    "agent": "Content & Conversion Agent",
+    "source": "Public website content / purchase journey",
+    "access": "REVIEW_AND_DRAFT_ONLY",
+    "status": "PROPOSED_SCOPE"
+  },
+  {
+    "agent": "Festival Sales Agent",
+    "source": "Festival booth data",
+    "access": "NOT_AVAILABLE",
+    "status": "DEFERRED"
+  }
+]

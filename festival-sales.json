@@ -1,0 +1,9 @@
+{
+  "source_id": "festival_booth_sales",
+  "status": "UNAVAILABLE_DEFERRED",
+  "access_mode": "NOT_AVAILABLE",
+  "limitations": [
+    "Reliable booth sales/cost dataset not provided.",
+    "Do not infer festival sales from Wix website sales."
+  ]
+}

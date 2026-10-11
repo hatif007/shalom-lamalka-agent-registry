@@ -1,0 +1,19 @@
+{
+  "source_id": "wix_stores",
+  "status": "PARTIAL",
+  "system": "Wix Stores / eCommerce API",
+  "site_url": "https://www.shalomlamalka.com/",
+  "site_id": "03b550bb-4ab1-4854-99b8-8bb153c4431e",
+  "timezone": "Asia/Jerusalem",
+  "currency": "ILS",
+  "access_mode": "READ_ONLY",
+  "verified_scope": "Read-only order query and limited product sample",
+  "limitations": [
+    "One order returned for the 30-day query ending 2026-10-11.",
+    "The query excluded PENDING and REJECTED orders by default.",
+    "UTC query boundary differs slightly from local Asia/Jerusalem dates.",
+    "Product sample was not a full catalog audit.",
+    "Festival booth sales are not available in Wix and must not be inferred."
+  ],
+  "last_known_check": "2026-10-11"
+}

@@ -1,0 +1,12 @@
+{
+  "source_id": "google_search_console",
+  "status": "VERIFIED_FOR_TESTED_READS",
+  "site_url": "https://www.shalomlamalka.com/",
+  "access_mode": "READ_ONLY",
+  "last_known_check": "2026-10-11",
+  "limitations": [
+    "Search Console data may lag by several days.",
+    "Do not combine metrics from different date windows.",
+    "A prior synthetic acceptance test is not evidence of live integration."
+  ]
+}
