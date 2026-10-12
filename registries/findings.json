@@ -86,7 +86,7 @@
     "next_step": "Continue positive read-only acceptance tests for GSC and Wix, preserve GA4 synchronization as working, and revisit traffic analysis when meaningful site activity exists.",
     "owner": "Growth Manager",
     "status": "OWNER_CONFIRMED_NO_TRAFFIC_SYNC_OK",
-    "slack_link": "PENDING"
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787201004499"
   },
   {
     "id": "F-004",
