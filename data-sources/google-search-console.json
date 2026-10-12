@@ -7,6 +7,23 @@
   "limitations": [
     "Search Console data may lag by several days.",
     "Do not combine metrics from different date windows.",
-    "A prior synthetic acceptance test is not evidence of live integration."
-  ]
+    "A prior synthetic acceptance test is not evidence of live integration.",
+    "Exact property verification method, extraction timestamp, and API scope are not recorded here."
+  ],
+  "system": "Google Search Console via GSC Wizard",
+  "account_owner": "Owner-managed property; individual account identity not stored in this registry.",
+  "authorization_status": "VERIFIED_FOR_TESTED_READS only; exact OAuth scopes not recorded.",
+  "available_data_types": [
+    "Queries",
+    "Pages",
+    "Clicks",
+    "Impressions",
+    "CTR",
+    "Average position"
+  ],
+  "queried_date_range": "Prior 28-day summary and separate 2026-10-02 through 2026-10-11 probe; do not combine these windows.",
+  "freshness_status": "SETTLING_OR_UNKNOWN_FOR_RECENT_DATES",
+  "processing_delay": "Search Console data may lag by several days.",
+  "validation_evidence": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889",
+  "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889"
 }
