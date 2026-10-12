@@ -1,0 +1,27 @@
+name: Registry validation
+
+on:
+  push:
+    branches:
+      - fix/registry-v0.2-structure
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-registry:
+    name: Validate registry structure and required fields
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate JSON and registry metadata
+        run: python scripts/validate_registry.py
