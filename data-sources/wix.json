@@ -14,6 +14,7 @@
     "UTC query boundary differs slightly from local Asia/Jerusalem dates.",
     "Product sample was not a full catalog audit.",
     "Festival booth sales are not available in Wix and must not be inferred.",
+    "Query operator, exact API scope, pagination coverage, and extraction timestamp are not recorded.",
     "Query operator, exact API scope, pagination coverage, and extraction timestamp are not recorded."
   ],
   "last_known_check": "2026-10-11",
