@@ -178,5 +178,37 @@
     "owner": "Content & Conversion Agent",
     "status": "READY_FOR_REVIEW",
     "slack_link": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791787082177289"
+  },
+  {
+    "id": "F-007",
+    "classification": "RECOMMENDATION",
+    "statement": "The public page /copy-of-מוטי-בננה received 67 GSC impressions and 2 clicks in the 2026-09-12 through 2026-10-09 settled window. A read-only audit found four H1 headings, 111 of 112 images flagged as missing alt, no structured data detected, and a 1.8 MB HTML body. Review the page manually before considering any content/SEO changes.",
+    "source": "Google Search Console and GSC Wizard live on-page audit",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "2026-09-12",
+      "end": "2026-10-09",
+      "description": "GSC settled window; live crawl on 2026-10-12."
+    },
+    "extracted_at": "2026-10-12 (approximate tool-run time)",
+    "freshness": "GSC settled through 2026-10-09; live crawl 2026-10-12.",
+    "metric_definition": "GSC impressions/clicks for the exact page URL; crawler counts H1 elements, images without alt, detected structured data, and response body size.",
+    "confidence": "HIGH_FOR_OBSERVED_FIELDS",
+    "confidence_rationale": "Explicit live GSC and crawler output. Impact on ranking, accessibility, or conversion has not been measured.",
+    "limitations": [
+      "Owner confirms no current site traffic; historical GSC data does not contradict that.",
+      "Some images may be decorative; empty alt can be correct for decorative images.",
+      "The URL redirects to /en; verify intended locale routing before proposing changes.",
+      "No site edits or experiments were made."
+    ],
+    "alternative_explanations": [
+      "Multiple H1s and absence of detected structured data are automated flags that need template/page context.",
+      "The image count may include decorative or UI images, not all product images."
+    ],
+    "business_impact": "Potential page-quality/accessibility review opportunity; no conversion lift or revenue impact can be estimated from current evidence.",
+    "next_step": "Manually review the product-page template, identify which images convey product information, and assess whether title/description, semantic headings, locale routing, and product structured data are appropriate. Draft recommendations only.",
+    "owner": "Content & Conversion Agent",
+    "status": "READY_FOR_REVIEW",
+    "slack_link": "PENDING"
   }
 ]
