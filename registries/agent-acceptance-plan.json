@@ -22,13 +22,19 @@
         "GSC": "Live 28-day summary and top-query sample returned successfully.",
         "GA4": "Owner confirms no current site traffic and sync is working; connected overview returned zero metrics, consistent with owner confirmation."
       },
-      "acceptance_status": "PARTIAL",
+      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
       "passed": [
         "Can synthesize source evidence in this orchestration run and record Registry findings via GitHub writes."
       ],
       "not_yet_verified": [
         "Separate Growth Manager runtime loads its skill and autonomously calls sources, writes Registry, and posts Slack end-to-end."
-      ]
+      ],
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false
     },
     {
       "agent": "Data Agent",
@@ -37,13 +43,19 @@
       "source_access_evidence": {
         "Wix": "Connector read-only smoke test passed for first 5 products and first 5 orders."
       },
-      "acceptance_status": "PARTIAL",
+      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
       "passed": [
         "Underlying Wix read endpoints returned HTTP 200 in orchestrator-run smoke test."
       ],
       "not_yet_verified": [
         "Data Agent runtime independently invokes Wix connector, handles pagination/status filters, and writes reproducible aggregates to Registry."
-      ]
+      ],
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false
     },
     {
       "agent": "SEO Agent",
@@ -53,14 +65,20 @@
         "GSC": "Live 28-day summary and top-query sample passed; exact query/page join for 'בגדים למסיבות' returned 70 impressions, 4 clicks, CTR 5.71%, avg position 5.8, settled through 2026-10-09.",
         "OnPageAudit": "Homepage audit returned 6 low-severity issues."
       },
-      "acceptance_status": "PARTIAL_PASS_FOR_TESTED_SCOPE",
+      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
       "passed": [
         "Synthetic opportunity detection previously passed.",
         "Live GSC reads and homepage audit returned data; findings were recorded in Registry."
       ],
       "not_yet_verified": [
         "Separate SEO Agent runtime loads skill, repeats analysis, and autonomously records/links evidence."
-      ]
+      ],
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false
     },
     {
       "agent": "Content & Conversion Agent",
@@ -69,11 +87,17 @@
       "source_access_evidence": {
         "PublicPages": "Homepage read-only audit exists; no dedicated product-page conversion review or live conversion baseline has been tested."
       },
-      "acceptance_status": "NOT_RUN",
+      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
       "blocked_by": [
         "No verified separate agent runtime; dedicated product-page review test still needs to be executed and recorded."
       ],
-      "next_test": "Run a read-only review of one public product page; cite exact page elements; separate observed facts from hypotheses; propose a test metric and guardrail without editing the site."
+      "next_test": "Run a read-only review of one public product page; cite exact page elements; separate observed facts from hypotheses; propose a test metric and guardrail without editing the site.",
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false
     },
     {
       "agent": "Festival Sales Agent",
@@ -86,7 +110,13 @@
       "blocked_by": [
         "No reliable event-level booth dataset supplied or validated."
       ],
-      "next_test": "Validate an approved export with transaction/event date, SKU, quantity, gross sales, refunds, payment fees, direct costs, event costs, currency, and inventory reconciliation. Do not infer from Wix."
+      "next_test": "Validate an approved export with transaction/event date, SKU, quantity, gross sales, refunds, payment fees, direct costs, event costs, currency, and inventory reconciliation. Do not infer from Wix.",
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false
     }
   ],
   "reporting": {
@@ -100,5 +130,16 @@
     "site_changes_made": false,
     "analytics_settings_changed": false,
     "merge_to_main": false
-  }
+  },
+  "runtime_platform": "ChatGPT",
+  "runtime_platform_status": "IDENTIFIED_BY_OWNER",
+  "runtime_note": "Owner confirmed the intended agent platform is ChatGPT. This identifies the platform but does not prove that five separate GPTs exist, that each loads its dedicated Skill/instructions, or that any GPT can independently access connectors and write to GitHub/Slack.",
+  "next_acceptance_gate": [
+    "Inventory the five actual ChatGPT agent instances and record their exact names/entry points.",
+    "For each instance, inspect its configured Instructions and Knowledge/Skill material; verify its dedicated skill is present in the actual GPT configuration, not only in GitHub.",
+    "Run a unique read-only challenge in that agent's own ChatGPT conversation and require it to state which source it accessed, date range, sample size, and limitations.",
+    "Require each agent to produce one evidence-backed finding and a Registry-ready record; verify the evidence by independently checking the source.",
+    "Verify actual Registry write and Slack delivery separately; if the GPT cannot perform a write, mark that stage blocked rather than pretending handoff occurred.",
+    "Record PASS only for the exact stages directly evidenced; do not count a response from this orchestrator conversation as autonomous GPT execution."
+  ]
 }
