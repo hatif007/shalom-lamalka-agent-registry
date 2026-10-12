@@ -193,5 +193,35 @@
     "freshness": "Live crawl on 2026-10-12; GSC performance context settled through 2026-10-09.",
     "confidence": "HIGH_FOR_OBSERVED_AUDIT_FIELDS",
     "confidence_rationale": "The crawl returned explicit page metadata and issue counts; business impact is not established by this audit."
+  },
+  {
+    "id": "T-008",
+    "name": "Per-agent skill specification coverage audit",
+    "operator": "Growth Manager",
+    "status": "PASS_FOR_REPOSITORY_ARTIFACTS",
+    "data_mode": "REPOSITORY_AUDIT",
+    "purpose": "Verify that each of the five documented agents has a dedicated skill specification linked from its agent file.",
+    "source": "GitHub repository branch fix/registry-v0.2-structure",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:45:00Z (approximate repository audit time)",
+    "date_range": "Current branch snapshot at audit time.",
+    "sample_size": "5 agent definitions and 5 dedicated skill specifications.",
+    "steps_performed": [
+      "Verified five agent files exist.",
+      "Created five dedicated skill specifications with scope, steps, evidence requirements, safety boundaries, and acceptance criteria.",
+      "Linked each agent definition to its corresponding skill specification.",
+      "Removed duplicate Registry metadata sections from SEO Agent, Content & Conversion Agent, and Festival Sales Agent while updating their files."
+    ],
+    "result": "PASS for repository artifacts: all five agent definitions now link to one dedicated skill specification. This does not prove a separate agent runtime has loaded or executes these skills.",
+    "limitations": [
+      "These are versioned repository skill specifications, not separately installed executable ChatGPT/agent-runtime skills.",
+      "Agent-by-agent runtime loading and execution tests remain NOT RUN because a separate runtime that loads these files has not been verified.",
+      "Live data tests performed through connected tools do not prove the agents autonomously invoke those tools."
+    ],
+    "changes_made": true,
+    "slack_report": "PENDING",
+    "freshness": "Repository branch checked 2026-10-12.",
+    "confidence": "HIGH_FOR_REPOSITORY_LINKS",
+    "confidence_rationale": "All five skill files and all five agent links were created/updated via GitHub API; final branch verification still required."
   }
 ]
