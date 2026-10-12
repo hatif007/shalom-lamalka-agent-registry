@@ -306,5 +306,34 @@
     "freshness": "CI completed 2026-10-12.",
     "confidence": "HIGH",
     "confidence_rationale": "GitHub Actions job concluded success on the validator-fix commit."
+  },
+  {
+    "id": "T-012",
+    "name": "Agent runtime discovery — verify independent skill loading capability",
+    "operator": "Growth Manager / runtime audit",
+    "status": "BLOCKED_RUNTIME_NOT_IDENTIFIED",
+    "data_mode": "REPOSITORY_AND_AVAILABLE_SKILL_CATALOG_AUDIT",
+    "purpose": "Determine whether the current project includes a runtime capable of independently loading and executing each agent's dedicated Skill.",
+    "source": "Repository tree, README, GitHub Actions workflow, and currently available ChatGPT skill catalog",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12",
+    "date_range": "Current branch snapshot and current available skill catalog.",
+    "sample_size": "Repository tree and workflow reviewed; available skill catalog checked.",
+    "steps_performed": [
+      "Reviewed repository README and file tree.",
+      "Confirmed repository contains agent markdown definitions, SKILL.md specifications, registries, and a JSON/schema validation workflow.",
+      "Confirmed the GitHub Actions workflow validates repository files and does not invoke agents.",
+      "Checked the currently available ChatGPT skill catalog; none of the five Shalom La Malka agent skills appear as installed runtime skills."
+    ],
+    "result": "BLOCKED. The repository currently documents the agents and their skills but does not contain an identified executable agent runtime, loader, per-agent invocation workflow, or end-to-end execution harness. The current tools can query sources and update GitHub/Slack from this orchestration session, but that is not independent agent execution.",
+    "limitations": [
+      "Cannot truthfully prove skill loading or independent source access until the platform/environment where each agent actually runs is identified.",
+      "No agent deployment, external automation, permission changes, or site changes were made."
+    ],
+    "changes_made": false,
+    "slack_report": "PENDING",
+    "freshness": "Audited 2026-10-12.",
+    "confidence": "HIGH_FOR_REPOSITORY_SCOPE",
+    "confidence_rationale": "Repository tree and README explicitly describe a documentation/registry structure and the only workflow runs schema validation; no agent runtime appears in the tree."
   }
 ]
