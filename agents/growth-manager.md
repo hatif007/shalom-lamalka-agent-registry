@@ -16,3 +16,14 @@ Wix, Google Search Console (GSC), GA4 only where currently accessible and verifi
 - READ ONLY by default.
 - No website changes, price changes, purchases, integrations, permission changes, or automation without explicit owner approval.
 - Every check/test/sample must be logged to the appropriate Slack channel.
+
+
+## Registry metadata
+- **Status:** ACTIVE — coordination and evidence synthesis; autonomous execution not established.
+- **Access mode:** READ ONLY; use verified findings from specialist agents. Direct agent-level access to every listed source is not established.
+- **Permitted data/fields:** Validated aggregate findings and source-specific metrics with date range, freshness, and limitations; avoid unnecessary customer personal data.
+- **Prohibited actions:** Website or checkout changes, pricing, publishing, tracking/integration changes, permission changes, API-key creation, deployment, or automation without explicit owner approval.
+- **Acceptance-test status:** Partial; SEO synthetic acceptance test passed, live GSC validation was reported, GA4 remains unresolved.
+- **Last verification date:** 2026-10-12 (registry audit; source evidence dates are recorded separately).
+- **Related records:** `registries/findings.json`, `registries/tests.json`, `registries/access-matrix.json`.
+- **Evidence channel:** `#agent-registry`; test-specific links are in the test registry.
