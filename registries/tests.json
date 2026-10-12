@@ -338,5 +338,56 @@
     "confidence": "HIGH_FOR_REPOSITORY_SCOPE",
     "confidence_rationale": "Repository tree and README explicitly describe a documentation/registry structure and the only workflow runs schema validation; no agent runtime appears in the tree.",
     "next_step": "Inventory the five ChatGPT agent instances and run the acceptance prompt in each agent's own conversation."
+  },
+  {
+    "id": "T-013",
+    "name": "Growth Manager critical acceptance test — user-submitted run report",
+    "operator": "USER_SUBMITTED_REPORT",
+    "status": "PARTIAL_PASS",
+    "data_mode": "LIVE_SOURCE_REPORTED_BY_AGENT",
+    "purpose": "Assess the Growth Manager acceptance report while distinguishing user-reported runtime evidence from independently verified connector and agent-instance evidence.",
+    "source": "User-pasted Growth Manager report claiming GSC Wizard API read; this conversation did not independently re-run or verify the specific API response.",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T09:51:00+03:00",
+    "date_range": {
+      "start": "2026-09-12",
+      "end": "2026-10-09",
+      "description": "Reported 28-day GSC aggregate; settled through 2026-10-09."
+    },
+    "steps_performed": [
+      "Reviewed user-pasted acceptance report.",
+      "Verified existing repository acceptance plan and test registry on fix/registry-v0.2-structure.",
+      "Compared reported completion states against required evidence and the current acceptance model."
+    ],
+    "results": {
+      "skill_loaded": "FAIL_NOT_VERIFIED",
+      "source_read": "PASS_REPORTED_BY_AGENT_NOT_INDEPENDENTLY_REPLAYED",
+      "finding_evidence_based": "PASS_FOR_REASONING_FROM_REPORTED_METRICS",
+      "registry_write": "BLOCKED_NOT_PERFORMED_IN_AGENT_TEST",
+      "slack_delivery": "BLOCKED_NOT_PERFORMED_IN_AGENT_TEST"
+    },
+    "evidence_metrics_reported": {
+      "clicks": 280,
+      "clicks_delta": 79,
+      "impressions": 3396,
+      "impressions_delta": 647,
+      "ctr_percent": 8.244994,
+      "ctr_delta_percentage_points": 0.933244,
+      "average_position": 6.985277,
+      "average_position_delta": -0.548736
+    },
+    "finding": "Reported GSC metrics increased versus the previous period. This supports a search-performance improvement hypothesis, but does not establish causation or purchases.",
+    "confidence": "High for arithmetic/logic given the supplied metrics; live-source authenticity not independently replayed in this test.",
+    "limitations": [
+      "The API response was not independently re-run during this review.",
+      "Reported evidence links point to repository/homepage rather than a directly reproducible API report.",
+      "No per-agent ChatGPT configuration was inspected, so Skill loading is not verified.",
+      "Registry write and Slack sending were intentionally not performed as part of the agent-run test; these steps remain untested, not technical failures.",
+      "Metrics alone do not verify purchases or conversion."
+    ],
+    "next_step": "Inspect the actual custom GPT configuration for Growth Manager. Then run separate, explicitly authorized acceptance tests for Registry writing and Slack delivery if required.",
+    "writes_performed_by_tested_agent": false,
+    "slack_message_sent_by_tested_agent": false,
+    "review_note": "This record is reviewer/orchestrator assessment of the submitted report, not proof of autonomous Growth Manager execution."
   }
 ]
