@@ -29,3 +29,9 @@ Wix, Google Search Console (GSC), GA4 only where currently accessible and verifi
 - **Related records:** `registries/findings.json`, `registries/tests.json`, `registries/access-matrix.json`.
 - **Evidence channel:** `#agent-registry`; test-specific links are in the test registry.
 - **Outcome summary channel:** `#growth-outcomes`; concise, material outcomes only. Automated end-to-end delivery is not yet verified.
+
+
+## Agent-specific skill
+- **Skill specification:** [`skills/growth-manager/SKILL.md`](../skills/growth-manager/SKILL.md)
+- **Skill artifact status:** COMMITTED_TO_REPOSITORY_NOT_INSTALLED_IN_AGENT_RUNTIME
+- **Acceptance:** Must be tested separately; presence of this file does not prove an agent runtime loads it.
