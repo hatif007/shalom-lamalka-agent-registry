@@ -79,5 +79,91 @@
     "freshness": "UNKNOWN",
     "confidence": "MEDIUM",
     "confidence_rationale": "Screenshot observations support Realtime visibility; historical/connector discrepancy remains unresolved."
+  },
+  {
+    "id": "T-004",
+    "name": "Wix read-only access smoke test — products and orders",
+    "operator": "Growth Manager",
+    "status": "PASS",
+    "data_mode": "LIVE",
+    "purpose": "Confirm that the connected Wix integration can read a bounded sample of visible products and recent orders without changing site data.",
+    "source": "Wix Stores Catalog V3 Query Products and Wix eCommerce Search Orders APIs",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:30:00Z (approximate tool-run time; not a source timestamp)",
+    "date_range": "Products: first 5 visible catalog results; orders: first 5 returned by default order search, latest created first.",
+    "sample_size": "5 products and 5 orders returned; both responses indicate more results are available.",
+    "steps_performed": [
+      "Read-only POST /stores/v3/products/query with cursorPaging.limit=5.",
+      "Read-only POST /ecom/v1/orders/search with cursorPaging.limit=5.",
+      "Captured only minimal aggregate/product/order fields; no customer personal data retained in this test record."
+    ],
+    "result": "Both Wix APIs returned HTTP 200. Five visible physical products and five approved orders were returned. This confirms read access for the tested endpoints and sample only; it does not establish full historical completeness or all agent permissions.",
+    "limitations": [
+      "Only first page of 5 records was sampled.",
+      "Order response uses endpoint defaults; no claim that it is a complete ledger or revenue report.",
+      "Product query response did not expose price in the selected fields; pricing/variant completeness was not tested.",
+      "No write operations were performed."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791786581997049",
+    "freshness": "Live API response at test time; order records shown include dates from 2026-08-17 to 2026-09-27.",
+    "confidence": "HIGH_FOR_TESTED_ENDPOINTS",
+    "confidence_rationale": "Both documented read-only endpoints returned HTTP 200 and representative records; broader coverage was not tested."
+  },
+  {
+    "id": "T-005",
+    "name": "Google Search Console live summary and query sample",
+    "operator": "Growth Manager",
+    "status": "PASS",
+    "data_mode": "LIVE",
+    "purpose": "Verify live read access and capture a current settled-window summary plus a small top-query sample.",
+    "source": "Google Search Console via GSC Wizard",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:30:00Z (approximate tool-run time)",
+    "date_range": "Latest 28-day window settled through 2026-10-09; the source reports data maturity through 2026-10-09.",
+    "sample_size": "Summary: 28-day aggregate. Query sample: top 10 queries.",
+    "steps_performed": [
+      "Listed connected GSC properties and confirmed https://www.shalomlamalka.com/ is present.",
+      "Retrieved 28-day site summary and top 10 queries from the live API."
+    ],
+    "result": "Live data returned: 280 clicks, 3,396 impressions, CTR 8.245%, average position 6.99 through 2026-10-09. Top-query sample returned 10 rows, including generic festival-clothing queries.",
+    "limitations": [
+      "GSC data is delayed; dates after 2026-10-09 are not treated as settled.",
+      "Top-query rows are a sample and may omit anonymized queries.",
+      "This verifies the tested property/read scope, not every GSC capability or agent-level permission."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791786576833069",
+    "freshness": "Settled through 2026-10-09; checked 2026-10-12.",
+    "confidence": "HIGH_FOR_RETRIEVED_METRICS",
+    "confidence_rationale": "Live summary and query calls returned structured metrics with explicit settled-through metadata."
+  },
+  {
+    "id": "T-006",
+    "name": "GA4 linked-property overview read check",
+    "operator": "Growth Manager",
+    "status": "PARTIAL_UNRESOLVED",
+    "data_mode": "LIVE",
+    "purpose": "Recheck whether the linked GA4 property returns usable historical overview metrics, without changing settings.",
+    "source": "GA4 via GSC Wizard",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:30:00Z (approximate tool-run time)",
+    "date_range": "Tool response reports no data for comparison period 2026-08-15 through 2026-09-11; exact current-period dates were not included in the response.",
+    "sample_size": "One property overview response; Sessions 0, Active users 0, Engagement rate 0, Key events 0.",
+    "steps_performed": [
+      "Listed GA4 properties and confirmed Shalom La Malka property properties/558438175 is linked to the Wix site in the connected account.",
+      "Requested GA4 overview for the linked site."
+    ],
+    "result": "The GA4 property is discoverable and linked, but the overview returned zeros and no comparison-period data. This does not establish that site traffic is zero; historical reporting remains unresolved.",
+    "limitations": [
+      "Consistent with the agreed DEFERRED_LOW_TRAFFIC investigation priority.",
+      "A zero-row/zero-metric response does not prove no traffic or events occurred.",
+      "No GA4 settings, tracking, or integrations were changed."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791786581997049",
+    "freshness": "Live API response checked 2026-10-12; response notes no comparison data.",
+    "confidence": "MEDIUM",
+    "confidence_rationale": "Property linkage is explicit, but zero metrics do not resolve historical data collection/reporting."
   }
 ]
