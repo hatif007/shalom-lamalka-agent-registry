@@ -26,3 +26,14 @@ READ ONLY. Do not edit website content, metadata, redirects, or settings.
 - **Last verification date:** 2026-10-11 (source/test evidence date).
 - **Related records:** `registries/tests.json` T-001/T-002; `registries/findings.json` F-002.
 - **Evidence links:** https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742615401659 and https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889
+
+
+## Registry metadata
+- **Status:** ACTIVE FOR TESTED GSC READS; not authorized to publish changes.
+- **Access mode:** READ ONLY for tested Search Console reads; this does not imply broader agent permissions.
+- **Permitted data/fields:** Search queries, pages, clicks, impressions, CTR, and position within the verified date range and scope.
+- **Prohibited actions:** Editing website content, metadata, redirects, settings, permissions, or integrations.
+- **Acceptance-test status:** T-001 PASS on synthetic data; T-002 reported live validation with scope details retained in Slack.
+- **Last verification date:** 2026-10-11 (source/test evidence date).
+- **Related records:** `registries/tests.json` T-001/T-002; `registries/findings.json` F-002.
+- **Evidence links:** https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742615401659 and https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889
