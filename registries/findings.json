@@ -115,5 +115,36 @@
     "owner": "Festival Sales Agent",
     "status": "DEFERRED_PENDING_DATA",
     "slack_link": null
+  },
+  {
+    "id": "F-005",
+    "classification": "RECOMMENDATION",
+    "statement": "Review the landing page and search snippet for the query “בגדים למסיבות”: the live GSC top-query sample reports 70 impressions, 4 clicks, 5.71% CTR, and average position 5.8 in the latest settled 28-day window. This is an opportunity to investigate, not proof that the snippet is underperforming.",
+    "source": "Google Search Console via GSC Wizard — top 10 queries",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "Exact start boundary not returned in widget output",
+      "end": "2026-10-09",
+      "description": "Latest 28-day window, settled through 2026-10-09; GSC query data can omit anonymized rows."
+    },
+    "extracted_at": "2026-10-12 (approximate tool-run time; exact extraction timestamp not returned)",
+    "freshness": "Settled through 2026-10-09",
+    "metric_definition": "Impressions and clicks for the exact query row; CTR = clicks / impressions; average position as reported by GSC.",
+    "confidence": "HIGH_FOR_QUERY_METRICS",
+    "confidence_rationale": "The live top-query response returned the exact row metrics. The proposed business opportunity remains a hypothesis until the landing page and intent are reviewed.",
+    "limitations": [
+      "The response does not identify the corresponding landing page for this query.",
+      "A query row alone does not establish conversion intent or business impact.",
+      "No site content or metadata changes were made."
+    ],
+    "alternative_explanations": [
+      "The current snippet may already be relevant and competitive for this query.",
+      "The query may map to a page that is not intended to sell products or may have mixed search intent."
+    ],
+    "business_impact": "Potential to improve qualified organic visits if the query maps to a relevant product/category landing page and the snippet can be improved; no impact is quantified.",
+    "next_step": "Query GSC page-level data for this exact query, inspect the mapped landing page and search intent, then prepare a recommendation only if the evidence supports it.",
+    "owner": "SEO Agent",
+    "status": "READY_FOR_REVIEW",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791787031702899"
   }
 ]
