@@ -22,19 +22,31 @@
         "GSC": "Live 28-day summary and top-query sample returned successfully.",
         "GA4": "Owner confirms no current site traffic and sync is working; connected overview returned zero metrics, consistent with owner confirmation."
       },
-      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
+      "acceptance_status": "PARTIAL_PASS_REPORTED_RUN",
       "passed": [
         "Can synthesize source evidence in this orchestration run and record Registry findings via GitHub writes."
       ],
       "not_yet_verified": [
-        "Separate Growth Manager runtime loads its skill and autonomously calls sources, writes Registry, and posts Slack end-to-end."
+        "Actual ChatGPT custom GPT configuration contains/loads the dedicated Growth Manager instructions/Skill.",
+        "The Growth Manager instance independently re-runs source access rather than relying on a user-pasted report.",
+        "The Growth Manager instance can write Registry and post Slack in an explicitly authorized acceptance run."
       ],
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
       "skill_loaded_in_instance_verified": false,
       "autonomous_source_read_verified": false,
       "registry_write_verified_as_agent": false,
-      "slack_delivery_verified_as_agent": false
+      "slack_delivery_verified_as_agent": false,
+      "user_submitted_acceptance_report": {
+        "test_id": "T-013",
+        "report_received_at": "2026-10-12T09:51:00+03:00",
+        "source_read": "REPORTED_PASS_NOT_INDEPENDENTLY_REPLAYED",
+        "finding": "PASS_FOR_REASONING_FROM_REPORTED_METRICS",
+        "skill_loading": "NOT_VERIFIED",
+        "registry_write": "NOT_PERFORMED_IN_TEST",
+        "slack_delivery": "NOT_PERFORMED_IN_TEST"
+      },
+      "next_test": "Inspect the exact Growth Manager GPT configuration (Configure > Instructions and Knowledge/files) and capture evidence that the dedicated role instructions are installed. Then perform an authorized minimal write/delivery acceptance test as separate steps."
     },
     {
       "agent": "Data Agent",
