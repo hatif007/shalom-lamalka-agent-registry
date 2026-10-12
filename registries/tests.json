@@ -105,7 +105,7 @@
       "No write operations were performed."
     ],
     "changes_made": false,
-    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791786581997049",
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787039302529",
     "freshness": "Live API response at test time; order records shown include dates from 2026-08-17 to 2026-09-27.",
     "confidence": "HIGH_FOR_TESTED_ENDPOINTS",
     "confidence_rationale": "Both documented read-only endpoints returned HTTP 200 and representative records; broader coverage was not tested."
@@ -133,7 +133,7 @@
       "This verifies the tested property/read scope, not every GSC capability or agent-level permission."
     ],
     "changes_made": false,
-    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791786576833069",
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787039302529",
     "freshness": "Settled through 2026-10-09; checked 2026-10-12.",
     "confidence": "HIGH_FOR_RETRIEVED_METRICS",
     "confidence_rationale": "Live summary and query calls returned structured metrics with explicit settled-through metadata."
@@ -161,7 +161,7 @@
       "No GA4 settings, tracking, or integrations were changed."
     ],
     "changes_made": false,
-    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791786581997049",
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787039302529",
     "freshness": "Live API response checked 2026-10-12; response notes no comparison data.",
     "confidence": "MEDIUM",
     "confidence_rationale": "Property linkage is explicit, but zero metrics do not resolve historical data collection/reporting."
