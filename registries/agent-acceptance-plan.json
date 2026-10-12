@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-10-12",
+  "branch": "fix/registry-v0.2-structure",
+  "purpose": "Track per-agent acceptance coverage without confusing repository skill documentation or orchestrator-run connector calls with verified autonomous agent execution.",
+  "global_rules": [
+    "READ ONLY: no Wix/site/analytics setting or content changes.",
+    "A source read by the connected orchestration tools does not prove an individual agent runtime can read it.",
+    "Each live finding must include source, exact range, extraction time, metric definition, freshness, limitations, confidence, and evidence link.",
+    "Distinguish FACT, HYPOTHESIS, RECOMMENDATION, and UNKNOWN.",
+    "Only record a finding as committed after reading back the Registry update and checking GitHub Actions.",
+    "Post short material outcomes to #growth-outcomes and technical details to #agent-registry; delivery must be confirmed.",
+    "No festival booth revenue may be inferred from Wix online sales."
+  ],
+  "agents": [
+    {
+      "agent": "Growth Manager",
+      "skill": "skills/growth-manager/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "Wix": "Read-only connector probe passed for first 5 products and first 5 returned orders; endpoint scope only.",
+        "GSC": "Live 28-day summary and top-query sample returned successfully.",
+        "GA4": "Owner confirms no current site traffic and sync is working; connected overview returned zero metrics, consistent with owner confirmation."
+      },
+      "acceptance_status": "PARTIAL",
+      "passed": [
+        "Can synthesize source evidence in this orchestration run and record Registry findings via GitHub writes."
+      ],
+      "not_yet_verified": [
+        "Separate Growth Manager runtime loads its skill and autonomously calls sources, writes Registry, and posts Slack end-to-end."
+      ]
+    },
+    {
+      "agent": "Data Agent",
+      "skill": "skills/data-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "Wix": "Connector read-only smoke test passed for first 5 products and first 5 orders."
+      },
+      "acceptance_status": "PARTIAL",
+      "passed": [
+        "Underlying Wix read endpoints returned HTTP 200 in orchestrator-run smoke test."
+      ],
+      "not_yet_verified": [
+        "Data Agent runtime independently invokes Wix connector, handles pagination/status filters, and writes reproducible aggregates to Registry."
+      ]
+    },
+    {
+      "agent": "SEO Agent",
+      "skill": "skills/seo-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "GSC": "Live 28-day summary and top-query sample passed; exact query/page join for 'בגדים למסיבות' returned 70 impressions, 4 clicks, CTR 5.71%, avg position 5.8, settled through 2026-10-09.",
+        "OnPageAudit": "Homepage audit returned 6 low-severity issues."
+      },
+      "acceptance_status": "PARTIAL_PASS_FOR_TESTED_SCOPE",
+      "passed": [
+        "Synthetic opportunity detection previously passed.",
+        "Live GSC reads and homepage audit returned data; findings were recorded in Registry."
+      ],
+      "not_yet_verified": [
+        "Separate SEO Agent runtime loads skill, repeats analysis, and autonomously records/links evidence."
+      ]
+    },
+    {
+      "agent": "Content & Conversion Agent",
+      "skill": "skills/content-conversion-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "PublicPages": "Homepage read-only audit exists; no dedicated product-page conversion review or live conversion baseline has been tested."
+      },
+      "acceptance_status": "NOT_RUN",
+      "blocked_by": [
+        "No verified separate agent runtime; dedicated product-page review test still needs to be executed and recorded."
+      ],
+      "next_test": "Run a read-only review of one public product page; cite exact page elements; separate observed facts from hypotheses; propose a test metric and guardrail without editing the site."
+    },
+    {
+      "agent": "Festival Sales Agent",
+      "skill": "skills/festival-sales-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "FestivalBooth": "No validated booth sales/cost dataset currently available."
+      },
+      "acceptance_status": "BLOCKED_NO_SOURCE_DATA",
+      "blocked_by": [
+        "No reliable event-level booth dataset supplied or validated."
+      ],
+      "next_test": "Validate an approved export with transaction/event date, SKU, quantity, gross sales, refunds, payment fees, direct costs, event costs, currency, and inventory reconciliation. Do not infer from Wix."
+    }
+  ],
+  "reporting": {
+    "technical_channel": "#agent-registry",
+    "technical_channel_id": "C0C8E1RMD8S",
+    "outcome_channel": "#growth-outcomes",
+    "outcome_channel_id": "C0C8GDL7H0S",
+    "end_to_end_delivery": "NOT_VERIFIED"
+  },
+  "safety": {
+    "site_changes_made": false,
+    "analytics_settings_changed": false,
+    "merge_to_main": false
+  }
+}
