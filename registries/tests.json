@@ -165,5 +165,33 @@
     "freshness": "Live API response checked 2026-10-12; response notes no comparison data.",
     "confidence": "MEDIUM",
     "confidence_rationale": "Property linkage is explicit, but zero metrics do not resolve historical data collection/reporting."
+  },
+  {
+    "id": "T-007",
+    "name": "Homepage live on-page SEO audit",
+    "operator": "Growth Manager",
+    "status": "PASS_WITH_FINDINGS",
+    "data_mode": "LIVE",
+    "purpose": "Audit the primary homepage's technical and on-page SEO signals without making changes.",
+    "source": "GSC Wizard on-page SEO audit and live page crawl",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:38:00Z (approximate tool-run time)",
+    "date_range": "Search Console context window 2026-09-12 through 2026-10-09; live crawl performed 2026-10-12.",
+    "sample_size": "1 URL audited; homepage resolved from / to /en; 6 low-severity issues returned.",
+    "steps_performed": [
+      "Ran a read-only audit against https://www.shalomlamalka.com/.",
+      "Reviewed HTTP status, canonical/indexability, title/meta, headings, images, language, and page weight."
+    ],
+    "result": "Homepage returned HTTP 200 after a 302 redirect to /en and was indexable. Audit reported 6 low-severity issues: meta description 167 characters, 4 H1s, 280 words, 21 of 27 images missing alt, and 1.6 MB HTML body, plus the redirect itself.",
+    "limitations": [
+      "Single page only; no sitewide conclusions.",
+      "Automated audit flags require manual relevance review before editing.",
+      "No content, metadata, redirect, or site settings were changed."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787039302529",
+    "freshness": "Live crawl on 2026-10-12; GSC performance context settled through 2026-10-09.",
+    "confidence": "HIGH_FOR_OBSERVED_AUDIT_FIELDS",
+    "confidence_rationale": "The crawl returned explicit page metadata and issue counts; business impact is not established by this audit."
   }
 ]
