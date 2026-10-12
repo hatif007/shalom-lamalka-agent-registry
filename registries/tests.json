@@ -279,5 +279,32 @@
     "freshness": "Repository state checked 2026-10-12.",
     "confidence": "HIGH",
     "confidence_rationale": "The available repository contains agent docs and skill specifications but no verified runtime-loading evidence."
+  },
+  {
+    "id": "T-011",
+    "name": "Registry validator compatibility with agent acceptance plan",
+    "operator": "Growth Manager",
+    "status": "PASS",
+    "data_mode": "CI",
+    "purpose": "Ensure the Registry validator accepts the new per-agent acceptance-plan JSON and verifies that all five linked skill files exist.",
+    "source": "GitHub Actions Registry validation workflow",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:45:28Z",
+    "date_range": "Latest commit 9dcc050ff6d7c274372c0ec1e570bd96d855e5cc",
+    "sample_size": "6 registry JSON files, 5 agent acceptance records, 5 linked skill files, 20 access-matrix pairings, 10 tests and 7 findings at the time of validation.",
+    "steps_performed": [
+      "Observed the prior CI failure caused by a hard-coded expectation of five registry JSON files after adding agent-acceptance-plan.json.",
+      "Updated the validator to expect six registry JSON files and verify five agent skill references in the acceptance plan.",
+      "Re-ran GitHub Actions on the fix."
+    ],
+    "result": "PASS. GitHub Actions completed successfully after validator correction.",
+    "limitations": [
+      "This checks repository JSON/schema consistency and file links, not autonomous agent runtime behavior or live source access."
+    ],
+    "changes_made": true,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787476516089",
+    "freshness": "CI completed 2026-10-12.",
+    "confidence": "HIGH",
+    "confidence_rationale": "GitHub Actions job concluded success on the validator-fix commit."
   }
 ]
