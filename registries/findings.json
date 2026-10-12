@@ -1,38 +1,119 @@
 [
   {
     "id": "F-001",
-    "type": "FACT",
-    "summary": "A Wix order query for the 30-day period ending 2026-10-11 returned one order.",
+    "classification": "FACT",
+    "statement": "A Wix order query for the 30-day period ending 2026-10-11 returned one order.",
     "source": "Wix Stores API",
-    "date": "2026-10-11",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "UNKNOWN_EXACT_START_BOUNDARY",
+      "end": "2026-10-11",
+      "description": "30-day query; UTC boundary used"
+    },
+    "extracted_at": "UNKNOWN_NOT_RECORDED",
+    "freshness": "UNKNOWN",
+    "metric_definition": "Count of orders returned by the tested query; PENDING and REJECTED excluded by default.",
     "confidence": "HIGH_FOR_QUERY_RESULT",
-    "limitations": "Not necessarily all orders: PENDING and REJECTED were excluded by default; UTC boundary used."
+    "confidence_rationale": "The query result was observed, but the query does not represent a complete ledger.",
+    "limitations": [
+      "PENDING and REJECTED excluded by default.",
+      "UTC boundary may differ from Asia/Jerusalem local date boundaries.",
+      "Do not interpret as total sales or all orders."
+    ],
+    "alternative_explanations": [
+      "Other orders may be outside the query scope or excluded by default status filters."
+    ],
+    "business_impact": "Current query alone is insufficient for reliable sales trend or profitability conclusions.",
+    "next_step": "Record exact query boundaries/status filters and validate coverage before using it for a sales baseline.",
+    "owner": "Data Agent",
+    "status": "OPEN_VALIDATION",
+    "slack_link": null
   },
   {
     "id": "F-002",
-    "type": "FACT",
-    "summary": "A prior GSC 28-day summary reported 277 clicks and 3,404 impressions.",
+    "classification": "FACT",
+    "statement": "A prior GSC 28-day summary reported 277 clicks and 3,404 impressions.",
     "source": "Google Search Console / GSC Wizard",
-    "date": "2026-10-11",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "UNKNOWN_EXACT_START_DATE",
+      "end": "UNKNOWN_EXACT_END_DATE",
+      "description": "28-day summary; exact boundaries not preserved in the prior entry"
+    },
+    "extracted_at": "UNKNOWN_NOT_RECORDED",
+    "freshness": "UNKNOWN",
+    "metric_definition": "Clicks and impressions as reported by the prior 28-day summary; CTR derived as clicks divided by impressions would be approximately 8.14%, but only if the same report scope applies.",
     "confidence": "HIGH_FOR_REPORTED_SUMMARY",
-    "limitations": "Keep separate from the distinct 2026-10-02 to 2026-10-11 query probe."
+    "confidence_rationale": "Counts were recorded from a reported summary; exact dates and extraction time are missing.",
+    "limitations": [
+      "Keep separate from the distinct 2026-10-02 through 2026-10-11 query probe.",
+      "Exact 28-day boundaries and extraction timestamp are not recorded."
+    ],
+    "alternative_explanations": [
+      "GSC data can be delayed or still settling for recent dates."
+    ],
+    "business_impact": "Provides a historical search-performance reference, not a current traffic guarantee.",
+    "next_step": "Capture exact date range, extraction timestamp, and freshness when refreshing this metric.",
+    "owner": "SEO Agent",
+    "status": "OPEN_EVIDENCE_METADATA",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889"
   },
   {
     "id": "F-003",
-    "type": "UNKNOWN",
-    "summary": "GA4 Realtime events appeared in owner screenshots, but historical reporting and connector/API results were empty for tested queries.",
+    "classification": "UNKNOWN",
+    "statement": "GA4 Realtime events appeared in owner screenshots, but historical reporting and connector/API results were empty for tested queries.",
     "source": "GA4 UI screenshots and GSC Wizard connector",
-    "date": "2026-10-11",
-    "confidence": "PARTIAL",
-    "limitations": "Collection and historical reporting remain unresolved."
+    "source_type": "MANUAL_SCREENSHOT_AND_LIVE_QUERY",
+    "date_range": {
+      "start": "2026-09-11",
+      "end": "2026-10-11",
+      "description": "Reported historical query scopes include 2026-09-11 through 2026-10-08 and a query for 2026-10-11; Realtime screenshot timestamp unknown."
+    },
+    "extracted_at": "UNKNOWN_NOT_RECORDED",
+    "freshness": "UNKNOWN",
+    "metric_definition": "Realtime event visibility compared with rows returned by historical/connector queries; not a traffic count.",
+    "confidence": "MEDIUM",
+    "confidence_rationale": "Realtime screenshots are evidence of events in that view; historical report/connector behavior is unresolved.",
+    "limitations": [
+      "A zero-row query does not prove no events occurred.",
+      "Realtime does not establish historical report or API correctness.",
+      "No settings changes authorized or made."
+    ],
+    "alternative_explanations": [
+      "Date range, property selection, reporting delay, API permissions, query dimensions/filters, or connector behavior may explain the discrepancy; not yet isolated."
+    ],
+    "business_impact": "Do not use GA4 historical metrics as a reliable baseline until the discrepancy is resolved.",
+    "next_step": "Run a scoped read-only validation of property, date range, dimensions, and connector response; log exact evidence before changing any settings.",
+    "owner": "Growth Manager",
+    "status": "OPEN_UNRESOLVED",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079"
   },
   {
     "id": "F-004",
-    "type": "UNKNOWN",
-    "summary": "Reliable festival booth sales and cost data is not available in the current sources.",
+    "classification": "UNKNOWN",
+    "statement": "Reliable festival booth sales and cost data is not available in the current sources.",
     "source": "Current source audit",
-    "date": "2026-10-11",
+    "source_type": "OTHER",
+    "date_range": {
+      "start": null,
+      "end": null,
+      "description": "Not applicable; no reliable booth dataset was supplied."
+    },
+    "extracted_at": "2026-10-11 (audit date only; exact time unknown)",
+    "freshness": "UNKNOWN",
+    "metric_definition": "No sales or cost metric can be calculated without validated booth records.",
     "confidence": "HIGH",
-    "limitations": "Festival profitability analysis is deferred."
+    "confidence_rationale": "The reviewed source registry has no reliable booth dataset available; this is a statement about current source availability, not about whether sales occurred.",
+    "limitations": [
+      "No sales, costs, payment fees, inventory movement, or event-level records were available for calculation."
+    ],
+    "alternative_explanations": [
+      "Records may exist in separate payment/inventory systems but have not been supplied or validated in this registry."
+    ],
+    "business_impact": "Festival profitability analysis and comparisons with online sales remain deferred.",
+    "next_step": "Identify the source owner and obtain an approved export with event/date, gross sales, refunds, fees, costs, and inventory reconciliation.",
+    "owner": "Festival Sales Agent",
+    "status": "DEFERRED_PENDING_DATA",
+    "slack_link": null
   }
 ]
