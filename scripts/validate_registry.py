@@ -17,8 +17,8 @@ source_files = sorted((ROOT / "data-sources").glob("*.json"))
 registry_files = sorted((ROOT / "registries").glob("*.json"))
 if len(source_files) != 4:
     errors.append(f"Expected 4 data-source JSON files; found {len(source_files)}")
-if len(registry_files) != 5:
-    errors.append(f"Expected 5 registry JSON files; found {len(registry_files)}")
+if len(registry_files) != 6:
+    errors.append(f"Expected 6 registry JSON files; found {len(registry_files)}")
 
 source_required = {
     "source_id", "status", "system", "account_owner", "authorization_status",
@@ -86,6 +86,25 @@ else:
             errors.append(f"finding {row.get('id', 'UNKNOWN')}: missing keys: {', '.join(missing)}")
         if row.get("classification") not in allowed:
             errors.append(f"finding {row.get('id', 'UNKNOWN')}: invalid classification")
+
+
+acceptance_plan_path = ROOT / "registries" / "agent-acceptance-plan.json"
+acceptance_plan = load_json(acceptance_plan_path)
+if isinstance(acceptance_plan, dict):
+    agents = acceptance_plan.get("agents")
+    if not isinstance(agents, list) or len(agents) != 5:
+        errors.append("registries/agent-acceptance-plan.json: expected 5 agent acceptance records")
+    else:
+        for row in agents:
+            if not isinstance(row, dict):
+                errors.append("agent-acceptance-plan.json contains a non-object agent record")
+                continue
+            name = row.get("agent", "UNKNOWN")
+            skill = row.get("skill")
+            if not skill or not (ROOT / skill).is_file():
+                errors.append(f"agent acceptance record {name}: skill file missing: {skill}")
+            if not row.get("acceptance_status"):
+                errors.append(f"agent acceptance record {name}: acceptance_status missing")
 
 ga4_path = ROOT / "data-sources" / "ga4.json"
 ga4 = load_json(ga4_path)
