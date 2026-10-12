@@ -15,6 +15,19 @@
   "limitations": [
     "Realtime collection and historical reporting/API access are not yet fully reconciled.",
     "Do not claim GA4 reporting is fully verified.",
-    "Avoid further GA4 settings changes while troubleshooting remains unresolved."
-  ]
+    "Avoid further GA4 settings changes while troubleshooting remains unresolved.",
+    "Exact OAuth scopes, query dimensions/filters, extraction timestamps, and returned row-count details are not fully recorded."
+  ],
+  "system": "Google Analytics 4",
+  "account_owner": "Owner-managed GA4 property; individual account identity not stored in this registry.",
+  "authorization_status": "PARTIAL_UNRESOLVED; historical connector/API reads not verified.",
+  "available_data_types": [
+    "Realtime event observations in owner screenshots",
+    "Historical reports/API queries tested but returned zero rows for tested scopes"
+  ],
+  "queried_date_range": "Reported historical ranges include 2026-09-11 through 2026-10-08 and a query for 2026-10-11; exact query parameters not recorded.",
+  "freshness_status": "UNKNOWN",
+  "processing_delay": "Not measured; realtime screenshots and historical reports are different views.",
+  "validation_evidence": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079",
+  "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079"
 }
