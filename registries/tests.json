@@ -2,28 +2,82 @@
   {
     "id": "T-001",
     "name": "SEO Acceptance Test 2 — Opportunity Detection",
+    "operator": "UNKNOWN_NOT_RECORDED",
     "status": "PASS",
     "data_mode": "SYNTHETIC",
+    "purpose": "Test whether the SEO agent identifies business opportunities from supplied synthetic Search Console data.",
+    "source": "Synthetic dataset supplied in acceptance-test prompt; not a live source query.",
     "date": "2026-10-11",
-    "result": "Synthetic acceptance test passed; does not prove live integration or autonomous operation.",
-    "slack_report": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742615401659"
+    "observed_at": "UNKNOWN_NOT_RECORDED",
+    "date_range": "Synthetic rows/range as supplied in test prompt; exact range not transcribed into registry.",
+    "sample_size": "UNKNOWN_NOT_RECORDED",
+    "steps_performed": [
+      "Ran the opportunity-detection acceptance task against synthetic data.",
+      "Reviewed whether recommendations were grounded in the supplied data and constraints."
+    ],
+    "result": "Synthetic acceptance test passed; does not prove live integration, source freshness, or autonomous operation.",
+    "limitations": [
+      "Synthetic data only.",
+      "Operator and sample size not recorded in the original entry."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742615401659",
+    "freshness": "NOT_APPLICABLE_SYNTHETIC",
+    "confidence": "MEDIUM",
+    "confidence_rationale": "Recorded test result and Slack permalink exist; underlying operator/sample metadata was not recorded."
   },
   {
     "id": "T-002",
     "name": "SEO Acceptance Test 3 — Live validation",
+    "operator": "UNKNOWN_NOT_RECORDED",
     "status": "REPORTED",
     "data_mode": "LIVE_VALIDATION",
+    "purpose": "Validate live Search Console read capability for the tested scope.",
+    "source": "Google Search Console / GSC Wizard",
     "date": "2026-10-11",
-    "result": "See Slack report for tested scope and limitations.",
-    "slack_report": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889"
+    "observed_at": "UNKNOWN_NOT_RECORDED",
+    "date_range": "Exact range must be taken from linked Slack report; not asserted here.",
+    "sample_size": "UNKNOWN_NOT_RECORDED",
+    "steps_performed": [
+      "Live validation was reported; detailed steps and exact sample/range are delegated to linked Slack evidence."
+    ],
+    "result": "Reported as a live validation; this registry does not upgrade it to a broader verified integration claim.",
+    "limitations": [
+      "Detailed steps, exact range, volume, and freshness are not structured in the prior registry entry.",
+      "Evidence only supports the tested scope described in Slack."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889",
+    "freshness": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "confidence_rationale": "A Slack report is linked, but exact test details are not copied into this record."
   },
   {
     "id": "T-003",
     "name": "GA4 validation",
+    "operator": "UNKNOWN_NOT_RECORDED",
     "status": "PARTIAL_UNRESOLVED",
     "data_mode": "LIVE",
+    "purpose": "Check whether GA4 Realtime evidence aligns with historical reports/connector results.",
+    "source": "GA4 UI screenshots and GSC Wizard connector",
     "date": "2026-10-11",
-    "result": "Realtime events visible in owner screenshots; historical report/connector results unresolved.",
-    "slack_report": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079"
+    "observed_at": "UNKNOWN_NOT_RECORDED",
+    "date_range": "Historical query ranges reported include 2026-09-11 through 2026-10-08 and a query for 2026-10-11; Realtime screenshot timestamp not recorded.",
+    "sample_size": "Realtime event examples shown; exact event count UNKNOWN_NOT_RECORDED; historical API queries returned zero rows for tested scopes.",
+    "steps_performed": [
+      "Observed Realtime events in owner screenshots.",
+      "Compared with historical report/connector queries that returned zero rows for tested scopes."
+    ],
+    "result": "Realtime events were visible, but historical reporting and connector/API behavior remain unresolved; GA4 is not fully verified.",
+    "limitations": [
+      "Realtime evidence does not prove historical reporting or connector access works.",
+      "A zero-row query does not prove that no traffic/events occurred.",
+      "No tracking or GA4 settings were changed."
+    ],
+    "changes_made": false,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079",
+    "freshness": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "confidence_rationale": "Screenshot observations support Realtime visibility; historical/connector discrepancy remains unresolved."
   }
 ]
