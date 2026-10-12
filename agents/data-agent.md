@@ -15,3 +15,14 @@ Analyze Wix orders, products, sales metrics, and data quality.
 
 ## Constraints
 READ ONLY. No order, catalog, payment, pricing, or site changes without explicit approval.
+
+
+## Registry metadata
+- **Status:** PARTIAL VALIDATION — tested Wix query only; not a complete sales ledger or catalog audit.
+- **Access mode:** READ ONLY within the tested connector scope; direct access outside that scope is not assumed.
+- **Permitted data/fields:** Order/product fields returned by approved read queries; aggregate reporting where possible. Avoid unnecessary customer personal data.
+- **Prohibited actions:** Order, catalog, payment, pricing, website, integration, or permission changes; no inference of booth sales from online orders.
+- **Acceptance-test status:** Partial source sample recorded; complete coverage validation not recorded.
+- **Last verification date:** 2026-10-11 (Wix query evidence).
+- **Related records:** `registries/findings.json` F-001; `registries/access-matrix.json`.
+- **Evidence permalink:** Not recorded in the source entry; do not invent one.
