@@ -2,15 +2,29 @@
   {
     "id": "A-001",
     "decision": "Agent Registry specification v0.2 approved",
-    "scope": "Specification approval only; registry implementation location subsequently selected as GitHub Repository",
+    "scope": "Specification approval only; repository implementation location subsequently selected as private GitHub repository.",
+    "approver": "Owner",
     "date": "2026-10-11",
-    "limitations": "No agent deployment, automation, permission change, or website/system write authorized by this record."
+    "systems_affected": [
+      "GitHub repository documentation"
+    ],
+    "conditions": "Read-only by default; no external writes or permission changes.",
+    "execution_status": "RECORDED",
+    "evidence": "Owner approval recorded in project conversation; exact permalink not recorded in this registry.",
+    "limitations": "Does not authorize agent deployment, automation, permission changes, or website/system writes."
   },
   {
     "id": "A-002",
-    "decision": "Repository configuration approved",
-    "scope": "Repository name shalom-lamalka-agent-registry; Private visibility; full structure and population based on approved Registry v0.2",
+    "decision": "Private repository and full Registry v0.2 structure/population approved",
+    "scope": "Repository shalom-lamalka-agent-registry; private visibility; create/populate full structure based on approved Registry v0.2.",
+    "approver": "Owner",
     "date": "2026-10-11",
-    "limitations": "ChatGPT has no connected GitHub write tool; package must be uploaded manually. No other changes, permission expansion, or automation authorized."
+    "systems_affected": [
+      "GitHub repository"
+    ],
+    "conditions": "Repository-only changes on working branch; no merge to main without separate approval; no website, integration, permission or automation changes.",
+    "execution_status": "PARTIALLY_EXECUTED_REMEDIATION_IN_PROGRESS",
+    "evidence": "https://github.com/hatif007/shalom-lamalka-agent-registry/tree/fix/registry-v0.2-structure",
+    "limitations": "Initial structure was pushed by owner via local Git CLI. Current consistency remediation is being committed to the same branch; no claim that external systems or permissions were changed."
   }
 ]
