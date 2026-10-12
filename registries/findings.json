@@ -146,5 +146,37 @@
     "owner": "SEO Agent",
     "status": "READY_FOR_REVIEW",
     "slack_link": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791787031702899"
+  },
+  {
+    "id": "F-006",
+    "classification": "RECOMMENDATION",
+    "statement": "The homepage audit reported 21 of 27 images without alt text (low severity), a 167-character meta description, four H1 headings, and a redirect from / to /en. GSC reported 2,528 impressions and 205 clicks for the homepage URL in the 2026-09-12 through 2026-10-09 window. Review relevant image alt text and localization/metadata before deciding whether edits are warranted.",
+    "source": "GSC Wizard live on-page audit plus GSC page/query performance",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "2026-09-12",
+      "end": "2026-10-09",
+      "description": "GSC performance context window; on-page crawl performed 2026-10-12."
+    },
+    "extracted_at": "2026-10-12 (approximate tool-run time)",
+    "freshness": "GSC settled through 2026-10-09; page crawl on 2026-10-12.",
+    "metric_definition": "Homepage impressions/clicks from GSC; alt coverage = 6 of 27 images have alt text (21 missing); meta description length measured by crawler.",
+    "confidence": "HIGH_FOR_OBSERVED_FIELDS",
+    "confidence_rationale": "Live crawl and GSC page metrics returned explicit values. The business impact and priority of each suggested fix have not been tested.",
+    "limitations": [
+      "Only the homepage was audited.",
+      "Missing alt text is not proof of lost rankings or sales; image relevance should be assessed before adding descriptions.",
+      "The root URL redirects to /en and the crawled document language is en; intended language routing needs owner/business review.",
+      "No changes were made."
+    ],
+    "alternative_explanations": [
+      "Some decorative images may appropriately use empty alt attributes.",
+      "The /en redirect may be expected behavior for locale selection; verify intended multilingual behavior before proposing a change."
+    ],
+    "business_impact": "Potential accessibility and search-context improvement if relevant images lack meaningful descriptions; no ranking, traffic, or revenue lift is quantified.",
+    "next_step": "Review the 21 image instances and current multilingual routing with a human, then propose minimal metadata/alt changes only if appropriate; do not edit automatically.",
+    "owner": "Content & Conversion Agent",
+    "status": "READY_FOR_REVIEW",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791787082177289"
   }
 ]
