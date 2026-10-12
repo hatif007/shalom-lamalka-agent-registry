@@ -37,3 +37,10 @@ Source statuses and access claims must be limited to tested scope. Include the o
 
 ## Change boundary
 This registry documents permissions and tests; it does not grant permissions. Website, integration, tracking, permission, deployment, and automation changes require separate explicit approval. Changes in this remediation are limited to the Git repository and the working branch; no merge to `main` is authorized by this note.
+
+
+## Slack reporting channels
+- **Outcome summary:** [#growth-outcomes](https://shalomlamalka.slack.com/archives/C0C8GDL7H0S). Post only concise, material outcomes and evidence-backed insights. Format: `YYYY-MM-DD | Agent/domain | Report/change | Outcome | Link`.
+- **Technical evidence and test log:** [#agent-registry](https://shalomlamalka.slack.com/archives/C0C8E1RMD8S). Record test scope, source/date range/volume, LIVE/SYNTHETIC/BLOCKED/NOT RUN, results, limitations, changes made, and permalink.
+- Clearly distinguish recommendations from changes actually made and measured outcomes. Never claim impact that has not been measured. If there is no material result, do not post a summary just to create activity.
+- Creating the outcome channel does not itself configure automatic delivery. End-to-end Slack reporting must be tested before it is described as automated.
