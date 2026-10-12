@@ -1,6 +1,6 @@
 {
   "source_id": "google_analytics_4",
-  "status": "PARTIAL_UNRESOLVED",
+  "status": "DEFERRED_LOW_TRAFFIC",
   "property_id": "properties/558438175",
   "measurement_id": "G-FZGZG036SL",
   "stream_id": "16106988459",
@@ -29,5 +29,7 @@
   "freshness_status": "UNKNOWN",
   "processing_delay": "Not measured; realtime screenshots and historical reports are different views.",
   "validation_evidence": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079",
-  "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079"
+  "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079",
+  "status_note": "Owner decision on 2026-10-12: defer further GA4 troubleshooting for now because site traffic is low and the owner believes synchronization is working. Realtime events were observed in screenshots, but historical reports/connector behavior remain unresolved. This is a prioritization decision, not a claim that the discrepancy is fixed.",
+  "next_review_condition": "Revisit when traffic volume is sufficient for useful validation, or when a concrete analytics/reporting need arises."
 }
