@@ -13,7 +13,19 @@
     "The query excluded PENDING and REJECTED orders by default.",
     "UTC query boundary differs slightly from local Asia/Jerusalem dates.",
     "Product sample was not a full catalog audit.",
-    "Festival booth sales are not available in Wix and must not be inferred."
+    "Festival booth sales are not available in Wix and must not be inferred.",
+    "Query operator, exact API scope, pagination coverage, and extraction timestamp are not recorded."
   ],
-  "last_known_check": "2026-10-11"
+  "last_known_check": "2026-10-11",
+  "account_owner": "Owner-managed Wix site; individual account identity not stored in this registry.",
+  "authorization_status": "READ_ONLY_QUERY_TESTED; exact API scopes/authorization grant not recorded.",
+  "available_data_types": [
+    "Orders (tested query scope)",
+    "Limited product sample"
+  ],
+  "queried_date_range": "30-day query ending 2026-10-11; exact UTC start boundary not recorded.",
+  "freshness_status": "UNKNOWN",
+  "processing_delay": "Not measured in this test.",
+  "validation_evidence": null,
+  "slack_link": null
 }
