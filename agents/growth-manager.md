@@ -15,7 +15,8 @@ Wix, Google Search Console (GSC), GA4 only where currently accessible and verifi
 ## Constraints
 - READ ONLY by default.
 - No website changes, price changes, purchases, integrations, permission changes, or automation without explicit owner approval.
-- Every check/test/sample must be logged to the appropriate Slack channel.
+- Every check/test/sample must be logged in `#agent-registry` with evidence and limitations.
+- Publish only concise, material, evidence-backed outcomes in `#growth-outcomes` using `YYYY-MM-DD | Agent/domain | Report/change | Outcome | Link`. Distinguish recommendation, completed change, and measured impact; never imply an unverified change or impact.
 
 
 ## Registry metadata
@@ -27,3 +28,4 @@ Wix, Google Search Console (GSC), GA4 only where currently accessible and verifi
 - **Last verification date:** 2026-10-12 (registry audit; source evidence dates are recorded separately).
 - **Related records:** `registries/findings.json`, `registries/tests.json`, `registries/access-matrix.json`.
 - **Evidence channel:** `#agent-registry`; test-specific links are in the test registry.
+- **Outcome summary channel:** `#growth-outcomes`; concise, material outcomes only. Automated end-to-end delivery is not yet verified.
