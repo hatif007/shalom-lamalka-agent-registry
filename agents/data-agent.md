@@ -26,3 +26,9 @@ READ ONLY. No order, catalog, payment, pricing, or site changes without explicit
 - **Last verification date:** 2026-10-11 (Wix query evidence).
 - **Related records:** `registries/findings.json` F-001; `registries/access-matrix.json`.
 - **Evidence permalink:** Not recorded in the source entry; do not invent one.
+
+
+## Agent-specific skill
+- **Skill specification:** [`skills/data-agent/SKILL.md`](../skills/data-agent/SKILL.md)
+- **Skill artifact status:** COMMITTED_TO_REPOSITORY_NOT_INSTALLED_IN_AGENT_RUNTIME
+- **Acceptance:** Must be tested separately; presence of this file does not prove an agent runtime loads it.
