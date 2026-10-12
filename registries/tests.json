@@ -223,5 +223,61 @@
     "freshness": "Repository branch checked 2026-10-12.",
     "confidence": "HIGH_FOR_REPOSITORY_LINKS",
     "confidence_rationale": "All five skill files and all five agent links were created/updated via GitHub API; final branch verification still required."
+  },
+  {
+    "id": "T-009",
+    "name": "Content & Conversion read-only product-page review",
+    "operator": "Growth Manager / orchestration-run review",
+    "status": "PASS_FOR_READ_ONLY_PAGE_REVIEW",
+    "data_mode": "LIVE",
+    "purpose": "Check whether a public product page can be reviewed using live GSC metrics and a read-only page audit, and whether evidence can be turned into a cautious review finding.",
+    "source": "Google Search Console and GSC Wizard live on-page audit",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12T06:46:00Z (approximate tool-run time)",
+    "date_range": "GSC 2026-09-12 through 2026-10-09; live page crawl on 2026-10-12.",
+    "sample_size": "1 public product page; GSC reports 67 impressions and 2 clicks.",
+    "steps_performed": [
+      "Queried live GSC page-level performance and selected the page /copy-of-מוטי-בננה.",
+      "Ran a read-only on-page audit against the selected URL.",
+      "Separated observed crawler findings from hypotheses and recommendations."
+    ],
+    "result": "The page was indexable and returned HTTP 200 after a 302 redirect to /en. Audit reported 4 H1 headings, 111 of 112 images missing alt, no structured data detected, and 1.8 MB HTML body. GSC reported 67 impressions and 2 clicks in the settled window. Recorded as a review opportunity only.",
+    "limitations": [
+      "This is an orchestrator-run review, not proof that a separate Content & Conversion Agent runtime loads its skill.",
+      "A missing alt flag requires manual review because decorative images may appropriately have empty alt text.",
+      "The low sample and owner-confirmed absence of current traffic do not support a conversion-rate conclusion.",
+      "No site edits, content changes, or experiments were made."
+    ],
+    "changes_made": false,
+    "slack_report": "PENDING",
+    "freshness": "GSC settled through 2026-10-09; crawl performed 2026-10-12.",
+    "confidence": "HIGH_FOR_OBSERVED_CRAWL_AND_GSC_FIELDS",
+    "confidence_rationale": "The live audit and GSC API returned explicit fields; business impact remains unmeasured."
+  },
+  {
+    "id": "T-010",
+    "name": "Separate agent runtime skill loading and autonomous execution",
+    "operator": "Growth Manager",
+    "status": "NOT_RUN",
+    "data_mode": "RUNTIME_TEST_REQUIRED",
+    "purpose": "Verify that each separate agent runtime loads its dedicated skill and independently reads allowed sources, produces evidence-based findings, writes Registry records, and confirms Slack delivery.",
+    "source": "Dedicated runtime/agent deployment and connected tools",
+    "date": "2026-10-12",
+    "observed_at": "2026-10-12",
+    "date_range": "Not applicable.",
+    "sample_size": "0 runtime executions verified.",
+    "steps_performed": [
+      "Created dedicated skill specifications in the repository and linked each to its agent definition."
+    ],
+    "result": "NOT RUN: no separate agent runtime loader/execution environment has been verified in the current work. Repository files and orchestrator-run tests do not prove autonomous agent execution.",
+    "limitations": [
+      "Skill specifications are committed artifacts, not separately installed executable skills.",
+      "End-to-end source-to-Registry-to-Slack delivery remains unverified."
+    ],
+    "changes_made": true,
+    "slack_report": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787414574309",
+    "freshness": "Repository state checked 2026-10-12.",
+    "confidence": "HIGH",
+    "confidence_rationale": "The available repository contains agent docs and skill specifications but no verified runtime-loading evidence."
   }
 ]
