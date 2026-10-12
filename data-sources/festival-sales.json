@@ -4,6 +4,16 @@
   "access_mode": "NOT_AVAILABLE",
   "limitations": [
     "Reliable booth sales/cost dataset not provided.",
-    "Do not infer festival sales from Wix website sales."
-  ]
+    "Do not infer festival sales from Wix website sales.",
+    "Required next step: identify source owner and obtain an approved export with event/date, SKU, quantity, gross sales, refunds/discounts, payment fees, direct costs, and event costs."
+  ],
+  "system": "Festival booth sales/payment/inventory records — source not yet identified",
+  "account_owner": "UNKNOWN_NOT_RECORDED",
+  "authorization_status": "NOT_AVAILABLE; no dataset or connection verified.",
+  "available_data_types": [],
+  "queried_date_range": null,
+  "freshness_status": "UNKNOWN",
+  "processing_delay": "UNKNOWN",
+  "validation_evidence": null,
+  "slack_link": null
 }
