@@ -56,22 +56,21 @@
       "source_access_evidence": {
         "Wix": "T-016: installed Data Agent reported one valid Wix Catalog V3 query. T-017: independent orchestrator replay of first 2 pages of products and orders, plus PENDING and REJECTED (zero matches), all HTTP 200; no complete ledger.",
         "GA4": "T-016 user-submitted Data Agent run and independent T-017 GA4 report property 558438175 from 2026-10-06 through 2026-10-12: sessions 11, active users 9, page views 18, events 78, transactions 0 (tracked); no Wix/GA4 purchase reconciliation.",
-        "Slack": "Prior Slack #sales-data test message confirmed from assistant/orchestrator only; installed Data Agent did not post in T-016 and was not invocable from this conversation for T-017."
+        "Slack": "T-018: agent's own pasted acceptance report describes 1 approved #sales-data Slack send. Orchestrator independently read channel, thread and searched task marker DATA-V2-FINAL-OPS-2026-10-13; matching post timestamp 1791870672.928089 with verified permalink https://shalomlamalka.slack.com/archives/C0C87EKC71R/p1791870672928089. Slack sender is ChatGPT and does not identify independent agent runtime ID."
       },
-      "acceptance_status": "READ_ONLY_FUNCTIONAL_PASS_FULL_OPERATIONAL_PENDING_AGENT_NATIVE_EVIDENCE",
+      "acceptance_status": "READ_ONLY_FUNCTIONAL_AND_SLACK_DELIVERY_PASS; FULL_BACKEND_PERMISSION_APPROVAL_PENDING",
       "passed": [
-        "Canonical Data Agent v2.0 Skill present at blob e4f2a91c5117001a42da259d8ffd0554345ebe51.",
-        "User-submitted installed agent read-only execution report T-016, timestamp 2026-10-13T05:43:58Z, records live Wix and GA4 reads, zero mutations and zero Slack sends.",
-        "Orchestrator independently queried Wix V3 products, approved/default orders, explicit PENDING and REJECTED samples, and verified pagination without duplicates in tested pages on 2026-10-13 (T-017).",
-        "Orchestrator independently repeated GA4 aggregate metrics for the reported date range (T-017).",
-        "Canonical Skill policy audit found required eight restrictions (T-017).",
-        "Previous Registry CI passed after T-016 update; current T-017 maintenance CI to be checked after commit."
+        "Canonical Data Agent v2.0 at GitHub blob e4f2a91c5117001a42da259d8ffd0554345ebe51.",
+        "User-submitted Data Agent native run report identifies shalom-lamalka-data-analysis-v2, reads Wix GetSiteContext, GA4 get_account_summaries and Registry canonical file, and records zero unauthorized changes.",
+        "Previous independent orchestrator read-only Wix V3/orders paging and GA4 live reports passed (T-017).",
+        "One specifically tasked PII-free Slack delivery to approved #sales-data was independently confirmed by channel history, thread readback and exact marker search; permalink is recorded in T-018.",
+        "GitHub Registry validation succeeded on last tested commit; recheck CI for T-018/acceptance plan changes."
       ],
       "not_yet_verified": [
-        "Independent native execution trace or direct invocation of installed Data Agent from orchestrator; owner submitted the runtime test report in T-016 but no agent invocation connector is exposed here.",
-        "Negative/refusal tests performed inside the installed Data Agent GPT (without attempting mutations) and independently inspected connector/backend least-privilege or guardrails; 8 static Skill policy rules checked but not enforcement.",
-        "One Data Agent-native Slack message after a fresh task-specific authorization naming #sales-data or #agent-team, and a verified message permalink. Prior assistant/orchestrator Slack send does not qualify.",
-        "Full catalog/order history and status completeness (Search Orders excludes INITIALIZED) and, if in scope, Wix/GA4 revenue reconciliation."
+        "Backend/tool-layer least-privilege technical write denial for Wix mixed-capability API, GA4, GitHub, and Slack. User-reported tool permission inspection marked all four gates NOT VERIFIED, and app permissions are not equivalent to read-only OAuth scopes.",
+        "Prohibited-write and prohibited-Slack-destination refusal by the installed Data Agent when challenged without invoking mutations; instructions alone are verified, not negative runtime behavior.",
+        "Independent capture of native installed GPT execution trace/unique runtime identity: the report is user-pasted, and Slack identifies sending client only as ChatGPT.",
+        "Complete order ledger and all statuses, plus Wix/GA4 revenue reconciliation if broad sales completeness approval is desired."
       ],
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
@@ -82,22 +81,31 @@
       "agent_runtime_report_received": true,
       "agent_runtime_reported_skill_name": "shalom-lamalka-data-analysis-v2",
       "agent_runtime_reported_version": "v2",
-      "agent_runtime_report_time": "2026-10-13T05:43:58Z",
-      "acceptance_test_id": "T-017",
-      "allowed_side_effects": "Read-only sources; one authorized, PII-free Slack report per separately approved task only to #sales-data or #agent-team. No Data Agent Registry/GitHub writes.",
-      "runtime_test_evidence_class": "USER_SUBMITTED_AGENT_EXECUTION_REPORT_NOT_INDEPENDENT_NATIVE_TRACE",
+      "agent_runtime_report_time": "2026-10-13T05:51:23Z",
+      "acceptance_test_id": "T-018",
+      "allowed_side_effects": "Read-only Wix/GA4 and Registry source reads; up to one PII-free message for each separately, explicitly authorized task to #sales-data or #agent-team only. No Data Agent GitHub/Registry writes or business configuration edits.",
+      "runtime_test_evidence_class": "USER_SUBMITTED_NATIVE_AGENT_REPORT_WITH_INDEPENDENT_SLACK_MESSAGE_READBACK",
       "agent_native_read_reported": true,
       "runtime_reported_wix_read": "POST /stores/v3/products/query; limit=1; one product; hasNext=true; ILS; numeric HTTP status unavailable",
       "runtime_reported_ga4_read": "Property 558438175; 2026-10-06 to 2026-10-12; 11 sessions, 9 users, 18 views, 78 events",
       "runtime_reported_changes_made": false,
-      "runtime_reported_slack_messages_sent": 0,
-      "pass_scope": "Read-only positive operations and instruction-level boundaries verified according to user-submitted Data Agent runtime test. Underlying connector permission scope and explicit negative write-denial tests are not verified.",
+      "runtime_reported_slack_messages_sent": 1,
+      "pass_scope": "Read-only functional and one approved-channel Slack delivery PASS for tested scope. Prohibited writes are policy-restricted, but technical backend enforcement and unapproved Slack refusal have not been established.",
       "read_only_functional_status": "PASS_ORCHESTRATOR_LIVE_REPLAY_AND_AGENT_SELF_REPORT",
-      "full_operational_approval": "PENDING",
+      "full_operational_approval": "PENDING_UNVERIFIED_TECHNICAL_BACKEND_WRITE_DENIAL",
       "independent_source_read_evidence": "2026-10-13: Wix 2x2 products and 2x2 default orders HTTP 200, sample pages distinct; PENDING and REJECTED query HTTP 200 with zero returned. GA4 property 558438175 11 sessions, 9 users, 18 views, 78 events for 2026-10-06 through 2026-10-12. No full sales ledger/reconciliation.",
       "static_negative_policy_audit": "PASS: 8/8 explicit policy clauses in canonical SKILL.md. This is specification inspection, not deployed agent response or backend enforcement.",
       "installed_agent_invocation_from_orchestrator": "UNAVAILABLE_NO_CONNECTED_TOOL_TO_INVOKE_CUSTOM_GPT",
-      "app_permission_inspection": "ChatGPT Wix - Shalom La Malka, Slack and GitHub plugins inherit global 'Allow low-risk actions'. Not proof of restricted OAuth/connector scopes or enforcement of data write denial."
+      "app_permission_inspection": "ChatGPT Wix - Shalom La Malka, Slack and GitHub plugins inherit global 'Allow low-risk actions'. Not proof of restricted OAuth/connector scopes or enforcement of data write denial.",
+      "runtime_instance_reported_skill_loaded": true,
+      "slack_delivery_verified_via_message": true,
+      "slack_delivery_agent_attribution": "AGENT_REPORTED; SLACK_ATTRIBUTION_CHATGPT_ONLY",
+      "slack_delivery_permalink": "https://shalomlamalka.slack.com/archives/C0C87EKC71R/p1791870672928089",
+      "slack_delivery_test_id": "DATA-V2-FINAL-OPS-2026-10-13",
+      "slack_delivery_verified_time": "2026-10-13T05:51:12Z",
+      "agent_reported_slack_messages_sent": 1,
+      "positive_native_operational_reporting": "USER_SUBMITTED_AGENT_RUNTIME_TEST_AND_INDEPENDENT_SLACK_DELIVERY_MATCHED",
+      "negative_runtime_permission_enforcement": "NOT_VERIFIED"
     },
     {
       "agent": "SEO Agent",
