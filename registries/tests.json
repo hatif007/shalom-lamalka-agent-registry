@@ -664,5 +664,33 @@
     "provider_oauth_scope_enforcement": "NOT_VERIFIED",
     "business_data_changes": false,
     "next_step": "In ChatGPT Workspace Agent Studio edit installed shalom-lamalka-data-analysis-v2: disable mixed-capability Wix tools or constrain exact POST read endpoints, disable GitHub writes, limit GA4 property and read actions, constrain Slack channels and require send approval; publish updated agent, verify provider read-only scopes, replay safe positive and refusal tests, and capture builder configuration evidence. Only then upgrade operational approval."
+  },
+  {
+    "id": "T-020",
+    "operator": "OWNER_SUBMITTED_INSTALLED_AGENT_SMOKE_REPORT_AND_ORCHESTRATOR_REPLAY",
+    "status": "BLOCKED_NATIVE_WIX_CONNECTOR_INPUT_SCHEMA; WIX_BACKEND_READ_PASS",
+    "purpose": "Document post-Update smoke regression and isolate input-constraint compatibility from Wix provider availability.",
+    "source": "Installed Data Agent self-reported smoke run 2026-10-13 10:36:29 Asia/Jerusalem, official Wix Query Products docs, and independent orchestration CallWixSiteAPI read.",
+    "date_range": "2026-10-13 live read-only smoke test; GA4 reporting window 2026-10-06 through 2026-10-12",
+    "sample_size": "Installed agent Wix 0 rows because request blocked pre-HTTP; orchestrator Wix 1 product live; GA4 1 aggregate row (11 sessions, 9 active users).",
+    "steps_performed": [
+      "Reviewed installed-agent smoke report: Wix request rejected at connector input validation before HTTP; GA4 report passed; no business writes or Slack sends.",
+      "Reviewed official Wix Products V3 Query Products method schema example and permissions.",
+      "Independently invoked CallWixSiteAPI site 03b550bb-4ab1-4854-99b8-8bb153c4431e POST https://www.wixapis.com/stores/v3/products/query with body {query:{cursorPaging:{limit:1}}}; succeeded and returned one product.",
+      "Identified mismatch confined to installed agent's published action input constraints or variant; exact rejected argument field was not included in the submitted error, so root-cause field is unconfirmed."
+    ],
+    "result": "Orchestrator live Wix request succeeds with minimal product query while installed agent's published constrained Wix action rejects the request pre-HTTP. GA4 operates. Agent operational acceptance remains BLOCKED until its builder's Wix action constraints accept the safe minimal payload and a native retest succeeds.",
+    "limitations": [
+      "Successful read from orchestrator is not proof of successful read in installed agent.",
+      "Actual connector validation error/path and exact serialized rejected tool arguments were not supplied, so the failing field is not proven.",
+      "Avoid loosening host, siteId, verb and URL constraints; only allow the documented query.cursorPaging.limit schema.",
+      "No live mutation or authorized Slack send attempted."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "date": "2026-10-13",
+    "observed_at": "2026-10-13 10:36:29 Asia/Jerusalem (agent report); subsequent read-only orchestrator replay",
+    "fix_candidate": "Allow POST only, siteId=03b550bb-4ab1-4854-99b8-8bb153c4431e, exact URL https://www.wixapis.com/stores/v3/products/query, body.query.cursorPaging.limit integer 1..100; allow optional cursor string for pagination; retain read-only orders query path and deny unrelated fields.",
+    "next_step": "Change ONLY the installed agent Wix Action Constraints input shape and publish Update; run one native read-only product query with limit=1; obtain success response or exact connector schema error + serialized parameters before further changes."
   }
 ]
