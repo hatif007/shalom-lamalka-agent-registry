@@ -692,5 +692,54 @@
     "observed_at": "2026-10-13 10:36:29 Asia/Jerusalem (agent report); subsequent read-only orchestrator replay",
     "fix_candidate": "Allow POST only, siteId=03b550bb-4ab1-4854-99b8-8bb153c4431e, exact URL https://www.wixapis.com/stores/v3/products/query, body.query.cursorPaging.limit integer 1..100; allow optional cursor string for pagination; retain read-only orders query path and deny unrelated fields.",
     "next_step": "Change ONLY the installed agent Wix Action Constraints input shape and publish Update; run one native read-only product query with limit=1; obtain success response or exact connector schema error + serialized parameters before further changes."
+  },
+  {
+    "id": "T-021",
+    "name": "Data Agent v2 — native Wix one-product read recovered after constrained-input regression",
+    "operator": "USER_SUBMITTED_NATIVE_AGENT_EXECUTION_REPORT_WITH_PRIOR_ORCHESTRATOR_REPLAY",
+    "status": "PASS_REPORTED_NATIVE_WIX_READ; READ_ONLY_OPERATIONAL_SCOPE_APPROVED",
+    "data_mode": "AGENT_REPORTED_LIVE_WIX_READ_PLUS_PREVIOUS_INDEPENDENT_WIX_REPLAY",
+    "purpose": "Close the read-only Wix functional regression from T-020 without making unsupported claims about deployed backend least privilege or full technical write denial.",
+    "source": "Owner-pasted Data Agent v2 recovery report showing Wix Query Products one-product read; prior independent orchestration CallWixSiteAPI same endpoint, site and body; T-020.",
+    "date": "2026-10-13",
+    "observed_at": "2026-10-13; no exact recovery run timestamp given",
+    "date_range": "2026-10-13 one-product Wix Catalog V3 query; no date filter",
+    "sample_size": "Exactly one Wix Catalog V3 product returned; pagingMetadata.hasNext=true, next-page cursor reported present but not exposed.",
+    "steps_performed": [
+      "After T-020 input-validation failure, operator supplied a new Data Agent runtime result reporting successful live Wix query at site 03b550bb-4ab1-4854-99b8-8bb153c4431e.",
+      "Native-agent report specifies POST /stores/v3/products/query with body {query:{cursorPaging:{limit:1}}}.",
+      "Runtime report identifies one product (non-sensitive ID 3d260536-692d-4e09-8bd4-42fe5d53942f) and pagingMetadata.hasNext=true; numeric HTTP code not exposed.",
+      "Previously, orchestrator independently executed the exact same site/POST endpoint and body and received a successful read response.",
+      "Report declares no business data or configuration mutations, no Slack send, and zero GitHub writes."
+    ],
+    "result": "PASS for reported live one-product Wix read inside the installed Data Agent after earlier pre-HTTP input schema rejection. Previously replayed same request independently from orchestration succeeded. This closes the functional Wix read blocker, so Data Agent is approved for verified read-only Wix/GA4 analysis within the documented scoped operation set. It is NOT evidence that all connector input constraints are enforced against every prohibited operation, that provider OAuth is read-only, or that other Wix endpoints work.",
+    "limitations": [
+      "User-supplied Data Agent output, not a directly inspected native tool-call trace. Recovery occurred in reported runtime; actual builder constraints, publication metadata and exact change that fixed schema rejection were not retrieved.",
+      "Single product sampled; the catalog and order ledger were not exhaustively scanned. No claim about total products, orders or sales follows.",
+      "Wix connector successful response did not expose a numeric HTTP code in this reported run.",
+      "Safety gates for provider backend/OAuth least privilege, unauthorized Slack refusal and one-message-per-task enforcement remain pending; do not promote to unrestricted FULL TECHNICAL ENFORCEMENT PASS.",
+      "Prior failure T-020 remains historical evidence; this separate successful T-021 supersedes only its Wix functional blocker."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "prior_failed_test_id": "T-020",
+    "new_native_recovery_status": "PASS",
+    "site_id": "03b550bb-4ab1-4854-99b8-8bb153c4431e",
+    "endpoint": "POST https://www.wixapis.com/stores/v3/products/query",
+    "request_body": {
+      "query": {
+        "cursorPaging": {
+          "limit": 1
+        }
+      }
+    },
+    "product_count": 1,
+    "hasNext": true,
+    "numeric_http_status": "NOT_EXPOSED_BY_NATIVE_CONNECTOR",
+    "business_data_configuration_changes": false,
+    "github_registry_writes_by_agent": 0,
+    "slack_messages_sent_by_agent": 0,
+    "approved_use": "VERIFIED_READ_ONLY_WIX_GA4_WORKFLOWS_ONLY",
+    "technical_permission_gate": "PENDING_PROVIDER_OAUTH_AND_FULL_ACTION_ENFORCEMENT"
   }
 ]
