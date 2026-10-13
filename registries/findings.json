@@ -1,0 +1,277 @@
+[
+  {
+    "id": "F-001",
+    "classification": "FACT",
+    "statement": "A Wix order query for the 30-day period ending 2026-10-11 returned one order.",
+    "source": "Wix Stores API",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "UNKNOWN_EXACT_START_BOUNDARY",
+      "end": "2026-10-11",
+      "description": "30-day query; UTC boundary used"
+    },
+    "extracted_at": "UNKNOWN_NOT_RECORDED",
+    "freshness": "UNKNOWN",
+    "metric_definition": "Count of orders returned by the tested query; PENDING and REJECTED excluded by default.",
+    "confidence": "HIGH_FOR_QUERY_RESULT",
+    "confidence_rationale": "The query result was observed, but the query does not represent a complete ledger.",
+    "limitations": [
+      "PENDING and REJECTED excluded by default.",
+      "UTC boundary may differ from Asia/Jerusalem local date boundaries.",
+      "Do not interpret as total sales or all orders."
+    ],
+    "alternative_explanations": [
+      "Other orders may be outside the query scope or excluded by default status filters."
+    ],
+    "business_impact": "Current query alone is insufficient for reliable sales trend or profitability conclusions.",
+    "next_step": "Record exact query boundaries/status filters and validate coverage before using it for a sales baseline.",
+    "owner": "Data Agent",
+    "status": "OPEN_VALIDATION",
+    "slack_link": null
+  },
+  {
+    "id": "F-002",
+    "classification": "FACT",
+    "statement": "A prior GSC 28-day summary reported 277 clicks and 3,404 impressions.",
+    "source": "Google Search Console / GSC Wizard",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "UNKNOWN_EXACT_START_DATE",
+      "end": "UNKNOWN_EXACT_END_DATE",
+      "description": "28-day summary; exact boundaries not preserved in the prior entry"
+    },
+    "extracted_at": "UNKNOWN_NOT_RECORDED",
+    "freshness": "UNKNOWN",
+    "metric_definition": "Clicks and impressions as reported by the prior 28-day summary; CTR derived as clicks divided by impressions would be approximately 8.14%, but only if the same report scope applies.",
+    "confidence": "HIGH_FOR_REPORTED_SUMMARY",
+    "confidence_rationale": "Counts were recorded from a reported summary; exact dates and extraction time are missing.",
+    "limitations": [
+      "Keep separate from the distinct 2026-10-02 through 2026-10-11 query probe.",
+      "Exact 28-day boundaries and extraction timestamp are not recorded."
+    ],
+    "alternative_explanations": [
+      "GSC data can be delayed or still settling for recent dates."
+    ],
+    "business_impact": "Provides a historical search-performance reference, not a current traffic guarantee.",
+    "next_step": "Capture exact date range, extraction timestamp, and freshness when refreshing this metric.",
+    "owner": "SEO Agent",
+    "status": "OPEN_EVIDENCE_METADATA",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791742713581889"
+  },
+  {
+    "id": "F-003",
+    "classification": "FACT",
+    "statement": "The owner confirms that the website currently has no traffic and that synchronization is working. The connected GA4 overview returned zero sessions, active users, engagement rate, and key events; this result is consistent with the owner's statement and is not evidence of a synchronization failure.",
+    "source": "Owner confirmation and GA4 via GSC Wizard",
+    "source_type": "OWNER_CONFIRMED_AND_LIVE_QUERY",
+    "date_range": {
+      "start": "2026-08-15",
+      "end": "2026-09-11",
+      "description": "GA4 response reports no comparison-period data for this period; current overview returned zero metrics. Owner confirms current website traffic is absent."
+    },
+    "extracted_at": "UNKNOWN_NOT_RECORDED",
+    "freshness": "Owner confirmation and live connector response on 2026-10-12",
+    "metric_definition": "GA4 overview values returned by the connected API: Sessions 0, Active users 0, Engagement rate 0, Key events 0; interpreted alongside owner confirmation of no current traffic.",
+    "confidence": "HIGH_FOR_OWNER_CONFIRMED_CURRENT_STATUS",
+    "confidence_rationale": "Owner explicitly confirms current absence of website traffic and healthy synchronization; API call returned structured zero metrics without connector error.",
+    "limitations": [
+      "The zero-metric response does not independently prove that no event of any kind occurred.",
+      "The comparison-period note concerns 2026-08-15 through 2026-09-11.",
+      "No GA4 settings or integrations were changed."
+    ],
+    "alternative_explanations": [
+      "No meaningful current website traffic, as confirmed by the owner, explains the zero metrics; the present evidence does not indicate a synchronization failure."
+    ],
+    "business_impact": "Current low/no traffic limits the ability to evaluate conversion performance; the immediate priority is to validate agent data access and analysis workflows using available live and synthetic data.",
+    "next_step": "Continue positive read-only acceptance tests for GSC and Wix, preserve GA4 synchronization as working, and revisit traffic analysis when meaningful site activity exists.",
+    "owner": "Growth Manager",
+    "status": "OWNER_CONFIRMED_NO_TRAFFIC_SYNC_OK",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787201004499"
+  },
+  {
+    "id": "F-004",
+    "classification": "UNKNOWN",
+    "statement": "Reliable festival booth sales and cost data is not available in the current sources.",
+    "source": "Current source audit",
+    "source_type": "OTHER",
+    "date_range": {
+      "start": null,
+      "end": null,
+      "description": "Not applicable; no reliable booth dataset was supplied."
+    },
+    "extracted_at": "2026-10-11 (audit date only; exact time unknown)",
+    "freshness": "UNKNOWN",
+    "metric_definition": "No sales or cost metric can be calculated without validated booth records.",
+    "confidence": "HIGH",
+    "confidence_rationale": "The reviewed source registry has no reliable booth dataset available; this is a statement about current source availability, not about whether sales occurred.",
+    "limitations": [
+      "No sales, costs, payment fees, inventory movement, or event-level records were available for calculation."
+    ],
+    "alternative_explanations": [
+      "Records may exist in separate payment/inventory systems but have not been supplied or validated in this registry."
+    ],
+    "business_impact": "Festival profitability analysis and comparisons with online sales remain deferred.",
+    "next_step": "Identify the source owner and obtain an approved export with event/date, gross sales, refunds, fees, costs, and inventory reconciliation.",
+    "owner": "Festival Sales Agent",
+    "status": "DEFERRED_PENDING_DATA",
+    "slack_link": null
+  },
+  {
+    "id": "F-005",
+    "classification": "RECOMMENDATION",
+    "statement": "Review the landing page and search snippet for the query “בגדים למסיבות”: the live GSC top-query sample reports 70 impressions, 4 clicks, 5.71% CTR, and average position 5.8 in the latest settled 28-day window. This is an opportunity to investigate, not proof that the snippet is underperforming.",
+    "source": "Google Search Console via GSC Wizard — top 10 queries",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "Exact start boundary not returned in widget output",
+      "end": "2026-10-09",
+      "description": "Latest 28-day window, settled through 2026-10-09; GSC query data can omit anonymized rows."
+    },
+    "extracted_at": "2026-10-12 (approximate tool-run time; exact extraction timestamp not returned)",
+    "freshness": "Settled through 2026-10-09",
+    "metric_definition": "Impressions and clicks for the exact query row; CTR = clicks / impressions; average position as reported by GSC.",
+    "confidence": "HIGH_FOR_QUERY_METRICS",
+    "confidence_rationale": "The live top-query response returned the exact row metrics. The proposed business opportunity remains a hypothesis until the landing page and intent are reviewed.",
+    "limitations": [
+      "The response does not identify the corresponding landing page for this query.",
+      "A query row alone does not establish conversion intent or business impact.",
+      "No site content or metadata changes were made."
+    ],
+    "alternative_explanations": [
+      "The current snippet may already be relevant and competitive for this query.",
+      "The query may map to a page that is not intended to sell products or may have mixed search intent."
+    ],
+    "business_impact": "Potential to improve qualified organic visits if the query maps to a relevant product/category landing page and the snippet can be improved; no impact is quantified.",
+    "next_step": "Query GSC page-level data for this exact query, inspect the mapped landing page and search intent, then prepare a recommendation only if the evidence supports it.",
+    "owner": "SEO Agent",
+    "status": "READY_FOR_REVIEW",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791787031702899"
+  },
+  {
+    "id": "F-006",
+    "classification": "RECOMMENDATION",
+    "statement": "The homepage audit reported 21 of 27 images without alt text (low severity), a 167-character meta description, four H1 headings, and a redirect from / to /en. GSC reported 2,528 impressions and 205 clicks for the homepage URL in the 2026-09-12 through 2026-10-09 window. Review relevant image alt text and localization/metadata before deciding whether edits are warranted.",
+    "source": "GSC Wizard live on-page audit plus GSC page/query performance",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "2026-09-12",
+      "end": "2026-10-09",
+      "description": "GSC performance context window; on-page crawl performed 2026-10-12."
+    },
+    "extracted_at": "2026-10-12 (approximate tool-run time)",
+    "freshness": "GSC settled through 2026-10-09; page crawl on 2026-10-12.",
+    "metric_definition": "Homepage impressions/clicks from GSC; alt coverage = 6 of 27 images have alt text (21 missing); meta description length measured by crawler.",
+    "confidence": "HIGH_FOR_OBSERVED_FIELDS",
+    "confidence_rationale": "Live crawl and GSC page metrics returned explicit values. The business impact and priority of each suggested fix have not been tested.",
+    "limitations": [
+      "Only the homepage was audited.",
+      "Missing alt text is not proof of lost rankings or sales; image relevance should be assessed before adding descriptions.",
+      "The root URL redirects to /en and the crawled document language is en; intended language routing needs owner/business review.",
+      "No changes were made."
+    ],
+    "alternative_explanations": [
+      "Some decorative images may appropriately use empty alt attributes.",
+      "The /en redirect may be expected behavior for locale selection; verify intended multilingual behavior before proposing a change."
+    ],
+    "business_impact": "Potential accessibility and search-context improvement if relevant images lack meaningful descriptions; no ranking, traffic, or revenue lift is quantified.",
+    "next_step": "Review the 21 image instances and current multilingual routing with a human, then propose minimal metadata/alt changes only if appropriate; do not edit automatically.",
+    "owner": "Content & Conversion Agent",
+    "status": "READY_FOR_REVIEW",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8GDL7H0S/p1791787082177289"
+  },
+  {
+    "id": "F-007",
+    "classification": "RECOMMENDATION",
+    "statement": "The public page /copy-of-מוטי-בננה received 67 GSC impressions and 2 clicks in the 2026-09-12 through 2026-10-09 settled window. A read-only audit found four H1 headings, 111 of 112 images flagged as missing alt, no structured data detected, and a 1.8 MB HTML body. Review the page manually before considering any content/SEO changes.",
+    "source": "Google Search Console and GSC Wizard live on-page audit",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "2026-09-12",
+      "end": "2026-10-09",
+      "description": "GSC settled window; live crawl on 2026-10-12."
+    },
+    "extracted_at": "2026-10-12 (approximate tool-run time)",
+    "freshness": "GSC settled through 2026-10-09; live crawl 2026-10-12.",
+    "metric_definition": "GSC impressions/clicks for the exact page URL; crawler counts H1 elements, images without alt, detected structured data, and response body size.",
+    "confidence": "HIGH_FOR_OBSERVED_FIELDS",
+    "confidence_rationale": "Explicit live GSC and crawler output. Impact on ranking, accessibility, or conversion has not been measured.",
+    "limitations": [
+      "Owner confirms no current site traffic; historical GSC data does not contradict that.",
+      "Some images may be decorative; empty alt can be correct for decorative images.",
+      "The URL redirects to /en; verify intended locale routing before proposing changes.",
+      "No site edits or experiments were made."
+    ],
+    "alternative_explanations": [
+      "Multiple H1s and absence of detected structured data are automated flags that need template/page context.",
+      "The image count may include decorative or UI images, not all product images."
+    ],
+    "business_impact": "Potential page-quality/accessibility review opportunity; no conversion lift or revenue impact can be estimated from current evidence.",
+    "next_step": "Manually review the product-page template, identify which images convey product information, and assess whether title/description, semantic headings, locale routing, and product structured data are appropriate. Draft recommendations only.",
+    "owner": "Content & Conversion Agent",
+    "status": "READY_FOR_REVIEW",
+    "slack_link": "https://shalomlamalka.slack.com/archives/C0C8E1RMD8S/p1791787476516089"
+  },
+  {
+    "source": "Google Search Console API, direct 2026-10-13 read-only query+page replay corroborating owner-submitted SEO Agent live report",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "2026-09-13",
+      "end": "2026-10-10",
+      "description": "28 settled GSC dates (America/Los_Angeles date basis); compared against 2026-08-16..2026-09-12; source settledThrough=2026-10-10."
+    },
+    "extracted_at": "2026-10-13 (exact API extraction clock time not returned)",
+    "freshness": "Settled through 2026-10-10; GSC source API (web search)",
+    "confidence": "HIGH_FOR_REPORTED_GSC_METRICS_MEDIUM_FOR_BUSINESS_HYPOTHESIS",
+    "confidence_rationale": "Independent replay of exact current/prior date windows and paired queries corroborated reported results. Proposed business effect not yet measured.",
+    "limitations": [
+      "No native agent tool call trace was independently captured; SEO agent output was supplied by owner.",
+      "No GA4 conversion or Wix revenue evidence in SEO run; commercial impact unknown.",
+      "Query anonymization, search demand seasonality and small query-click sample may affect interpretation.",
+      "No site content, metadata or URL changes authorized or performed."
+    ],
+    "alternative_explanations": [
+      "Improvements may reflect seasonality, mix of queries, changes in search results or unrelated changes; no causality established."
+    ],
+    "status": "READY_FOR_DRAFT_NOT_APPROVED_FOR_PUBLISH",
+    "slack_link": null,
+    "id": "F-008",
+    "classification": "RECOMMENDATION",
+    "statement": "GSC exact query 'בגדים למסיבות טבע' maps to homepage with 23 clicks, 222 impressions, 10.36% CTR, position 5.42 in current 28 settled days versus 8/139/5.76%/6.75 prior; related but distinct exact query 'בגדים למסיבות' maps to homepage with 5/69/7.25%/5.99 current versus 1/41/2.44%/7.12 prior. Recommend one homepage copy/navigation draft for party/nature-party cluster, not two separate pages.",
+    "metric_definition": "GSC exact query+page web-search rows: clicks, impressions, clicks/impressions CTR and impression-weighted mean position.",
+    "business_impact": "Potentially improve commercially relevant organic traffic and navigation to products; not an observed conversion or revenue increase.",
+    "next_step": "Content & Conversion draft homepage hero/supporting sentence, category/navigation links and implementation-risk assessment; SEO review; obtain owner approval before any publication.",
+    "owner": "Content & Conversion Agent; SEO Agent support"
+  },
+  {
+    "source": "Google Search Console API, direct 2026-10-13 read-only query+page replay corroborating owner-submitted SEO Agent live report",
+    "source_type": "LIVE",
+    "date_range": {
+      "start": "2026-09-13",
+      "end": "2026-10-10",
+      "description": "28 settled GSC dates (America/Los_Angeles date basis); compared against 2026-08-16..2026-09-12; source settledThrough=2026-10-10."
+    },
+    "extracted_at": "2026-10-13 (exact API extraction clock time not returned)",
+    "freshness": "Settled through 2026-10-10; GSC source API (web search)",
+    "confidence": "HIGH_FOR_REPORTED_GSC_METRICS_MEDIUM_FOR_BUSINESS_HYPOTHESIS",
+    "confidence_rationale": "Independent replay of exact current/prior date windows and paired queries corroborated reported results. Proposed business effect not yet measured.",
+    "limitations": [
+      "No native agent tool call trace was independently captured; SEO agent output was supplied by owner.",
+      "No GA4 conversion or Wix revenue evidence in SEO run; commercial impact unknown.",
+      "Query anonymization, search demand seasonality and small query-click sample may affect interpretation.",
+      "No site content, metadata or URL changes authorized or performed.",
+      "Collection-page title, copy-of URL and category/stock structure are only owner-supplied agent-report details, not independently replayed in this record."
+    ],
+    "alternative_explanations": [
+      "Improvements may reflect seasonality, mix of queries, changes in search results or unrelated changes; no causality established."
+    ],
+    "status": "READY_FOR_DRAFT_NOT_APPROVED_FOR_PUBLISH",
+    "slack_link": null,
+    "id": "F-009",
+    "classification": "RECOMMENDATION",
+    "statement": "GSC exact query 'בגדים לפסטיבלים' maps to homepage with 4 clicks, 91 impressions, 4.40% CTR and position 8.95 in current window versus 0/47/0%/9.13 prior. Native SEO report flagged a possibly mismatched 2026 collection page title/URL; that page-architecture detail is unconfirmed by independent live inspection. Recommend a festival landing-page feasibility audit only.",
+    "metric_definition": "GSC exact query+page web-search rows, current versus prior window; page-architecture details are separately reported observation requiring validation.",
+    "business_impact": "Possible alignment of landing pages with festival clothing intent; modest observed query sample and no reliable incremental traffic or sales forecast.",
+    "next_step": "Inspect actual live festival collection URL, inventory, title/H1, canonical, redirects and language before proposing page reuse, change, new page or no change. Bring risk comparison to owner; do not publish.",
+    "owner": "SEO Agent; Content & Conversion support"
+  }
+]

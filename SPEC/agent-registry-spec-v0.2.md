@@ -1,7 +1,7 @@
 # SHALOM LA MALKA --- Agent Registry Specification
 
 **Version:** 0.2\
-**Status:** Updated draft --- ready for owner review\
+**Status:** Owner-approved v0.2; implementation exists on the working branch; conformance remediation in progress\
 **Date:** 2026-10-11\
 **Operating mode:** READ ONLY by default
 
@@ -12,8 +12,7 @@ registry documents agents, permitted data sources, evidence-backed
 findings, experiments, approvals, and tests without duplicating
 day-to-day discussion in `#growth-manager`.
 
-This is a specification only. It does not mean a database, integration,
-automation, or registry has been created.
+This specification defines the registry requirements. The GitHub registry structure has been committed to the approved working branch; acceptance and semantic completeness are still under remediation. This does not mean all integrations or agent-level permissions have been configured.
 
 ## 2. Agent Registry
 
@@ -251,11 +250,6 @@ resolved.
 
 ## 13. Implementation boundary
 
-This file updates the Registry specification only. No database,
-spreadsheet, application, automation, connector, permissions, agent
-instructions, or website settings have been created or modified by this
-specification update.
+The registry files are maintained in the private GitHub repository. The current remediation changes documentation and registry records on `fix/registry-v0.2-structure` only. No database, external automation, connector permissions, agent deployment, or website settings are changed by this specification.
 
-**Next step:** owner reviews and approves this updated specification;
-only then choose the implementation location and plan a separate
-implementation step.
+**Next step:** complete semantic validation of the registries and source metadata, review the resulting diff, then request owner approval before any merge to `main`. The owner has approved repository changes on the working branch; that approval does not authorize merging or external-system changes.

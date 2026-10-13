@@ -1,0 +1,222 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-10-13",
+  "branch": "fix/registry-v0.2-structure",
+  "purpose": "Track per-agent acceptance coverage without confusing repository skill documentation or orchestrator-run connector calls with verified autonomous agent execution.",
+  "global_rules": [
+    "READ ONLY: no Wix/site/analytics setting or content changes.",
+    "A source read by the connected orchestration tools does not prove an individual agent runtime can read it.",
+    "Each live finding must include source, exact range, extraction time, metric definition, freshness, limitations, confidence, and evidence link.",
+    "Distinguish FACT, HYPOTHESIS, RECOMMENDATION, and UNKNOWN.",
+    "Only record a finding as committed after reading back the Registry update and checking GitHub Actions.",
+    "Reporting permissions are agent-specific. Data Agent v2 may send at most one explicitly task-authorized PII-free report to #sales-data or #agent-team; do not direct Data Agent to post to #growth-outcomes or #agent-registry. Other agents require their own applicable policies.",
+    "No festival booth revenue may be inferred from Wix online sales.",
+    "Data Agent v2 cannot write Registry/GitHub, even when generating Registry-ready test records; authorized repository maintenance must run separately outside the agent."
+  ],
+  "agents": [
+    {
+      "agent": "Growth Manager",
+      "skill": "skills/growth-manager/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "Wix": "Read-only connector probe passed for first 5 products and first 5 returned orders; endpoint scope only.",
+        "GSC": "Live 28-day summary and top-query sample returned successfully.",
+        "GA4": "Owner confirms no current site traffic and sync is working; connected overview returned zero metrics, consistent with owner confirmation."
+      },
+      "acceptance_status": "PARTIAL_PASS_REPORTED_RUN",
+      "passed": [
+        "Can synthesize source evidence in this orchestration run and record Registry findings via GitHub writes."
+      ],
+      "not_yet_verified": [
+        "Actual ChatGPT custom GPT configuration contains/loads the dedicated Growth Manager instructions/Skill.",
+        "The Growth Manager instance independently re-runs source access rather than relying on a user-pasted report.",
+        "The Growth Manager instance can write Registry and post Slack in an explicitly authorized acceptance run."
+      ],
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false,
+      "user_submitted_acceptance_report": {
+        "test_id": "T-013",
+        "report_received_at": "2026-10-12T09:51:00+03:00",
+        "source_read": "REPORTED_PASS_NOT_INDEPENDENTLY_REPLAYED",
+        "finding": "PASS_FOR_REASONING_FROM_REPORTED_METRICS",
+        "skill_loading": "NOT_VERIFIED",
+        "registry_write": "NOT_PERFORMED_IN_TEST",
+        "slack_delivery": "NOT_PERFORMED_IN_TEST"
+      },
+      "next_test": "Inspect the exact Growth Manager GPT configuration (Configure > Instructions and Knowledge/files) and capture evidence that the dedicated role instructions are installed. Then perform an authorized minimal write/delivery acceptance test as separate steps."
+    },
+    {
+      "agent": "Data Agent",
+      "skill": "skills/data-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_CANONICAL_V2; RUNTIME_V2_SELF_REPORTED",
+      "source_access_evidence": {
+        "Wix": "T-020 recorded native post-Update connector schema rejection; T-021 subsequent owner-submitted Data Agent report confirms live product read POST /stores/v3/products/query body {query:{cursorPaging:{limit:1}}}, 1 product, hasNext=true, no numeric HTTP status. Earlier same request successfully independently replayed by orchestration. Historical Wix two-page sample tests passed. T-020 functional blocker closed, but native agent trace and backend write-denial are not independently inspected.",
+        "GA4": "T-016 user-submitted Data Agent run and independent T-017 GA4 report property 558438175 from 2026-10-06 through 2026-10-12: sessions 11, active users 9, page views 18, events 78, transactions 0 (tracked); no Wix/GA4 purchase reconciliation.",
+        "Slack": "T-018: agent's own pasted acceptance report describes 1 approved #sales-data Slack send. Orchestrator independently read channel, thread and searched task marker DATA-V2-FINAL-OPS-2026-10-13; matching post timestamp 1791870672.928089 with verified permalink https://shalomlamalka.slack.com/archives/C0C87EKC71R/p1791870672928089. Slack sender is ChatGPT and does not identify independent agent runtime ID."
+      },
+      "acceptance_status": "OPERATIONAL_PASS_FOR_VERIFIED_READ_ONLY_WORKFLOWS",
+      "passed": [
+        "Canonical Data Agent v2.0 at GitHub blob e4f2a91c5117001a42da259d8ffd0554345ebe51.",
+        "User-submitted Data Agent native run report identifies shalom-lamalka-data-analysis-v2, reads Wix GetSiteContext, GA4 get_account_summaries and Registry canonical file, and records zero unauthorized changes.",
+        "Previous independent orchestrator read-only Wix V3/orders paging and GA4 live reports passed (T-017).",
+        "One specifically tasked PII-free Slack delivery to approved #sales-data was independently confirmed by channel history, thread readback and exact marker search; permalink is recorded in T-018.",
+        "GitHub Registry validation succeeded on last tested commit; recheck CI for T-018/acceptance plan changes.",
+        "Security reference policy created as security/data_agent_action_guard.py, wired into CI synthetic tests; NOT runtime-deployed. Action controls and provider scopes remain open gates.",
+        "T-021 recovered Wix product read in the installed Data Agent (user-submitted native report) with 1 product and hasNext=true; same safe request independently succeeded in earlier orchestrator read. Functional regression T-020 closed."
+      ],
+      "not_yet_verified": [
+        "Read-only Wix functional operation now PASS, but the full published Agent Builder constraint configuration and disallowed-operation technical enforcement have not been independently inspected.",
+        "Provider OAuth credentials / backend scope: ensure Wix product+order read-only, GA4 reporting-only and GitHub contents read, not write.",
+        "Agent-specific Slack send destination restrictions and task-specific approval enforced by platform/mediator rather than Skill-only prompts.",
+        "Reference Python guard is regression-tested by GitHub CI but NOT deployed or invoked by installed Workspace Agent; no real tool-layer denial PASS.",
+        "Complete Wix/GA4 revenue reconciliation not part of technical authorization gate."
+      ],
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false,
+      "agent_runtime_report_received": true,
+      "agent_runtime_reported_skill_name": "shalom-lamalka-data-analysis-v2",
+      "agent_runtime_reported_version": "v2",
+      "agent_runtime_report_time": "2026-10-13T05:51:23Z",
+      "acceptance_test_id": "T-021",
+      "allowed_side_effects": "Read-only Wix/GA4 and Registry source reads; up to one PII-free message for each separately, explicitly authorized task to #sales-data or #agent-team only. No Data Agent GitHub/Registry writes or business configuration edits.",
+      "runtime_test_evidence_class": "USER_SUBMITTED_NATIVE_AGENT_REPORT_WITH_INDEPENDENT_SLACK_MESSAGE_READBACK",
+      "agent_native_read_reported": true,
+      "runtime_reported_wix_read": "POST /stores/v3/products/query; limit=1; one product; hasNext=true; ILS; numeric HTTP status unavailable",
+      "runtime_reported_ga4_read": "Property 558438175; 2026-10-06 to 2026-10-12; 11 sessions, 9 users, 18 views, 78 events",
+      "runtime_reported_changes_made": false,
+      "runtime_reported_slack_messages_sent": 1,
+      "pass_scope": "Read-only Wix V3 sampled products, Wix sampled orders where previously tested, and GA4 reporting are operationally usable; one separately task-authorized approved-channel Slack report verified previously. No blanket provider-scope least-privilege or forbidden-write backend denial PASS.",
+      "read_only_functional_status": "PASS_NATIVE_WIX_PRODUCT_QUERY_REPORTED_AND_PREVIOUSLY_INDEPENDENTLY_REPLAYED_GA4_PASS",
+      "full_operational_approval": "PENDING_BROAD_TECHNICAL_PERMISSION_ENFORCEMENT",
+      "independent_source_read_evidence": "2026-10-13: Wix 2x2 products and 2x2 default orders HTTP 200, sample pages distinct; PENDING and REJECTED query HTTP 200 with zero returned. GA4 property 558438175 11 sessions, 9 users, 18 views, 78 events for 2026-10-06 through 2026-10-12. No full sales ledger/reconciliation.",
+      "static_negative_policy_audit": "PASS: 8/8 explicit policy clauses in canonical SKILL.md. This is specification inspection, not deployed agent response or backend enforcement.",
+      "installed_agent_invocation_from_orchestrator": "UNAVAILABLE_NO_CONNECTED_TOOL_TO_INVOKE_CUSTOM_GPT",
+      "app_permission_inspection": "ChatGPT Wix - Shalom La Malka, Slack and GitHub plugins inherit global 'Allow low-risk actions'. Not proof of restricted OAuth/connector scopes or enforcement of data write denial.",
+      "runtime_instance_reported_skill_loaded": true,
+      "slack_delivery_verified_via_message": true,
+      "slack_delivery_agent_attribution": "AGENT_REPORTED; SLACK_ATTRIBUTION_CHATGPT_ONLY",
+      "slack_delivery_permalink": "https://shalomlamalka.slack.com/archives/C0C87EKC71R/p1791870672928089",
+      "slack_delivery_test_id": "DATA-V2-FINAL-OPS-2026-10-13",
+      "slack_delivery_verified_time": "2026-10-13T05:51:12Z",
+      "agent_reported_slack_messages_sent": 1,
+      "positive_native_operational_reporting": "USER_SUBMITTED_AGENT_RUNTIME_TEST_AND_INDEPENDENT_SLACK_DELIVERY_MATCHED",
+      "negative_runtime_permission_enforcement": "NOT_VERIFIED",
+      "reference_guard_file": "security/data_agent_action_guard.py",
+      "reference_guard_testing": "CI_SYTHETIC_ALLOW_DENY_ONLY_NOT_INSTALLED_AGENT",
+      "runtime_policy_enforcement_verified": false,
+      "builder_action_controls_verified": false,
+      "connector_oauth_least_privilege_verified": false,
+      "action_guard_deployed_in_agent_runtime": false,
+      "connector_hardening_doc": "security/DATA_AGENT_CONNECTOR_HARDENING.md",
+      "connected_app_default_permissions": "Wix - Shalom La Malka, GitHub, Slack: Use my default = Allow low-risk actions; not equivalent to backend read-only or Workspace Agent action constraints.",
+      "wix_native_smoke_after_update": "PASS_REPORTED_2026_10_13_POST_STORES_V3_PRODUCTS_QUERY_LIMIT_1",
+      "wix_functional_regression": "RESOLVED_BY_T021_REPORT; T020_RETAINS_HISTORICAL_FAILURE"
+    },
+    {
+      "agent": "SEO Agent",
+      "skill": "skills/seo-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_CANONICAL_AND_MATCHING_SHA_OWNER_REPORTED_NOT_INDEPENDENTLY_ATTESTED",
+      "source_access_evidence": {
+        "GSC": "T-022: owner-supplied native SEO report 2026-10-13 is independently corroborated by GSC Wizard API on 2026-09-13..10-10 versus 2026-08-16..09-12: 273/205 clicks, 3384/2751 impressions, 181/161 query+page row counts without pagination truncation; party/nature/festival query-homepage pairs reproduced. Source settledThrough 2026-10-10, dateBasis America/Los_Angeles.",
+        "OnPageAudit": "Homepage audit returned 6 low-severity issues."
+      },
+      "acceptance_status": "READ_ONLY_SEO_REPORT_PASS_WITH_INDEPENDENT_GSC_CORROBORATION; NATIVE_RUNTIME_TRACE_PENDING",
+      "passed": [
+        "Synthetic opportunity detection previously passed.",
+        "Live GSC reads and homepage audit returned data; findings were recorded in Registry.",
+        "Owner-reported native SEO Agent weekly report with canonical skill SHA; independent GSC live API replay matched both date-window totals, query+page rows and 181/161 returned pair counts. T-022."
+      ],
+      "not_yet_verified": [
+        "Direct invocation/inspection of installed SEO Agent runtime skill load and native tool-call trace; owner-supplied report was not independently executed in that runtime.",
+        "Published SEO Agent action constraints/OAuth enforcement and unrelated write-action denial not verified.",
+        "Autonomous cross-agent delegation and automatic Slack publication not activated; continue read-only reporting."
+      ],
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false,
+      "agent_native_read_reported": true,
+      "native_report_skill_sha": "f386cd8f56f4b6286fbae2ae87be131725515fae",
+      "acceptance_test_id": "T-022",
+      "operational_permission_scope": "GSC read-only SEO findings and drafting proposals only; site edits, URL changes, metadata and publication require separately explicit owner approval."
+    },
+    {
+      "agent": "Website & Conversion Agent",
+      "skill": "skills/website-conversion-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_CANONICAL_V1_SKILL_PACKAGE_PREPARED_NOT_INSTALLED_IN_WORKSPACE_AGENT",
+      "source_access_evidence": {
+        "PublicPages": "Previous homepage audits exist (prior runtime evidence), but not proof of a new Website & Conversion Agent instance.",
+        "GSC": "Validated read-only SEO Agent query/page reports can be consumed; direct new-agent connector access NOT VERIFIED.",
+        "Wix": "Exact site ID 03b550bb-4ab1-4854-99b8-8bb153c4431e and narrow read-only V3 query known, but not yet installed or constrained in new agent.",
+        "Brief": "Owner approved drafting GROW-SEO-01; operations/content-conversion-p1-homepage-brief-2026-10-13.md in working branch."
+      },
+      "acceptance_status": "PLANNED_AWAITING_WORKSPACE_AGENT_CREATION_PREVIEW_AND_PUBLISH",
+      "blocked_by": [
+        "No created/published Workspace Agent instance demonstrated.",
+        "No validated per-agent action allowlist / connector input constraints yet.",
+        "First safe native Preview including one homepage read and refusal to publish is NOT RUN."
+      ],
+      "next_test": "Create new Shalom La Malka — Website & Conversion Agent in Agent Builder with website-conversion-agent Skill; verify public homepage read and exact draft packet, and safe refusals to publish/site edit/Slack without mutation tools; publish only after owner reviews. No site mutation.",
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false,
+      "previous_working_name": "Content & Conversion Agent",
+      "website_writes_authorized": false
+    },
+    {
+      "agent": "Festival Sales Agent",
+      "skill": "skills/festival-sales-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "source_access_evidence": {
+        "FestivalBooth": "No validated booth sales/cost dataset currently available."
+      },
+      "acceptance_status": "BLOCKED_NO_SOURCE_DATA",
+      "blocked_by": [
+        "No reliable event-level booth dataset supplied or validated."
+      ],
+      "next_test": "Validate an approved export with transaction/event date, SKU, quantity, gross sales, refunds, payment fees, direct costs, event costs, currency, and inventory reconciliation. Do not infer from Wix.",
+      "runtime_platform": "ChatGPT",
+      "runtime_instance_verified": false,
+      "skill_loaded_in_instance_verified": false,
+      "autonomous_source_read_verified": false,
+      "registry_write_verified_as_agent": false,
+      "slack_delivery_verified_as_agent": false
+    }
+  ],
+  "reporting": {
+    "technical_channel": "#agent-registry",
+    "technical_channel_id": "C0C8E1RMD8S",
+    "outcome_channel": "#growth-outcomes",
+    "outcome_channel_id": "C0C8GDL7H0S",
+    "end_to_end_delivery": "NOT_VERIFIED"
+  },
+  "safety": {
+    "site_changes_made": false,
+    "analytics_settings_changed": false,
+    "merge_to_main": false
+  },
+  "runtime_platform": "ChatGPT",
+  "runtime_platform_status": "IDENTIFIED_BY_OWNER",
+  "runtime_note": "Owner confirmed the intended agent platform is ChatGPT. This identifies the platform but does not prove that five separate GPTs exist, that each loads its dedicated Skill/instructions, or that any GPT can independently access connectors and write to GitHub/Slack. Data Agent v2 user-submitted acceptance report was received on 2026-10-13, but has not been independently inspected as a runtime execution trace; treat it separately from orchestrator-run replay.",
+  "next_acceptance_gate": [
+    "Inventory the five actual ChatGPT agent instances and record their exact names/entry points.",
+    "For each instance, inspect its configured Instructions and Knowledge/Skill material; verify its dedicated skill is present in the actual GPT configuration, not only in GitHub.",
+    "Run a unique read-only challenge in that agent's own ChatGPT conversation and require it to state which source it accessed, date range, sample size, and limitations.",
+    "Require each agent to produce one evidence-backed finding and a Registry-ready record; verify the evidence by independently checking the source.",
+    "Verify delivery and permitted writes per agent role. Data Agent v2 must never write Registry/GitHub; verify task-authorized Slack delivery separately without conflating prior orchestrator-run test.",
+    "Record PASS only for the exact stages directly evidenced; do not count a response from this orchestrator conversation as autonomous GPT execution."
+  ]
+}
