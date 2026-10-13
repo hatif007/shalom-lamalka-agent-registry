@@ -1,10 +1,10 @@
 # Shalom La Malka — Agent Registry
 
-**Status:** Registry v0.2 structure and schema checks passing on working branch; proposed main-branch synchronization awaiting owner approval
+**Status:** Registry v0.2 merged to `main` via owner-approved PR #1 on 2026-10-13; main CI passed. Full Agent Builder cutover and repository branch protection remain separate gates.
 **Operating mode:** READ ONLY by default
 **Specification:** `SPEC/agent-registry-spec-v0.2.md`
-**Default branch:** `main` (currently legacy layout; no direct writes or merge without separate owner approval)
-**Working branch:** `fix/registry-v0.2-structure`
+**Default/canonical repository branch:** `main` (Registry v0.2 structure; commit `7a4b02d929af2385e5aad62d2904ca387123206a` at cutover)
+**Historical preparation branch:** `fix/registry-v0.2-structure` (retained for compatibility and rollback; do not use for new canonical references)
 
 ## Purpose
 Central, structured record of agents, data sources, access boundaries, findings, experiments, approvals, and test evidence.
@@ -29,9 +29,9 @@ Central, structured record of agents, data sources, access boundaries, findings,
 Source statuses and access claims must be limited to tested scope. Include the observation timestamp, queried date range, data freshness/processing delay, test outcome, limitations, and evidence link where known. Use `UNKNOWN` or `NOT_RECORDED` rather than inventing missing metadata.
 
 ## Current validation status
-- Repository layout: organized and committed on the working branch.
+- Repository layout: consolidated in `main` via [PR #1](https://github.com/hatif007/shalom-lamalka-agent-registry/pull/1); previously staged in a separate working branch.
 - JSON syntax: all nine JSON files under `data-sources/` and `registries/` passed a local PowerShell parse check on 2026-10-12. This verifies syntax only, not semantic completeness.
-- Registry automated schema consistency: GitHub Actions success on the working branch; this is not proof that all live agent tool constraints, business integrations or provider permissions have been verified.
+- Registry automated schema consistency: [main push CI passed](https://github.com/hatif007/shalom-lamalka-agent-registry/actions/runs/38435947216), including reference guard synthetic tests. This does NOT prove live connector OAuth scopes, deployed agent runtime isolation or end-to-end data coverage.
 - GA4: historical Registry source-status flag remains `PARTIAL_UNRESOLVED` pending deliberate evidence reconciliation; later scoped live GA4 reporting was observed but does not by itself prove every integration or conversion event works.
 - Festival sales: `UNAVAILABLE / DEFERRED` until reliable booth records are provided.
 
@@ -45,12 +45,14 @@ This registry documents permissions and tests; it does not grant permissions. We
 - Clearly distinguish recommendations from changes actually made and measured outcomes. Never claim impact that has not been measured. If there is no material result, do not post a summary just to create activity.
 - Creating the outcome channel does not itself configure automatic delivery. End-to-end Slack reporting must be tested before it is described as automated.
 
-## Main synchronization (prepared 2026-10-13)
+## Canonical main synchronization (completed 2026-10-13)
 
-The current `main` default branch still contains the old root-level registry layout, and does **not** contain the working-branch Skills, Operations or full registries. An owner-reviewed PR is required before `main` can become the canonical operational source for agents. See [the audited migration plan](operations/github-main-sync-readiness-2026-10-13.md). No merge is authorized by this note.
+- **Merge:** [PR #1](https://github.com/hatif007/shalom-lamalka-agent-registry/pull/1), merge commit `7a4b02d929af2385e5aad62d2904ca387123206a`, owner-authorized; root-level historical layout replaced with `registries/`, `agents/`, `skills/`, `operations/`, `data-sources/`.
+- **Validation:** [main push GitHub Actions success](https://github.com/hatif007/shalom-lamalka-agent-registry/actions/runs/38435947216) — registry metadata and synthetic guard only.
+- **Canonical source:** `main`. Older `fix/registry-v0.2-structure` references in dated reports are historical; update each **installed** Agent Builder instance to use `main` only with separately approved runtime changes.
+- **Fourth role:** Shalom La Malka — Website & Conversion Agent. Owner reports a created instance with a v1.1 **draft** and public web read-only review; canonical repository Skill remains **v1.0**. Do NOT replace the runtime draft v1.1 with GitHub v1.0 without reconciling the actual package.
+- **Unfinished governance:** `main` still unprotected and no rulesets were observed; admin must configure required PR/check reviews. The GitHub connector used here does not expose that settings-write action.
+- **Integrity:** A checked PR patch showed no obvious credential/token/private key patterns; it is **not** a comprehensive secret scan or a guarantee about full Git history.
+- **Non-goals:** no Wix edits, no Slack posts, no Agent Builder changes, no OAuth scope changes, no claim that agent-to-agent task dispatch is activated.
 
-**Future canonical locations after an approved merge:** `registries/tests.json`, `registries/findings.json`, `registries/access-matrix.json`, `skills/*/SKILL.md`, `operations/*.md`. Before then, specify the working branch `fix/registry-v0.2-structure` explicitly when reading these files.
-
-**Fourth role:** `Shalom La Malka — Website & Conversion Agent` (renamed from Content & Conversion Agent). GitHub skill `skills/website-conversion-agent/SKILL.md` still represents repository v1.0; the user reports that the separately installed runtime produced a v1.1 **draft**, not yet independently checked for repository or publication parity. Never overwrite installed v1.1 with v1.0 merely because the GitHub ref is available.
-
-**Security:** The local Python reference action guard and GitHub CI demonstrate synthetic cases only. They do not automatically intercept live agent calls or enforce provider OAuth scopes. Also, GitHub branch protection/rulesets are not currently observed as enabled; enable reviewed PR/check requirements before operational reliance on main.
+See [main cutover audit/runbook](operations/github-main-sync-readiness-2026-10-13.md) for historic diff and remaining action gates.
