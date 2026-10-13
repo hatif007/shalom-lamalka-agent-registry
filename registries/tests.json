@@ -534,5 +534,47 @@
     "canonical_skill_blob_sha": "e4f2a91c5117001a42da259d8ffd0554345ebe51",
     "next_step": "Collect approved native Data Agent Slack delivery (one message to explicitly approved #sales-data or #agent-team with permalink) and test refusal of prohibited requests safely with no mutations; separately inspect underlying connector scopes before claiming backend-enforced read-only permissions.",
     "confidence": "MEDIUM_FOR_NATIVE_AGENT_USER_REPORT; HIGH_FOR_PREVIOUS_INDEPENDENT_WIX_GA4_AND_GITHUB_VERIFICATION"
+  },
+  {
+    "id": "T-017",
+    "name": "Data Agent v2 — owner-authorized final operational gate checks from orchestration",
+    "operator": "OWNER_AUTHORIZED_ORCHESTRATOR_READ_ONLY_TEST_RUN",
+    "status": "PARTIAL_PASS_FULL_OPERATIONAL_APPROVAL_PENDING_NATIVE_SLACK_AND_BACKEND_ENFORCEMENT",
+    "data_mode": "LIVE_READ_ONLY_CONNECTOR_REPLAY_PLUS_STATIC_SKILL_AUDIT",
+    "purpose": "Continue full operational approval assessment under owner authorization while distinguishing safe independent connector verification, static negative-policy checks, application permission settings and unavailable separate installed-GPT execution.",
+    "source": "GitHub canonical Data Agent v2 SKILL.md; Wix Shalom La Malka site-level read-only Catalog V3 and eCommerce Orders APIs; Vosik Signals GA4 property 558438175; Slack #sales-data history; GitHub Actions; current ChatGPT app permissions read-only inspection.",
+    "date": "2026-10-13",
+    "observed_at": "2026-10-13 (exact instant not captured)",
+    "date_range": "Wix: latest two cursor pages for each of products and default orders, plus status=PENDING and status=REJECTED, without a date filter; GA4: 2026-10-06 through 2026-10-12, Asia/Jerusalem.",
+    "sample_size": "Wix Catalog V3: 2 products each on pages 1 and 2, no duplicates; eCommerce Orders default: 2 orders each on pages 1 and 2, no duplicates, APPROVED in sampled rows; PENDING sample 0, REJECTED sample 0; GA4 one summary row: 11 sessions, 9 users, 18 page/screen views, 78 events, 0 tracked transactions; static canonical Skill audit 8 rule checks.",
+    "steps_performed": [
+      "Verified GitHub canonical Data Agent skill v2.0 at blob SHA e4f2a91c5117001a42da259d8ffd0554345ebe51.",
+      "Using schema-documented POST read/query API endpoints only, directly queried two cursor pages each of Wix Catalog V3 products and Wix eCommerce orders; both pages returned HTTP 200 and no duplicate product/order IDs across the sampled pages.",
+      "Read-only status-filtered eCommerce order queries for PENDING and REJECTED both returned HTTP 200 and 0 records; do not infer complete all-status historical order coverage or absence of INITIALIZED records.",
+      "Ran GA4 aggregate report on property 558438175 for 2026-10-06 through 2026-10-12, returning 11 sessions, 9 active users, 18 screenPageViews, 78 eventCount, 0 transactions and 0 purchaseRevenue with ILS and Asia/Jerusalem metadata.",
+      "Re-read approved Slack #sales-data channel; a prior assistant/orchestrator-sent Data Agent v2 diagnostic message was present, but this is not an installed Data Agent send.",
+      "Inspected canonical SKILL.md for 8 safety policy gates: Wix/GA4 mutation ban, GitHub/Registry write ban, per-task Slack approval, approved channel list, one-message limit, PII prohibition, incomplete-ledger caveat and Slack send verification requirement; all policy clauses present.",
+      "Inspected ChatGPT application permission settings for Wix - Shalom La Malka, Slack and GitHub: all inherit global 'Allow low-risk actions'; this is a user/ChatGPT app permission setting and not proof of backend or deployed-agent technical write denial.",
+      "Checked availability of actions to invoke the separately installed Data Agent runtime; the tools exposed to this orchestration session do not provide such an invocation. No installed-agent live denial test or agent-native Slack delivery was performed.",
+      "Confirmed previous GitHub Actions Registry validation passed for commit fe0f40aa97f3e39a5d12682fb562739381c6ab59."
+    ],
+    "result": "PASS for read-only independently replayed Wix/GA4, limited paging, static safety policy audit and most recent Registry CI. Full operational acceptance cannot be marked PASS from this session: no tool to invoke the independently installed Data Agent GPT, no captured native adversarial refusal/permission-scopes evidence and no installed-agent Slack send with verified permalink. General owner permission for tests does not satisfy the Skill's per-task explicit approved Slack destination requirement. Continue as PARTIAL_PASS; no unsupported upgrades.",
+    "limitations": [
+      "All independently invoked source tools ran in the orchestrator context; prior installed agent evidence is a user-submitted report (T-016), not independently captured native trace.",
+      "Static Skill instructions and normal read-only behavior do not technically prove that backend credentials cannot perform writes. Current app setting 'Allow low-risk actions' is not a backend read-only scope.",
+      "No mutation/API write-denial probe attempted because a successful call could change production Wix, GA4, GitHub, or Slack data.",
+      "No Slack message sent in this run: the Data Agent Skill requires per-task express authorization identifying an approved destination; the present broad test authorization did not specify one, and sending from the orchestration session would not validate the installed agent anyway.",
+      "Full order ledger and initialized orders cannot be verified through Search Orders. User reports no orders in last week; GA4 zero transactions is not a complete independent order reconciliation.",
+      "Registry CI validates files/schema only, not live agent runtime, user authentication, backend permission isolation or Slack behavior."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "audit_skill_blob_sha": "e4f2a91c5117001a42da259d8ffd0554345ebe51",
+    "live_status": "Wix 4 read-only cases HTTP 200; GA4 200-equivalent successful run_report with one aggregate row; Slack previous message present",
+    "static_policy_check_count": 8,
+    "static_policy_pass_count": 8,
+    "chatgpt_app_permissions": "Wix - Shalom La Malka, Slack and GitHub: app-specific 'Use my default', global 'Allow low-risk actions'; NOT backend read-only permission proof.",
+    "full_operational_approval": "PENDING_NATIVE_AGENT_SLACK_AND_TECHNICAL_ENFORCEMENT",
+    "next_step": "From the installed Data Agent conversation itself, capture policy refusal without mutation tool calls and one individually authorized PII-free report to a named approved Slack channel with verified permalink; separately establish connector/backend least-privilege or approval gating. Record as follow-up evidence; never issue full PASS without it."
   }
 ]
