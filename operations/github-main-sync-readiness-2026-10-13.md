@@ -2,7 +2,7 @@
 
 **Prepared:** 2026-10-13, Asia/Jerusalem
 **Purpose:** Make the Registry easy for all agents to resolve from ONE stable source-of-truth branch, without changing live agents, Wix, analytics or Slack.
-**Current decision:** **DRAFT REVIEW ONLY — NO MERGE AUTHORIZATION**. Do not merge, rebase, change repository default branch, delete a branch, change GitHub settings, or force-push on the basis of this document alone.
+**Historic planning decision:** This document was prepared before the owner authorized the merge. **Current status as of 2026-10-13:** PR #1 owner-authorized and merged; `main` now contains the v0.2 structure. GitHub branch protection and independently published Agent Builder ref cutover remain pending.
 **Repository:** https://github.com/hatif007/shalom-lamalka-agent-registry
 **Base/default:** `main`; **proposed head:** `fix/registry-v0.2-structure`.
 **Observed snapshot (2026-10-13):** `main` `cf2275f9bf579ee63b08b3b9f4c967f8d914c0fd`, working branch `cd09309b203ed7345293964eda1f29b868dd9559`. Those are the **audit snapshot** SHAs, not an immutable proposed PR head (later prep commits change it).
@@ -75,3 +75,17 @@ The old root-level `data-sources` *file* is replaced by the `data-sources/` *dir
 - [ ] Record final cutover status `PASSED` / `PARTIAL` / `BLOCKED`; explain all remaining provider-level permission issues.
 
 **No `main` writes, PR merges, default-branch switches, runtime agent updates, Wix/GA4 writes, or Slack messages were authorized/performed by preparing this report.**
+
+## 7 — Post-merge verification update (2026-10-13)
+
+- **Owner approval:** Given in this session to complete the GitHub consolidation.
+- **PR:** [#1](https://github.com/hatif007/shalom-lamalka-agent-registry/pull/1), merged; SHA `7a4b02d929af2385e5aad62d2904ca387123206a`.
+- **Read from main:** independently fetched `README.md`, `registries/tests.json` (T-001..T-022, 22 records), `registries/findings.json` (F-001..F-009, 9 records), `operations/growth-seo-handoff-2026-10-13.md`, `skills/website-conversion-agent/SKILL.md`, and `.github/workflows/registry-validation.yml`.
+- **CI:** [main push workflow](https://github.com/hatif007/shalom-lamalka-agent-registry/actions/runs/38435947216) succeeded after merge; PR workflow succeeded before merge. These are metadata/reference tests, not full runtime security certification.
+- **Agent Builder cutover:** NOT RUN (separate installed agents; user reports daily agent quota exhausted). Do not imply the GitHub merge updates runtime agent skill references.
+- **Security:** Public repository patch scanned for obvious token/private-key/email/phone patterns. Matches were synthetic emails or numeric Slack message IDs; this does not constitute a full Git-history or dedicated secret scan.
+- **Branch protection:** NOT CONFIGURED. A GitHub settings action to enforce a ruleset is not provided in this connection; requires repository admin UI (Settings > Rules > Rulesets, or Branches protection) and follow-up verification.
+- **Website Skill mismatch:** GitHub v1.0 remains unchanged; owner-reported installed v1.1 draft remains its own artifact, not overwritten by this merge. Reconcile by obtaining the actual v1.1 package when the user next works with Agent Builder.
+- **Outcome:** GITHUB_MAIN_STRUCTURE_AND_CI_PASS; FULL_AGENT_RUNTIME_REF_CUTOVER_AND_BRANCH_PROTECTION_PENDING.
+
+This updated record supersedes only the pre-merge authorization and post-merge unchecked items above. It does not retroactively rewrite what was true during the original readiness audit.
