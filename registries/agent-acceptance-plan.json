@@ -151,23 +151,30 @@
       "operational_permission_scope": "GSC read-only SEO findings and drafting proposals only; site edits, URL changes, metadata and publication require separately explicit owner approval."
     },
     {
-      "agent": "Content & Conversion Agent",
-      "skill": "skills/content-conversion-agent/SKILL.md",
-      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "agent": "Website & Conversion Agent",
+      "skill": "skills/website-conversion-agent/SKILL.md",
+      "skill_artifact_status": "COMMITTED_CANONICAL_V1_SKILL_PACKAGE_PREPARED_NOT_INSTALLED_IN_WORKSPACE_AGENT",
       "source_access_evidence": {
-        "PublicPages": "Homepage read-only audit exists; no dedicated product-page conversion review or live conversion baseline has been tested."
+        "PublicPages": "Previous homepage audits exist (prior runtime evidence), but not proof of a new Website & Conversion Agent instance.",
+        "GSC": "Validated read-only SEO Agent query/page reports can be consumed; direct new-agent connector access NOT VERIFIED.",
+        "Wix": "Exact site ID 03b550bb-4ab1-4854-99b8-8bb153c4431e and narrow read-only V3 query known, but not yet installed or constrained in new agent.",
+        "Brief": "Owner approved drafting GROW-SEO-01; operations/content-conversion-p1-homepage-brief-2026-10-13.md in working branch."
       },
-      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
+      "acceptance_status": "PLANNED_AWAITING_WORKSPACE_AGENT_CREATION_PREVIEW_AND_PUBLISH",
       "blocked_by": [
-        "No verified separate agent runtime; dedicated product-page review test still needs to be executed and recorded."
+        "No created/published Workspace Agent instance demonstrated.",
+        "No validated per-agent action allowlist / connector input constraints yet.",
+        "First safe native Preview including one homepage read and refusal to publish is NOT RUN."
       ],
-      "next_test": "Run a read-only review of one public product page; cite exact page elements; separate observed facts from hypotheses; propose a test metric and guardrail without editing the site.",
+      "next_test": "Create new Shalom La Malka — Website & Conversion Agent in Agent Builder with website-conversion-agent Skill; verify public homepage read and exact draft packet, and safe refusals to publish/site edit/Slack without mutation tools; publish only after owner reviews. No site mutation.",
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
       "skill_loaded_in_instance_verified": false,
       "autonomous_source_read_verified": false,
       "registry_write_verified_as_agent": false,
-      "slack_delivery_verified_as_agent": false
+      "slack_delivery_verified_as_agent": false,
+      "previous_working_name": "Content & Conversion Agent",
+      "website_writes_authorized": false
     },
     {
       "agent": "Festival Sales Agent",
