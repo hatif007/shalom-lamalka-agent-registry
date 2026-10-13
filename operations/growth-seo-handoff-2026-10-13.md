@@ -84,3 +84,7 @@ Provide no more than 3 items per review. For each: FACT, HYPOTHESIS, RECOMMENDAT
 - **Side effects stated by native Growth Manager report:** no Wix/site data write, no GitHub write, no Slack message. All proposed site-copy, URL and navigation changes await separate explicit owner approval.
 
 **Operating handoff chain:** SEO Agent (source findings) → **Growth Manager (independent prioritization / task specification)** → Content & Conversion (draft) + SEO (feasibility) + Data Agent (measure, if separately invoked) → owner decision. Agent-to-agent autonomous dispatch is not proven by the report.
+
+## P1 draft-task preparation (owner confirmed 2026-10-13)
+
+Owner approved **preparing and handing off a proposal-drafting task** to Content & Conversion Agent, NOT publishing content or changing Wix. The self-contained read-only task brief is `operations/content-conversion-p1-homepage-brief-2026-10-13.md` on working branch `fix/registry-v0.2-structure`. Current state `READY_FOR_HANDOFF; NATIVE_AGENT_NOT_DISPATCHED`, because there is no independently verified direct invocation mechanism from this orchestration session to the installed Content & Conversion Agent. No Slack message, site edits, experiment activation, or installed-agent calls were made.
