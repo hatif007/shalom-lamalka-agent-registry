@@ -633,7 +633,7 @@
     "date": "2026-10-13",
     "observed_at": "2026-10-13 (exact instant not recorded)",
     "date_range": "Current connector configuration inspected 2026-10-13; no business data query required.",
-    "sample_size": "Three active connected-app permission settings inspected; Wix/GA4/GitHub/Slack exposed action families reviewed; reference guard 8 positive and 16 negative synthetic cases in GitHub CI.",
+    "sample_size": "Three active connected-app permission settings inspected; Wix/GA4/GitHub/Slack exposed action families reviewed; reference guard 8 positive and 17 negative synthetic cases in GitHub CI.",
     "steps_performed": [
       "Read permission settings for Wix - Shalom La Malka, GitHub, Slack: app specific Use my default and global Allow low-risk actions.",
       "Observed Wix CallWixSiteAPI supports arbitrary HTTP methods and URLs; ExecuteWixAPI allows arbitrary JavaScript request construction. This is mixed capability, not enforceable read-only through Skill instructions.",
