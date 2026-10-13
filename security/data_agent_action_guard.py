@@ -116,7 +116,7 @@ def allow(tool, args, context=None):
     if tool == SLACK_THREAD:
         return (args.get("channel_id") in CHANNELS and
                 isinstance(args.get("message_ts"), str) and
-                bool(re.fullmatch(r"\\d+\\.\\d+", args["message_ts"])) and
+                bool(re.fullmatch(r"\d+\.\d+", args["message_ts"])) and
                 set(args) <= {"channel_id", "message_ts", "limit", "response_format",
                               "latest", "oldest"})
     if tool == SLACK_SEND:
@@ -126,7 +126,7 @@ def allow(tool, args, context=None):
             set(args) <= {"channel_id", "message", "unfurl_app_links"} and
             args.get("unfurl_app_links") is not True and
             isinstance(msg, str) and 1 <= len(msg) <= 2000 and
-            not re.search(r"[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}", msg) and
+            not re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", msg) and
             context.get("approved_channel") == args["channel_id"] and
             isinstance(context.get("authorized_task_id"), str) and
             bool(context["authorized_task_id"].strip()) and
@@ -190,6 +190,10 @@ def self_test():
           "pii_review_passed": True}),
         (SLACK_SEND, {"channel_id": "C0C87EKC71R", "message": "Test",
                       "reply_broadcast": True},
+         {"approved_channel": "C0C87EKC71R", "authorized_task_id": "TEST",
+          "authorization_verified": True, "messages_already_sent_for_task": 0,
+          "pii_review_passed": True}),
+        (SLACK_SEND, {"channel_id": "C0C87EKC71R", "message": "client@example.org"},
          {"approved_channel": "C0C87EKC71R", "authorized_task_id": "TEST",
           "authorization_verified": True, "messages_already_sent_for_task": 0,
           "pii_review_passed": True}),
