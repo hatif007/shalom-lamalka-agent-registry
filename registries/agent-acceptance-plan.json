@@ -123,25 +123,32 @@
     {
       "agent": "SEO Agent",
       "skill": "skills/seo-agent/SKILL.md",
-      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "skill_artifact_status": "COMMITTED_CANONICAL_AND_MATCHING_SHA_OWNER_REPORTED_NOT_INDEPENDENTLY_ATTESTED",
       "source_access_evidence": {
-        "GSC": "Live 28-day summary and top-query sample passed; exact query/page join for 'בגדים למסיבות' returned 70 impressions, 4 clicks, CTR 5.71%, avg position 5.8, settled through 2026-10-09.",
+        "GSC": "T-022: owner-supplied native SEO report 2026-10-13 is independently corroborated by GSC Wizard API on 2026-09-13..10-10 versus 2026-08-16..09-12: 273/205 clicks, 3384/2751 impressions, 181/161 query+page row counts without pagination truncation; party/nature/festival query-homepage pairs reproduced. Source settledThrough 2026-10-10, dateBasis America/Los_Angeles.",
         "OnPageAudit": "Homepage audit returned 6 low-severity issues."
       },
-      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
+      "acceptance_status": "READ_ONLY_SEO_REPORT_PASS_WITH_INDEPENDENT_GSC_CORROBORATION; NATIVE_RUNTIME_TRACE_PENDING",
       "passed": [
         "Synthetic opportunity detection previously passed.",
-        "Live GSC reads and homepage audit returned data; findings were recorded in Registry."
+        "Live GSC reads and homepage audit returned data; findings were recorded in Registry.",
+        "Owner-reported native SEO Agent weekly report with canonical skill SHA; independent GSC live API replay matched both date-window totals, query+page rows and 181/161 returned pair counts. T-022."
       ],
       "not_yet_verified": [
-        "Separate SEO Agent runtime loads skill, repeats analysis, and autonomously records/links evidence."
+        "Direct invocation/inspection of installed SEO Agent runtime skill load and native tool-call trace; owner-supplied report was not independently executed in that runtime.",
+        "Published SEO Agent action constraints/OAuth enforcement and unrelated write-action denial not verified.",
+        "Autonomous cross-agent delegation and automatic Slack publication not activated; continue read-only reporting."
       ],
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
       "skill_loaded_in_instance_verified": false,
       "autonomous_source_read_verified": false,
       "registry_write_verified_as_agent": false,
-      "slack_delivery_verified_as_agent": false
+      "slack_delivery_verified_as_agent": false,
+      "agent_native_read_reported": true,
+      "native_report_skill_sha": "f386cd8f56f4b6286fbae2ae87be131725515fae",
+      "acceptance_test_id": "T-022",
+      "operational_permission_scope": "GSC read-only SEO findings and drafting proposals only; site edits, URL changes, metadata and publication require separately explicit owner approval."
     },
     {
       "agent": "Content & Conversion Agent",
