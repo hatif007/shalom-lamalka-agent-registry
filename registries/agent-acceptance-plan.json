@@ -58,19 +58,21 @@
         "GA4": "T-016 user-submitted Data Agent run and independent T-017 GA4 report property 558438175 from 2026-10-06 through 2026-10-12: sessions 11, active users 9, page views 18, events 78, transactions 0 (tracked); no Wix/GA4 purchase reconciliation.",
         "Slack": "T-018: agent's own pasted acceptance report describes 1 approved #sales-data Slack send. Orchestrator independently read channel, thread and searched task marker DATA-V2-FINAL-OPS-2026-10-13; matching post timestamp 1791870672.928089 with verified permalink https://shalomlamalka.slack.com/archives/C0C87EKC71R/p1791870672928089. Slack sender is ChatGPT and does not identify independent agent runtime ID."
       },
-      "acceptance_status": "READ_ONLY_FUNCTIONAL_AND_SLACK_DELIVERY_PASS; FULL_BACKEND_PERMISSION_APPROVAL_PENDING",
+      "acceptance_status": "READ_ONLY_OPERATIONAL_PASS_WITH_REFERENCE_GUARD; LIVE_TOOL_PERMISSION_ENFORCEMENT_PENDING",
       "passed": [
         "Canonical Data Agent v2.0 at GitHub blob e4f2a91c5117001a42da259d8ffd0554345ebe51.",
         "User-submitted Data Agent native run report identifies shalom-lamalka-data-analysis-v2, reads Wix GetSiteContext, GA4 get_account_summaries and Registry canonical file, and records zero unauthorized changes.",
         "Previous independent orchestrator read-only Wix V3/orders paging and GA4 live reports passed (T-017).",
         "One specifically tasked PII-free Slack delivery to approved #sales-data was independently confirmed by channel history, thread readback and exact marker search; permalink is recorded in T-018.",
-        "GitHub Registry validation succeeded on last tested commit; recheck CI for T-018/acceptance plan changes."
+        "GitHub Registry validation succeeded on last tested commit; recheck CI for T-018/acceptance plan changes.",
+        "Security reference policy created as security/data_agent_action_guard.py, wired into CI synthetic tests; NOT runtime-deployed. Action controls and provider scopes remain open gates."
       ],
       "not_yet_verified": [
-        "Backend/tool-layer least-privilege technical write denial for Wix mixed-capability API, GA4, GitHub, and Slack. User-reported tool permission inspection marked all four gates NOT VERIFIED, and app permissions are not equivalent to read-only OAuth scopes.",
-        "Prohibited-write and prohibited-Slack-destination refusal by the installed Data Agent when challenged without invoking mutations; instructions alone are verified, not negative runtime behavior.",
-        "Independent capture of native installed GPT execution trace/unique runtime identity: the report is user-pasted, and Slack identifies sending client only as ChatGPT.",
-        "Complete order ledger and all statuses, plus Wix/GA4 revenue reconciliation if broad sales completeness approval is desired."
+        "Published Workspace Agent action controls/Connector Action Constraints configured in the actual installed agent. Connected tool does not expose Agent Studio configuration editing.",
+        "Provider OAuth credentials / backend scope: ensure Wix product+order read-only, GA4 reporting-only and GitHub contents read, not write.",
+        "Agent-specific Slack send destination restrictions and task-specific approval enforced by platform/mediator rather than Skill-only prompts.",
+        "Reference Python guard is regression-tested by GitHub CI but NOT deployed or invoked by installed Workspace Agent; no real tool-layer denial PASS.",
+        "Complete Wix/GA4 revenue reconciliation not part of technical authorization gate."
       ],
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
@@ -82,7 +84,7 @@
       "agent_runtime_reported_skill_name": "shalom-lamalka-data-analysis-v2",
       "agent_runtime_reported_version": "v2",
       "agent_runtime_report_time": "2026-10-13T05:51:23Z",
-      "acceptance_test_id": "T-018",
+      "acceptance_test_id": "T-019",
       "allowed_side_effects": "Read-only Wix/GA4 and Registry source reads; up to one PII-free message for each separately, explicitly authorized task to #sales-data or #agent-team only. No Data Agent GitHub/Registry writes or business configuration edits.",
       "runtime_test_evidence_class": "USER_SUBMITTED_NATIVE_AGENT_REPORT_WITH_INDEPENDENT_SLACK_MESSAGE_READBACK",
       "agent_native_read_reported": true,
@@ -92,7 +94,7 @@
       "runtime_reported_slack_messages_sent": 1,
       "pass_scope": "Read-only functional and one approved-channel Slack delivery PASS for tested scope. Prohibited writes are policy-restricted, but technical backend enforcement and unapproved Slack refusal have not been established.",
       "read_only_functional_status": "PASS_ORCHESTRATOR_LIVE_REPLAY_AND_AGENT_SELF_REPORT",
-      "full_operational_approval": "PENDING_UNVERIFIED_TECHNICAL_BACKEND_WRITE_DENIAL",
+      "full_operational_approval": "PENDING_PUBLISHED_AGENT_ACTION_CONSTRAINTS_AND_PROVIDER_SCOPE_AUDIT",
       "independent_source_read_evidence": "2026-10-13: Wix 2x2 products and 2x2 default orders HTTP 200, sample pages distinct; PENDING and REJECTED query HTTP 200 with zero returned. GA4 property 558438175 11 sessions, 9 users, 18 views, 78 events for 2026-10-06 through 2026-10-12. No full sales ledger/reconciliation.",
       "static_negative_policy_audit": "PASS: 8/8 explicit policy clauses in canonical SKILL.md. This is specification inspection, not deployed agent response or backend enforcement.",
       "installed_agent_invocation_from_orchestrator": "UNAVAILABLE_NO_CONNECTED_TOOL_TO_INVOKE_CUSTOM_GPT",
@@ -105,7 +107,15 @@
       "slack_delivery_verified_time": "2026-10-13T05:51:12Z",
       "agent_reported_slack_messages_sent": 1,
       "positive_native_operational_reporting": "USER_SUBMITTED_AGENT_RUNTIME_TEST_AND_INDEPENDENT_SLACK_DELIVERY_MATCHED",
-      "negative_runtime_permission_enforcement": "NOT_VERIFIED"
+      "negative_runtime_permission_enforcement": "NOT_VERIFIED",
+      "reference_guard_file": "security/data_agent_action_guard.py",
+      "reference_guard_testing": "CI_SYTHETIC_ALLOW_DENY_ONLY_NOT_INSTALLED_AGENT",
+      "runtime_policy_enforcement_verified": false,
+      "builder_action_controls_verified": false,
+      "connector_oauth_least_privilege_verified": false,
+      "action_guard_deployed_in_agent_runtime": false,
+      "connector_hardening_doc": "security/DATA_AGENT_CONNECTOR_HARDENING.md",
+      "connected_app_default_permissions": "Wix - Shalom La Malka, GitHub, Slack: Use my default = Allow low-risk actions; not equivalent to backend read-only or Workspace Agent action constraints."
     },
     {
       "agent": "SEO Agent",
