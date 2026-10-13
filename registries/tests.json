@@ -492,5 +492,47 @@
       "With a separate explicit authorization naming #sales-data or #agent-team, have the Data Agent send exactly one PII-free test report; verify the source instance, timestamp and Slack permalink.",
       "Record independent review of those native outcomes before changing full operational approval to PASS."
     ]
+  },
+  {
+    "id": "T-016",
+    "name": "Data Agent v2 — agent-local final operational read-only acceptance report",
+    "operator": "USER_SUBMITTED_REPORT_FROM_INSTALLED_DATA_AGENT",
+    "status": "PARTIAL_PASS_NATIVE_READS_REPORTED_ENFORCEMENT_AND_NATIVE_SLACK_UNVERIFIED",
+    "data_mode": "AGENT_REPORTED_LIVE_READ_ONLY_RUN",
+    "purpose": "Record the operator-submitted installed Data Agent v2 tool test and distinguish successful reads and instruction checks from actual technical write-denial enforcement and authorized agent-native Slack delivery.",
+    "source": "User-provided Data Agent tool-action list and acceptance results for installed shalom-lamalka-data-analysis-v2; canonical GitHub SKILL.md v2.0; previous independent Wix/GA4 source replay and GitHub Registry CI evidence.",
+    "date": "2026-10-13",
+    "observed_at": "2026-10-13T05:43:58Z",
+    "date_range": "GA4: 2026-10-06 through 2026-10-12 inclusive, Asia/Jerusalem. Wix Catalog V3: 1-product sample without a date-range filter.",
+    "sample_size": "Wix: 1 Catalog V3 product returned, limit=1, hasNext=true; GA4 property 558438175: 1 aggregate report for 2026-10-06 through 2026-10-12 with 11 sessions, 9 active users, 18 views, 78 events.",
+    "steps_performed": [
+      "Agent reported loading installed skill shalom-lamalka-data-analysis-v2 v2 locally.",
+      "Agent reported GetSiteContext for site שלום למלכה, Catalog V3, ILS and Asia/Jerusalem.",
+      "Agent reported one read-only CallWixSiteAPI request POST /stores/v3/products/query with limit=1; one product returned and hasNext=true; connector did not surface numeric HTTP status.",
+      "Agent reported one GA4 run_report for property 558438175 and stated interval; 11 sessions, 9 active users, 18 views, 78 total events.",
+      "Agent inspected skill instructions prohibiting Wix, GA4, GitHub and Registry mutations and restricting Slack reports to individually authorized tasks and approved channels.",
+      "Agent reported no business writes, GitHub/Registry writes, Slack sends or other prohibited actions.",
+      "Agent did not attempt a write-denial negative test or agent-native approved Slack send."
+    ],
+    "result": "PASS for user-reported installed skill load, direct Wix product read and GA4 run_report, and absence of forbidden side effects in this run. PASS for inspection of prohibition instructions only, NOT proof of connector/backend technical enforcement. Full operational approval remains PENDING until native Slack delivery after explicit task- and channel-specific authorization, and robust read-only enforcement evidence. The report is user-supplied rather than independently captured agent execution trace.",
+    "limitations": [
+      "This is a user-submitted report from the agent, not an independently audited native tool trace; source reads were independently replayed in prior orchestrator tests, not this particular runtime invocation.",
+      "The successful Wix connector returned a success indicator without a numeric HTTP status.",
+      "Wix sampled only 1 product; full catalog, all-order statuses, and sales reconciliation were not validated in this run.",
+      "Technical denial of Wix/GA4/Registry/GitHub write operations was NOT TESTED, only the written skill restriction was checked.",
+      "Slack report constraints were instruction-reviewed, but agent-native Slack send was NOT RUN. Orchestrator's previous successful Slack send is a different runtime.",
+      "Owner report says there were no orders during the last week; no complete read-only orders ledger/status audit established that independently.",
+      "Actual backend connector may expose more privileges than the Data Agent skill allows; a read-only successful call cannot prove least privilege."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "owner_reported_business_data_configuration_changes": false,
+    "owner_reported_github_registry_writes": 0,
+    "owner_reported_slack_messages_sent": 0,
+    "owner_reported_wix_mixed_capability_calls": 1,
+    "owner_reported_owner_approved_wix_mixed_tool_read": true,
+    "canonical_skill_blob_sha": "e4f2a91c5117001a42da259d8ffd0554345ebe51",
+    "next_step": "Collect approved native Data Agent Slack delivery (one message to explicitly approved #sales-data or #agent-team with permalink) and test refusal of prohibited requests safely with no mutations; separately inspect underlying connector scopes before claiming backend-enforced read-only permissions.",
+    "confidence": "MEDIUM_FOR_NATIVE_AGENT_USER_REPORT; HIGH_FOR_PREVIOUS_INDEPENDENT_WIX_GA4_AND_GITHUB_VERIFICATION"
   }
 ]
