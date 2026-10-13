@@ -440,5 +440,57 @@
     ],
     "confidence": "HIGH_FOR_ORCHESTRATOR_SOURCE_READS_MEDIUM_FOR_AGENT_SELF_REPORT",
     "next_step": "Align acceptance plan and access matrix; separately verify an actual agent-run command trace/permissions and GitHub Actions CI after owner-authorized registry fixes."
+  },
+  {
+    "id": "T-015",
+    "name": "Data Agent v2 — full operational approval gate review",
+    "operator": "OWNER_AUTHORIZED_ORCHESTRATOR_GATE_REVIEW",
+    "status": "PARTIAL_PASS_FULL_APPROVAL_PENDING_NATIVE_AGENT_EVIDENCE",
+    "data_mode": "LIVE_READ_ONLY_REPLAY_PLUS_USER_SUBMITTED_RUNTIME_REPORT",
+    "purpose": "Assess readiness for full operational approval of Data Agent v2 without mistaking independent connector reads, user-pasted reports or orchestrator Slack sends for direct agent-runtime compliance.",
+    "source": "Canonical GitHub Data Agent SKILL.md v2 and Registry T-014; GitHub Actions 38352498194; Wix Catalog V3/products and eCommerce/orders read-only two-page samples previously replayed; direct GA4 run_report property 558438175; Slack #sales-data confirmed prior orchestrator test; user-provided Data Agent runtime report.",
+    "date": "2026-10-13",
+    "observed_at": "2026-10-13 (current owner-authorized gate review; exact clock time not captured)",
+    "date_range": "Wix: prior two-page product/order samples, no date filter. GA4: 2026-10-06 to 2026-10-12 Asia/Jerusalem.",
+    "sample_size": "Wix historical acceptance replay: 10 products and 10 orders across two pages each. GA4: 1 aggregate summary row (11 sessions, 9 active users, 0 tracked transactions, 0 purchase revenue). Slack prior orchestrator test: 1 confirmed report.",
+    "steps_performed": [
+      "Fetched canonical Data Agent v2 SKILL.md at blob SHA e4f2a91c5117001a42da259d8ffd0554345ebe51 and current access matrix and acceptance plan.",
+      "Verified latest GitHub Registry validation run 38352498194 completed successfully for commit 0341b30b4118d598418273a6358efe6dfc181ada.",
+      "Rechecked GA4 connectivity and aggregate values in property 558438175 for 2026-10-06 through 2026-10-12; results were consistent with prior reads.",
+      "Read the #sales-data channel and confirmed a prior orchestrator-originated diagnostic message; no new message sent in this review.",
+      "Compared user-submitted Data Agent runtime acceptance report with independently verified source reads and identified gaps that can only be closed by testing inside the installed Data Agent instance.",
+      "Reviewed the canonical skill restrictions: all Wix/GA4 data/config writes and any Registry/GitHub writes by Data Agent are prohibited; only one task-specifically authorized Slack report to #sales-data or #agent-team is permitted."
+    ],
+    "result": "Functional infrastructure gates passed: canonical Skill, Registry CI, limited Wix read and paging, direct GA4 historical report, and prior orchestrator Slack delivery. Full operational acceptance remains PENDING because the installed agent's native execution trace/configuration was not directly inspectable, agent-native authorized Slack delivery was NOT RUN, and denial of prohibited actions/channels was not demonstrated. No FULL PASS issued.",
+    "limitations": [
+      "Installed shalom-lamalka-data-analysis-v2 loading and behavior were reported by the agent via user-provided text; independent direct runtime inspection is unavailable in this conversation.",
+      "Read-only behavior in a successful positive sample does not prove that the deployed agent rejects prohibited write or unauthorized Slack requests.",
+      "The prior verified Slack message was sent by the orchestration conversation, not the separately installed Data Agent.",
+      "User reports no orders in the last week. The Wix order sample does not encompass all statuses or an exhaustive sales ledger; GA4 zero tracked transactions does not independently establish Wix order completeness.",
+      "No explicit per-task Slack destination was identified in the present approval request; therefore no new Slack delivery was authorized or attempted.",
+      "Repository CI checks JSON/schema integrity, not deployed agent permissions or autonomy."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "test_execution_side_effects": "NONE_IN_BUSINESS_SYSTEMS; ORCHESTRATOR_REGISTRY_MAINTENANCE_RECORDED_SEPARATELY",
+    "gate_results": {
+      "canonical_skill": "PASS",
+      "registry_ci": "PASS",
+      "wix_limited_reads": "PASS_PREVIOUS_INDEPENDENT_REPLAY",
+      "ga4_direct_report": "PASS_LIVE",
+      "orchestrator_slack_test": "PASS_PRIOR_TEST_NOT_AGENT_NATIVE",
+      "installed_agent_runtime_trace": "BLOCKED_NOT_DIRECTLY_ACCESSIBLE",
+      "negative_authorization_tests": "NOT_RUN",
+      "agent_native_slack_send": "NOT_RUN_NO_TASK_SPECIFIC_DESTINATION_AUTHORIZATION",
+      "full_operational_approval": "PENDING"
+    },
+    "ci_run_url": "https://github.com/hatif007/shalom-lamalka-agent-registry/actions/runs/38352498194",
+    "prior_slack_url": "https://shalomlamalka.slack.com/archives/C0C87EKC71R/p1791868519815999",
+    "next_steps": [
+      "Run native Data Agent read-only challenge and inspect actual tool execution trace, loaded skill name, timestamp, source and sampled output.",
+      "Test denial of requests to change Wix/GA4, write GitHub/Registry, send to unapproved channels, or send without task-specific authorization; test must not execute prohibited writes.",
+      "With a separate explicit authorization naming #sales-data or #agent-team, have the Data Agent send exactly one PII-free test report; verify the source instance, timestamp and Slack permalink.",
+      "Record independent review of those native outcomes before changing full operational approval to PASS."
+    ]
   }
 ]
