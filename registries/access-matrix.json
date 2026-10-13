@@ -168,49 +168,49 @@
     "status": "UNAVAILABLE_DEFERRED"
   },
   {
-    "agent": "Content & Conversion Agent",
+    "agent": "Website & Conversion Agent",
     "source": "Wix",
-    "permitted_purpose": "No direct order/customer access; review public journey only.",
-    "access_mode": "PUBLIC_REVIEW_ONLY",
-    "permitted_data_fields": "Orders/products and aggregate fields only where actually returned; avoid unnecessary customer PII.",
+    "permitted_purpose": "Review public website product/category presentation and only scoped non-PII product data if expressly constrained; no order/customer reads.",
+    "access_mode": "PUBLIC_WEB_READ_ONLY; OPTIONAL_EXACT_SCOPED_PRODUCTS_QUERY_NOT_YET_VERIFIED",
+    "permitted_data_fields": "Public product/category fields and aggregate availability only when actually returned; never raw orders, customer data, payments, secrets.",
     "prohibited_data_actions": "No writes, checkout/site changes, pricing changes, credentials or permission changes.",
-    "connection_authorization_status": "PUBLIC CONTENT ONLY; no authenticated source access",
+    "connection_authorization_status": "NOT_CONNECTED_TO_NEW_AGENT; NEVER_ENABLE_GENERIC_WIX_MUTATION_ACTIONS",
     "last_verified_date": null,
     "test_result": "NOT_TESTED_OR_DEFERRED",
     "evidence_link": null,
-    "known_limitations": "Partial query coverage; PENDING/REJECTED excluded by default in noted sample; UTC boundary; not a complete ledger.",
-    "status": "PARTIAL"
+    "known_limitations": "Not a created agent. Even IN_STOCK aggregate product flags do not prove size/variant availability; all proposed CTA destinations need read-only verification.",
+    "status": "PLANNED_RESTRICTED_READS"
   },
   {
-    "agent": "Content & Conversion Agent",
+    "agent": "Website & Conversion Agent",
     "source": "Google Search Console",
     "permitted_purpose": "May use existing verified search-intent summaries; direct pairing access not verified.",
     "access_mode": "VERIFIED_FINDINGS_ONLY",
     "permitted_data_fields": "Queries/pages/clicks/impressions/CTR/position only within tested ranges.",
     "prohibited_data_actions": "No property/permission/settings changes.",
-    "connection_authorization_status": "NOT_VERIFIED_OR_NOT_AVAILABLE",
+    "connection_authorization_status": "NEW_AGENT_CONNECTOR_NOT_YET_VERIFIED; USE_SEO_AGENT_VALIDATED_READ_REPORTS",
     "last_verified_date": null,
     "test_result": "NOT_TESTED_OR_DEFERRED",
     "evidence_link": null,
     "known_limitations": "Evidence applies only to tested reads/date ranges; preserve data lag and exact range.",
-    "status": "VERIFIED_FOR_TESTED_READS"
+    "status": "PLANNED_READ_ONLY"
   },
   {
-    "agent": "Content & Conversion Agent",
+    "agent": "Website & Conversion Agent",
     "source": "GA4",
     "permitted_purpose": "Use only validated analytics findings; no site changes.",
     "access_mode": "VERIFIED_FINDINGS_ONLY_PENDING_VALIDATION",
     "permitted_data_fields": "Realtime or historical metrics only when supported by explicit evidence.",
     "prohibited_data_actions": "No tracking/configuration changes; no inference from zero-row query alone.",
-    "connection_authorization_status": "NOT_VERIFIED_OR_NOT_AVAILABLE",
+    "connection_authorization_status": "NEW_AGENT_CONNECTOR_NOT_CONNECTED; USE_DATA_AGENT_VALIDATED_AGGREGATES",
     "last_verified_date": null,
     "test_result": "NOT_TESTED_OR_DEFERRED",
     "evidence_link": null,
     "known_limitations": "Historical reports/connector queries returned zero rows for tested scopes while Realtime screenshots showed events; unresolved.",
-    "status": "PARTIAL_UNRESOLVED"
+    "status": "PLANNED_READ_ONLY"
   },
   {
-    "agent": "Content & Conversion Agent",
+    "agent": "Website & Conversion Agent",
     "source": "Festival booth data",
     "permitted_purpose": "Not applicable to current public-site review; source unavailable.",
     "access_mode": "NOT_APPLICABLE",
