@@ -153,20 +153,23 @@
     {
       "agent": "Website & Conversion Agent",
       "skill": "skills/website-conversion-agent/SKILL.md",
-      "skill_artifact_status": "COMMITTED_CANONICAL_V1_SKILL_PACKAGE_PREPARED_NOT_INSTALLED_IN_WORKSPACE_AGENT",
+      "skill_artifact_status": "GITHUB_V1_0_CANONICAL_OWNER_REPORTED_INSTALLED_V1_1_DRAFT_NO_PACKAGE_PARITY_VERIFIED",
       "source_access_evidence": {
-        "PublicPages": "Previous homepage audits exist (prior runtime evidence), but not proof of a new Website & Conversion Agent instance.",
+        "PublicPages": "Owner submitted GROW-SEO-01 11-page homepage review: live public page and selected categories read-only, with precise page-copy alternatives and limitations; no native runtime tool call trace independently inspected here.",
         "GSC": "Validated read-only SEO Agent query/page reports can be consumed; direct new-agent connector access NOT VERIFIED.",
-        "Wix": "Exact site ID 03b550bb-4ab1-4854-99b8-8bb153c4431e and narrow read-only V3 query known, but not yet installed or constrained in new agent.",
-        "Brief": "Owner approved drafting GROW-SEO-01; operations/content-conversion-p1-homepage-brief-2026-10-13.md in working branch."
+        "Wix": "Owner reports v1.1 draft removed Wix connector due unsafe mixed-capability actions; public pages only, aggregate stock information can be used via validated handoff with freshness limitation.",
+        "Brief": "Owner approved drafting GROW-SEO-01; operations/content-conversion-p1-homepage-brief-2026-10-13.md in working branch.",
+        "GitHub": "Owner reports v1.1 draft removed GitHub connector due broad access; main now contains canonical brief/role files but native installed agent has no direct GitHub access.",
+        "Version": "Owner reports installed v1.1 skill saved to draft and validated frontmatter/reference; GitHub still v1.0. Actual v1.1 file contents/Builder publication not independently confirmed."
       },
-      "acceptance_status": "PLANNED_AWAITING_WORKSPACE_AGENT_CREATION_PREVIEW_AND_PUBLISH",
+      "acceptance_status": "OWNER_REPORTED_AGENT_CREATED_GROW_SEO_01_DRAFT_PASS_V1_1_UPGRADE_DRAFT_PENDING_UPDATE",
       "blocked_by": [
-        "No created/published Workspace Agent instance demonstrated.",
-        "No validated per-agent action allowlist / connector input constraints yet.",
-        "First safe native Preview including one homepage read and refusal to publish is NOT RUN."
+        "Workspace Agent creation and work demonstrated only via owner-submitted agent output, not native trace.",
+        "Website Agent v1.1 changes saved as draft; publisher Update and native smoke after publication not verified.",
+        "Wix and GitHub connectors deliberately removed; live catalog/API and direct branch reads unavailable to the agent.",
+        "GitHub v1.0 Skill must not overwrite independent runtime v1.1 draft; actual package synchronization pending."
       ],
-      "next_test": "Create new Shalom La Malka — Website & Conversion Agent in Agent Builder with website-conversion-agent Skill; verify public homepage read and exact draft packet, and safe refusals to publish/site edit/Slack without mutation tools; publish only after owner reviews. No site mutation.",
+      "next_test": "When installed agent capacity returns, verify v1.1 was published via Agent Builder Update and perform one safe native public-page read/Skill version check. Supply actual v1.1 Skill package before synchronizing to GitHub v1.0; do not reconnect broad Wix/GitHub write-capable actions.",
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
       "skill_loaded_in_instance_verified": false,
