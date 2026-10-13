@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-10-12",
+  "updated_at": "2026-10-13",
   "branch": "fix/registry-v0.2-structure",
   "purpose": "Track per-agent acceptance coverage without confusing repository skill documentation or orchestrator-run connector calls with verified autonomous agent execution.",
   "global_rules": [
@@ -9,8 +9,9 @@
     "Each live finding must include source, exact range, extraction time, metric definition, freshness, limitations, confidence, and evidence link.",
     "Distinguish FACT, HYPOTHESIS, RECOMMENDATION, and UNKNOWN.",
     "Only record a finding as committed after reading back the Registry update and checking GitHub Actions.",
-    "Post short material outcomes to #growth-outcomes and technical details to #agent-registry; delivery must be confirmed.",
-    "No festival booth revenue may be inferred from Wix online sales."
+    "Reporting permissions are agent-specific. Data Agent v2 may send at most one explicitly task-authorized PII-free report to #sales-data or #agent-team; do not direct Data Agent to post to #growth-outcomes or #agent-registry. Other agents require their own applicable policies.",
+    "No festival booth revenue may be inferred from Wix online sales.",
+    "Data Agent v2 cannot write Registry/GitHub, even when generating Registry-ready test records; authorized repository maintenance must run separately outside the agent."
   ],
   "agents": [
     {
@@ -51,23 +52,37 @@
     {
       "agent": "Data Agent",
       "skill": "skills/data-agent/SKILL.md",
-      "skill_artifact_status": "COMMITTED_NOT_RUNTIME_INSTALLED",
+      "skill_artifact_status": "COMMITTED_CANONICAL_V2; RUNTIME_V2_SELF_REPORTED",
       "source_access_evidence": {
-        "Wix": "Connector read-only smoke test passed for first 5 products and first 5 orders."
+        "Wix": "Data Agent reported independent Catalog V3/Orders two-page reads (5+5 each), read-only; orchestrator independently replayed two cursor pages with HTTP 200, no duplicate IDs. Does not establish complete order ledger or privileged endpoints.",
+        "GA4": "Data Agent reported direct read of property 558438175; orchestrator independently queried 2026-10-06 through 2026-10-12: 11 sessions, 9 active users, 0 tracked transactions, 0 purchase revenue. User reports no orders last week; not a complete Wix reconciliation.",
+        "Slack": "One orchestrator-authored approved #sales-data diagnostic message confirmed in prior test; Data Agent own acceptance test sent zero Slack messages. This does not prove an agent-run Slack send."
       },
-      "acceptance_status": "PENDING_CHATGPT_INSTANCE_VERIFICATION",
+      "acceptance_status": "PARTIAL_PASS_RUNTIME_SELF_REPORTED_SOURCE_READS_INDEPENDENTLY_REPLAYED",
       "passed": [
-        "Underlying Wix read endpoints returned HTTP 200 in orchestrator-run smoke test."
+        "Canonical v2.0 SKILL.md confirmed at blob e4f2a91c5117001a42da259d8ffd0554345ebe51.",
+        "User-submitted Data Agent runtime report identifies installed shalom-lamalka-data-analysis-v2 and documents successful Wix two-page and GA4 reads.",
+        "Independent orchestrator source checks reproduced Wix limited pagination and GA4 scoped reporting.",
+        "Reported Data Agent run made no Wix/GA4/Registry/GitHub changes and sent no Slack messages."
       ],
       "not_yet_verified": [
-        "Data Agent runtime independently invokes Wix connector, handles pagination/status filters, and writes reproducible aggregates to Registry."
+        "Independent inspection of installed agent configuration and captured native execution trace (user report only).",
+        "Full catalog/order ledger, all statuses, date boundaries and GA4/Wix revenue reconciliation.",
+        "Direct Data Agent Slack reporting under task-specific approval (orchestrator Slack test is separate).",
+        "Technical prevention of prohibited writes and prohibited channels through negative tests; current test exercised read-only behavior only."
       ],
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
       "skill_loaded_in_instance_verified": false,
       "autonomous_source_read_verified": false,
       "registry_write_verified_as_agent": false,
-      "slack_delivery_verified_as_agent": false
+      "slack_delivery_verified_as_agent": false,
+      "agent_runtime_report_received": true,
+      "agent_runtime_reported_skill_name": "shalom-lamalka-data-analysis-v2",
+      "agent_runtime_reported_version": "v2",
+      "agent_runtime_report_time": "2026-10-13T05:34:53Z",
+      "acceptance_test_id": "T-014",
+      "allowed_side_effects": "Read-only sources; one authorized, PII-free Slack report per separately approved task only to #sales-data or #agent-team. No Data Agent Registry/GitHub writes."
     },
     {
       "agent": "SEO Agent",
@@ -145,13 +160,13 @@
   },
   "runtime_platform": "ChatGPT",
   "runtime_platform_status": "IDENTIFIED_BY_OWNER",
-  "runtime_note": "Owner confirmed the intended agent platform is ChatGPT. This identifies the platform but does not prove that five separate GPTs exist, that each loads its dedicated Skill/instructions, or that any GPT can independently access connectors and write to GitHub/Slack.",
+  "runtime_note": "Owner confirmed the intended agent platform is ChatGPT. This identifies the platform but does not prove that five separate GPTs exist, that each loads its dedicated Skill/instructions, or that any GPT can independently access connectors and write to GitHub/Slack. Data Agent v2 user-submitted acceptance report was received on 2026-10-13, but has not been independently inspected as a runtime execution trace; treat it separately from orchestrator-run replay.",
   "next_acceptance_gate": [
     "Inventory the five actual ChatGPT agent instances and record their exact names/entry points.",
     "For each instance, inspect its configured Instructions and Knowledge/Skill material; verify its dedicated skill is present in the actual GPT configuration, not only in GitHub.",
     "Run a unique read-only challenge in that agent's own ChatGPT conversation and require it to state which source it accessed, date range, sample size, and limitations.",
     "Require each agent to produce one evidence-backed finding and a Registry-ready record; verify the evidence by independently checking the source.",
-    "Verify actual Registry write and Slack delivery separately; if the GPT cannot perform a write, mark that stage blocked rather than pretending handoff occurred.",
+    "Verify delivery and permitted writes per agent role. Data Agent v2 must never write Registry/GitHub; verify task-authorized Slack delivery separately without conflating prior orchestrator-run test.",
     "Record PASS only for the exact stages directly evidenced; do not count a response from this orchestrator conversation as autonomous GPT execution."
   ]
 }
