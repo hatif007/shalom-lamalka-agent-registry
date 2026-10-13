@@ -14,9 +14,9 @@
 
 Growth Manager is the **single conductor**, consolidating Data, SEO, Website and (when source is available) Festival Sales. The human owner authorizes public/business changes, new bot permissions, agent activation and business target commitments. No Skill or Registry file alone delegates tasks, writes Slack or operates Wix.
 
-**Proposed weekly cadence:** Monday Data ~08:00 and SEO ~10:00 are enabled *ChatGPT scheduled reports* from 2026-10-19 (not native installed-agent runs). Growth review Monday 11:00 is PROPOSED and **NOT scheduled**. Daily exception review and monthly strategy review are manual checklist proposals. Track an actual meeting occurrence only with evidence/date/decisions.
+**Owner-approved weekly work windows (2026-10-13; Asia/Jerusalem):** Sunday **22:30 Website & Conversion** (manual window, first 2026-10-18); Monday **~08:00 Data** (existing flexible ChatGPT automation); Monday **~10:00 SEO** (existing flexible ChatGPT automation); Monday **12:00 Growth Manager** (manual review window, first 2026-10-19). The two ChatGPT weekly report schedules stay enabled, *not* installed-agent runtimes. **Approving a work window does not schedule or start a native custom agent.** The Sunday Website Agent and Monday Growth Manager slots are approved in the Registry but **not automated**. Daily checks are incident-triggered only; on the **first Monday of each month**, the 12:00 Growth review includes monthly strategic review without new specialist runs. Track an actual meeting or agent execution only with evidence/date/decisions.
 
-**Weekly Growth meeting agenda (manual until activated):**
+**Weekly Growth meeting agenda — Monday 12:00 (owner-approved window; manual until activated):**
 1. Check source coverage and freshness, unresolved blockers and decisions from prior week.
 2. Read verified specialist reports, not unsourced narrative.
 3. Review scorecard: baseline versus actual with same metric, scope, and time window.
@@ -51,3 +51,12 @@ Festival Sales Agent is deferred until validated booth sales/cost records exist.
 At each meeting, Growth Manager prepares a **proposed patch** to the calendar/scorecard/task board with source, recorded actuals, proof, timestamp and owner decision. A separately authorized GitHub maintainer opens a topic-branch PR and runs CI; installed read-only agents do not write Registry. Do NOT invent meeting completion, live source access, approval, numbers or autonomous handoff.
 
 **Security:** All site changes, Slack agent messaging, provider-scope changes, agent activation and business writes remain separately controlled. **GitHub main branch protection is still not observed enforced** and requires admin action.
+
+## OpenAI quota-aware working policy — owner approved 2026-10-13
+
+- Reserve **one Website deep-audit work window per week** on Sunday 22:30; do not keep this agent active continuously or launch daily duplicate crawls. Website Agent v1.1 was owner-reported as an unpublished draft; no new scheduler, connector or runtime invocation was authorized by changing this Registry calendar.
+- Keep the **two existing ChatGPT weekly report automations** on Monday ~08:00 (Data) and ~10:00 (SEO). These are not direct scheduled executions of installed custom agents.
+- Monday **12:00 Growth Manager** consumes the assembled Data/SEO/Website evidence and makes up to three accountable prioritization decisions. **Do not rerun** SEO/Data analyses in Growth just to repeat work.
+- Daily operating rhythm is exception-driven/manual. First-Monday monthly review reuses the standard Growth review; no extra agent-wide batch.
+- If OpenAI usage quota, connector access or source data is unavailable, mark `BLOCKED` or `DEFERRED` with exact reason; do not retry endlessly or misrepresent a scheduled slot as a completed task.
+- Night scheduling helps sequence work **but does not create extra quota**. No promises of resource savings or native autonomous delivery until measured.

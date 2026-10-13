@@ -206,11 +206,18 @@
       "Website drafts",
       "Owner approvals"
     ],
-    "status": "NOT_STARTED"
+    "status": "NOT_STARTED",
+    "timezone": "Asia/Jerusalem",
+    "approved_time_slot": "MONDAY_12:00",
+    "time_slot_approved_on": "2026-10-13",
+    "execution_mode": "MANUAL_NOT_AUTOMATED",
+    "monthly_policy": "FIRST_MONDAY_SAME_REVIEW_NO_EXTRA_RUN"
   },
   "guardrails": [
     "No conversion/revenue target without credible baseline",
     "Do not conflate SEO acquisition, GA4 tracked transactions and Wix order ledger",
-    "No unapproved implementation; proposals do not grant Wix/Slack/agent write rights"
+    "No unapproved implementation; proposals do not grant Wix/Slack/agent write rights",
+    "Owner-approved work windows are not proof of native agent scheduling or completed tasks; do not record planned outputs as actuals.",
+    "No quota reset/availability claims from nighttime timing; avoid duplicate specialist calls."
   ]
 }

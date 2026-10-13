@@ -10,7 +10,7 @@
       "id": "CAL-DAILY",
       "title": "Daily exception triage",
       "cadence": "DAILY_WORKDAYS",
-      "time": "NOT_SCHEDULED",
+      "time": "NO_FIXED_TIME",
       "facilitator": "Growth Manager",
       "participants": [
         "Data Agent",
@@ -18,7 +18,7 @@
         "Website & Conversion Agent"
       ],
       "activation": "MANUAL_ONLY",
-      "status": "PLANNED_NOT_SCHEDULED",
+      "status": "MANUAL_EXCEPTIONS_ONLY_NO_DAILY_SCHEDULE",
       "agenda": [
         "New critical website/customer-journey issues",
         "Source freshness and data access blockers",
@@ -26,7 +26,8 @@
       ],
       "output": "Exceptions-only update and task board review",
       "success_metric": "Critical exceptions have a named owner and review date",
-      "autonomous_agent_run": false
+      "autonomous_agent_run": false,
+      "execution_policy": "On demand for material incidents only; no daily automated run or duplicate source reads"
     },
     {
       "id": "CAL-DATA-WEEKLY",
@@ -39,7 +40,10 @@
       "status": "SCHEDULED_NOT_YET_RUN",
       "output": "Wix/GA4 data quality and business-funnel facts; at most 3 recommendations",
       "evidence": "ChatGPT automation id 6acde30256148191b0d5703012afc6d3",
-      "autonomous_agent_run": false
+      "autonomous_agent_run": false,
+      "timezone": "Asia/Jerusalem",
+      "approved_time_slot": true,
+      "execution_policy": "Keep existing ChatGPT weekly automation; no additional native agent scheduled runs or duplicate reports. Time is approximate (flexible window)."
     },
     {
       "id": "CAL-SEO-WEEKLY",
@@ -52,13 +56,16 @@
       "status": "SCHEDULED_NOT_YET_RUN",
       "output": "GSC 28 settled days and 3 opportunities",
       "evidence": "ChatGPT automation id 6acde4ecd2ec8191806456471534b7f7",
-      "autonomous_agent_run": false
+      "autonomous_agent_run": false,
+      "timezone": "Asia/Jerusalem",
+      "approved_time_slot": true,
+      "execution_policy": "Keep existing ChatGPT weekly automation; no additional native agent scheduled runs or duplicate reports. Time is approximate (flexible window)."
     },
     {
       "id": "CAL-GROWTH-WEEKLY",
       "title": "Weekly Growth review",
       "cadence": "WEEKLY_MONDAY",
-      "time": "PROPOSED_11:00_NOT_SCHEDULED",
+      "time": "12:00",
       "first_date": "2026-10-19",
       "facilitator": "Growth Manager",
       "participants": [
@@ -68,7 +75,7 @@
         "Website & Conversion Agent evidence"
       ],
       "activation": "MANUAL_ONLY",
-      "status": "PROPOSED_AWAITING_SCHEDULING",
+      "status": "OWNER_APPROVED_WINDOW_NOT_AUTOMATED",
       "agenda": [
         "Validate weekly data and source coverage",
         "Decide up to 3 weekly priorities",
@@ -76,16 +83,19 @@
         "Record owner approvals and task due dates"
       ],
       "output": "Weekly decision packet; task board and Scorecard updates",
-      "autonomous_agent_run": false
+      "autonomous_agent_run": false,
+      "timezone": "Asia/Jerusalem",
+      "approved_time_slot": true,
+      "execution_policy": "Read Data (~08:00), SEO (~10:00) and prior-night Website reports; do not replicate specialist research; review maximum three prioritized business actions; requires explicit run/schedule configuration before execution."
     },
     {
       "id": "CAL-WEBSITE-WEEKLY",
       "title": "Website UX and merchandising audit",
-      "cadence": "WEEKLY",
-      "time": "NOT_SCHEDULED",
+      "cadence": "WEEKLY_SUNDAY",
+      "time": "22:30",
       "facilitator": "Website & Conversion Agent",
       "activation": "MANUAL_ONLY",
-      "status": "CHECKLIST_READY_RUNTIME_V1_1_DRAFT_UNVERIFIED",
+      "status": "OWNER_APPROVED_WINDOW_NOT_AUTOMATED",
       "agenda": [
         "Homepage/category/product paths",
         "Mobile RTL and accessibility",
@@ -93,20 +103,24 @@
         "CTA and conversion hypothesis"
       ],
       "output": "Evidence-backed draft findings to Growth Manager",
-      "autonomous_agent_run": false
+      "autonomous_agent_run": false,
+      "first_date": "2026-10-18",
+      "timezone": "Asia/Jerusalem",
+      "approved_time_slot": true,
+      "execution_policy": "One bounded weekly deep audit when agent capacity is available; review only public pages and supplied verified evidence; cap standard report to three significant findings; no retries on quota exhaustion. First Monday of month use same weekly run for deeper review, no extra run."
     },
     {
       "id": "CAL-MONTHLY",
       "title": "Monthly business performance and agent review",
-      "cadence": "MONTHLY",
-      "time": "NOT_SCHEDULED",
+      "cadence": "MONTHLY_FIRST_MONDAY",
+      "time": "FIRST_MONDAY_12:00_WITHIN_APPROVED_WEEKLY_GROWTH_WINDOW",
       "facilitator": "Growth Manager",
       "participants": [
         "Owner",
         "Specialists as source evidence"
       ],
       "activation": "MANUAL_ONLY",
-      "status": "PLANNED_AFTER_FIRST_WEEKLY_CYCLE",
+      "status": "OWNER_APPROVED_CADENCE_WITHOUT_EXTRA_RUN",
       "agenda": [
         "Month-over-month comparable source metrics",
         "Action/experiment review and attributable limits",
@@ -114,7 +128,9 @@
         "Next month 3 approved priorities"
       ],
       "output": "Monthly owner decision memo",
-      "autonomous_agent_run": false
+      "autonomous_agent_run": false,
+      "execution_policy": "Replace/extend the existing Monday Growth review during first week of month, instead of calling every specialist again; use existing reports and measured outcomes.",
+      "approved_time_slot": true
     }
   ],
   "operating_rules": [
@@ -122,6 +138,37 @@
     "Never infer a meeting occurred from a calendar record or scheduled report.",
     "No autonomous agent-to-agent dispatch or Slack send enabled by this file.",
     "Scheduled SEO and Data ChatGPT reports are not separate installed-agent executions.",
-    "Escalate urgent security/privacy/site outage immediately by a separately approved manual process; do not use unsafe tools."
-  ]
+    "Escalate urgent security/privacy/site outage immediately by a separately approved manual process; do not use unsafe tools.",
+    "Owner approved the Sunday 22:30 Website and Monday 12:00 Growth official windows on 2026-10-13; neither is currently registered as a native agent schedule.",
+    "Monthly review replaces/extends first Monday Growth review rather than requiring a separate invocation."
+  ],
+  "version": "1.1",
+  "cadence_approval": {
+    "approved_by": "Owner",
+    "approved_on": "2026-10-13",
+    "timezone": "Asia/Jerusalem",
+    "scope": "OFFICIAL_TEAM_TIME_WINDOWS_ONLY",
+    "scheduled_agent_runtime_authorized": false,
+    "provider_quota_adjustment": false
+  },
+  "quota_efficiency_policy": {
+    "priority": "AVOID_UNNECESSARY_AGENT_CONSUMPTION",
+    "reporting_period": "WEEKLY",
+    "existing_chatgpt_automations": [
+      "One weekly Data report (approx Monday 08:00)",
+      "One weekly SEO report (approx Monday 10:00)"
+    ],
+    "planned_native_windows": [
+      "One Website review Sunday 22:30, subject to agent capacity and manual invocation",
+      "One Growth review Monday 12:00, subject to agent capacity and manual invocation"
+    ],
+    "batching": "Aggregate evidence for each review; don't launch multiple agents for a question one validated report can answer.",
+    "content_limits": "Up to three material findings / opportunities per regular specialist report, not a prohibition on reporting critical risks.",
+    "daily_policy": "No daily automated agent checks; run incident investigation only on material trigger.",
+    "monthly_policy": "Fold deeper monthly assessment into the first Monday Growth review; no separate all-agent meeting/extra native calls.",
+    "rerun_policy": "No automatic retries when quota, tool or source is blocked. Record BLOCKED/DEFERRED and carry the task to next available window.",
+    "quota_claims": "Late-night execution does not increase or reset OpenAI limits. Quota availability and exact billing metering remain unknown and must not be guessed.",
+    "missing_web_agent_connector": "Website Agent v1.1 reported as draft with Wix/GitHub connectors removed. Public web read-only only; no direct Wix/GitHub expectations.",
+    "enforcement": "These are operating guidelines, not product-level quota enforcement or a native scheduler."
+  }
 }
