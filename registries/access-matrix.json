@@ -58,16 +58,16 @@
   {
     "agent": "Data Agent",
     "source": "Wix",
-    "permitted_purpose": "Analyze sampled orders/products within connector coverage; one-order query is not a complete ledger.",
+    "permitted_purpose": "Read-only Catalog V3 products and eCommerce orders for verified sample/coverage checks; report findings only, never alter source or write Registry.",
     "access_mode": "READ_ONLY_TESTED_SCOPE",
     "permitted_data_fields": "Orders/products and aggregate fields only where actually returned; avoid unnecessary customer PII.",
     "prohibited_data_actions": "No writes, checkout/site changes, pricing changes, credentials or permission changes.",
-    "connection_authorization_status": "TESTED_SCOPE_ONLY; agent-level grant not established",
-    "last_verified_date": "2026-10-11",
-    "test_result": "PASS_FOR_TESTED_SCOPE",
+    "connection_authorization_status": "AGENT_SELF_REPORTED_DIRECT_READ; INDEPENDENT_ORCHESTRATOR_REPLAY; ONLY_TESTED_ENDPOINTS",
+    "last_verified_date": "2026-10-13",
+    "test_result": "PASS_FOR_LIMITED_TWO_PAGE_READS; FULL_LEDGER_NOT_VERIFIED",
     "evidence_link": "https://shalomlamalka.slack.com/archives/C0C982ZAEG0/p1791744394224079",
-    "known_limitations": "Partial query coverage; PENDING/REJECTED excluded by default in noted sample; UTC boundary; not a complete ledger.",
-    "status": "PARTIAL"
+    "known_limitations": "5+5 sampled products and 5+5 orders; order default excludes PENDING and REJECTED, and INITIALIZED is unavailable in Search Orders; one pending-status query returned zero, not full coverage. Wix online-sales analytics was BLOCKED under agent tool restriction; user reports no orders in last week; not independently exhaustively established.",
+    "status": "PARTIAL_TESTED_READ_ONLY"
   },
   {
     "agent": "Data Agent",
@@ -86,16 +86,16 @@
   {
     "agent": "Data Agent",
     "source": "GA4",
-    "permitted_purpose": "No direct access claim; defer until connector/report validation.",
-    "access_mode": "NO_DIRECT_ACCESS",
-    "permitted_data_fields": "Realtime or historical metrics only when supported by explicit evidence.",
+    "permitted_purpose": "Read-only GA4 reporting for specifically verified property and date ranges; metrics are not substitutes for Wix sales/order records.",
+    "access_mode": "READ_ONLY_TESTED_SCOPE_AGENT_SELF_REPORTED",
+    "permitted_data_fields": "Aggregate sessions, activeUsers, screenPageViews, eventCount, transactions and purchaseRevenue for approved property/ranges; no GA4 settings changes.",
     "prohibited_data_actions": "No tracking/configuration changes; no inference from zero-row query alone.",
-    "connection_authorization_status": "NOT_VERIFIED_OR_NOT_AVAILABLE",
-    "last_verified_date": null,
-    "test_result": "NOT_TESTED_OR_DEFERRED",
-    "evidence_link": null,
-    "known_limitations": "Historical reports/connector queries returned zero rows for tested scopes while Realtime screenshots showed events; unresolved.",
-    "status": "PARTIAL_UNRESOLVED"
+    "connection_authorization_status": "AGENT_SELF_REPORTED_DIRECT_READ; INDEPENDENT_ORCHESTRATOR_REPLAY; TOOL_MAY_HAVE_EDIT_SCOPE_BUT_WRITES_FORBIDDEN",
+    "last_verified_date": "2026-10-13",
+    "test_result": "PASS_FOR_LIVE_HISTORICAL_REPORT_2026_10_06_TO_2026_10_12",
+    "evidence_link": "https://github.com/hatif007/shalom-lamalka-agent-registry/blob/fix/registry-v0.2-structure/registries/tests.json",
+    "known_limitations": "Property 558438175; 2026-10-06 through 2026-10-12, timezone Asia/Jerusalem, ILS: 11 sessions, 9 active users, 18 page/screen views, 78 events, 0 GA4 tracked transactions. No direct Wix/GA4 sales reconciliation. Earlier historical anomaly concerns other scopes and should not be generalized; direct agent execution evidence is user-submitted, while orchestrator replay is independent.",
+    "status": "PARTIAL_TESTED_READ_ONLY"
   },
   {
     "agent": "Data Agent",
