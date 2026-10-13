@@ -621,5 +621,46 @@
     "agent_reported_backend_slack_unauthorized_send_block": "NOT_VERIFIED",
     "full_operational_gate": "PENDING_TECHNICAL_ENFORCEMENT_OR_DOCUMENTED_COMPENSATING_CONTROLS",
     "next_step": "Document and verify connector/service permission scopes or externally enforced read-only/allowlisted tool boundary, including Slack destination restrictions, without attempting forbidden writes to production. Only then consider FULL OPERATIONAL PASS. In the interim operation may be limited to read-only tool calls and individually authorized approved-channel reporting."
+  },
+  {
+    "id": "T-019",
+    "name": "Data Agent v2 connector permission hardening: reference policy and runtime deployment gap",
+    "operator": "OWNER_AUTHORIZED_ORCHESTRATOR_SECURITY_REVIEW",
+    "status": "PARTIAL_PASS_REFERENCE_POLICY_CI_ONLY; LIVE_RUNTIME_ENFORCEMENT_BLOCKED",
+    "data_mode": "STATIC_CONFIG_AUDIT_AND_SYNTHETIC_POLICY_TESTS",
+    "purpose": "Document least-privilege review of connected tools, improve regression-tested reference action allowlist, and clearly distinguish policy-as-code in GitHub from actual Workspace Agent connector action enforcement.",
+    "source": "ChatGPT plugin-permission readout for Wix - Shalom La Malka, GitHub, Slack; available tool action schemas and Workspace Agent official security documentation; security/data_agent_action_guard.py reference gate; security/DATA_AGENT_CONNECTOR_HARDENING.md; GitHub Actions Registry validation.",
+    "date": "2026-10-13",
+    "observed_at": "2026-10-13 (exact instant not recorded)",
+    "date_range": "Current connector configuration inspected 2026-10-13; no business data query required.",
+    "sample_size": "Three active connected-app permission settings inspected; Wix/GA4/GitHub/Slack exposed action families reviewed; reference guard 8 positive and 16 negative synthetic cases in GitHub CI.",
+    "steps_performed": [
+      "Read permission settings for Wix - Shalom La Malka, GitHub, Slack: app specific Use my default and global Allow low-risk actions.",
+      "Observed Wix CallWixSiteAPI supports arbitrary HTTP methods and URLs; ExecuteWixAPI allows arbitrary JavaScript request construction. This is mixed capability, not enforceable read-only through Skill instructions.",
+      "Observed GA4 connected tools expose read/query methods; that does not independently establish Google provider OAuth write-denial.",
+      "Observed GitHub connector can create and update files; prior owner-authorized repository commits prove repository writing is available to orchestration credentials.",
+      "Observed Slack send action accepts arbitrary channel_id and message; Skill allowlist needs actual parameter constraint or independent mediator.",
+      "Created security/data_agent_action_guard.py as fail-closed reference policy: allows narrowly scoped Wix, GA4, GitHub reads and one Slack send with trusted context; denies all other tool/action types by default.",
+      "Wired reference guard synthetic allow/deny self-test into GitHub Actions CI workflow; this tests reference code only and is NOT connected to installed Workspace Agent's live calls.",
+      "Created security/DATA_AGENT_CONNECTOR_HARDENING.md with precise per-agent builder action controls, alternate narrow scopes and safe non-mutating acceptance checks.",
+      "Did not alter workspace-wide plugin permissions, provider OAuth scopes, connected accounts or the installed Workspace Agent without a supported editor/action configuration interface."
+    ],
+    "result": "Reference least-privilege policy, safe denied-action regression checks and configuration/deployment instructions were added to GitHub, with CI proving only that the reference model behaves as specified. Actual effective provider scopes, published Workspace Agent tool allowlist and connector action constraints remain unverified and were not changed. Full operational enforcement status remains BLOCKED/PENDING; do not label this a live backend permission PASS.",
+    "limitations": [
+      "Workspace Agent builder connector controls and provider OAuth grant editing are not exposed to this ChatGPT orchestration session; a GitHub script cannot interpose on installed agent tool calls automatically.",
+      "ChatGPT app permission modes govern approval UX; they do not change provider OAuth scopes nor replace agent-specific action controls.",
+      "Reference Slack guard requires a trusted external mediator to set authorization_verified, pii_review_passed and send counter; no mediator is deployed.",
+      "Reference email matching does not replace comprehensive PII prevention; no actual production negative write calls were performed.",
+      "User broadly approved security changes, but making global shared-connection changes or revoking credentials without a validated replacement could disrupt unrelated agents.",
+      "No update was made to any live Wix/GA4/Slack settings, data, users, or permissions."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "repo_maintenance_performed_by_orchestrator": true,
+    "reference_guard_status": "CI_SYNTHETIC_TESTED_NOT_RUNTIME_DEPLOYED",
+    "workspace_agent_tool_action_enforcement": "BLOCKED_NO_CONNECTED_AGENT_EDITOR",
+    "provider_oauth_scope_enforcement": "NOT_VERIFIED",
+    "business_data_changes": false,
+    "next_step": "In ChatGPT Workspace Agent Studio edit installed shalom-lamalka-data-analysis-v2: disable mixed-capability Wix tools or constrain exact POST read endpoints, disable GitHub writes, limit GA4 property and read actions, constrain Slack channels and require send approval; publish updated agent, verify provider read-only scopes, replay safe positive and refusal tests, and capture builder configuration evidence. Only then upgrade operational approval."
   }
 ]
