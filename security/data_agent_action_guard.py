@@ -89,7 +89,7 @@ def _ga4_report(args):
     return type(limit) is int and 1 <= limit <= 1000
 
 
-def allow(tool, args, context=None):
+def _evaluate(tool, args, context=None):
     """Boolean preflight decision. Unrecognized tools fail closed.
 
     context is provided by a trusted mediator, NEVER by model text or tool args.
@@ -137,6 +137,14 @@ def allow(tool, args, context=None):
     return False
 
 
+def allow(tool, args, context=None):
+    """Safely deny malformed/untrusted argument shapes without raising."""
+    try:
+        return bool(_evaluate(tool, args, context))
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return False
+
+
 def self_test():
     good = [
         (WIX_CONTEXT, {"siteId": SITE_ID}, {}),
@@ -176,6 +184,9 @@ def self_test():
         (GA4_REPORT, {"propertyId": "999", "dateRanges":
                       [{"startDate": "2026-10-06", "endDate": "2026-10-12"}],
                       "metrics": ["sessions"]}, {}),
+        (GA4_REPORT, {"propertyId": PROPERTY_ID, "dateRanges":
+                      [{"startDate": "2026-10-06", "endDate": "2026-10-12"}],
+                      "metrics": [{"not": "a metric"}]}, {}),
         ("mcp__GitHub__update_file", {"path": "skills/data-agent/SKILL.md"}, {}),
         (GIT_READ, {"repository_full_name": REPO, "path": "registries/tests.json",
                     "ref": BRANCH}, {}),
