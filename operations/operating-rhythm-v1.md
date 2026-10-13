@@ -66,3 +66,7 @@ Generate qualified organic traffic and profitable website purchases using data-b
 - Reference allow/deny guard: `security/data_agent_action_guard.py` is CI-tested, but **not a live installed-agent mediator**.
 - This document is authored by an explicitly authorized GitHub maintenance/orchestration process, NOT by the read-only Data Agent runtime.
 - No `main` merge, Wix or GA4 write, OAuth change or Slack message is authorized by creating this record.
+
+## 2026-10-13 extension: Unified Management System
+
+This rhythm plan is now implemented as a **manual coordination registry**: [management-system/README.md](management-system/README.md), with machine-readable [Calendar](management-system/operating-calendar.json), [Scorecard](management-system/team-scorecard.json) and [Task Board](management-system/task-board.json). Growth Manager is the conductor. The two ChatGPT weekly reports remain separately scheduled and do **not** activate native installed agents. Daily and monthly checklists and proposed weekly Growth meeting are not meetings that occurred, nor new automations. Website Agent Slack channel #website-conversion-agent created by the owner-authorized orchestrator; this does not grant Website Agent Slack permissions.

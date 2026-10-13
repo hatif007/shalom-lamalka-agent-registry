@@ -56,3 +56,9 @@ This registry documents permissions and tests; it does not grant permissions. We
 - **Non-goals:** no Wix edits, no Slack posts, no Agent Builder changes, no OAuth scope changes, no claim that agent-to-agent task dispatch is activated.
 
 See [main cutover audit/runbook](operations/github-main-sync-readiness-2026-10-13.md) for historic diff and remaining action gates.
+
+## Unified Growth management system (2026-10-13)
+
+**Growth Manager is the conductor of all five roles.** The [Operations Management System](operations/management-system/README.md) holds the [Operating Calendar](operations/management-system/operating-calendar.json), [Team Scorecard](operations/management-system/team-scorecard.json), and [Task Board](operations/management-system/task-board.json). These are the source-of-truth for *proposed* daily/weekly/monthly cadences and targets, independently from installed agent execution.
+
+New dedicated Slack channel: [#website-conversion-agent](https://shalomlamalka.slack.com/archives/C0C91GU8M3N), created with a human-authorized introduction; the legacy #content-conversion remains available. No installed-agent Slack sending is enabled by creating this channel. Only the separate ChatGPT Data & SEO weekly tasks are currently scheduled; no scheduled native custom-agent meeting is claimed.

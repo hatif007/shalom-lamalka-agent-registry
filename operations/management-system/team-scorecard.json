@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "owner": "Growth Manager",
+  "created_at": "2026-10-13",
+  "currency": "ILS",
+  "timezone": "Asia/Jerusalem",
+  "phase": "TARGETS_PROPOSED_AWAITING_OWNER_NUMERIC_APPROVAL",
+  "interpretation": "Targets are proposed management targets, not approved performance commitments. Null baseline or actual is UNKNOWN, never zero.",
+  "business_objectives": [
+    {
+      "id": "OBJ-1",
+      "objective": "Increase qualified organic discovery",
+      "primary_agent": "SEO Agent",
+      "business_metric": "GSC organic clicks to verified commercial landing pages",
+      "baseline_note": "273 total web clicks in 28 settled days 2026-09-13..2026-10-10",
+      "numeric_goal": null,
+      "target_approved": false
+    },
+    {
+      "id": "OBJ-2",
+      "objective": "Increase profitable online purchases while preserving product/brand trust",
+      "primary_agent": "Growth Manager",
+      "partners": [
+        "Data Agent",
+        "Website & Conversion Agent"
+      ],
+      "business_metric": "Wix purchase and net contribution, once consistent scope verified",
+      "numeric_goal": null,
+      "target_approved": false
+    },
+    {
+      "id": "OBJ-3",
+      "objective": "Reduce buying friction and improve page navigation",
+      "primary_agent": "Website & Conversion Agent",
+      "business_metric": "Validated CTA/category interaction and purchase funnel",
+      "numeric_goal": null,
+      "target_approved": false
+    }
+  ],
+  "agent_metrics": [
+    {
+      "agent": "Growth Manager",
+      "metric_id": "GM-1",
+      "metric": "Prioritized weekly decisions",
+      "unit": "count",
+      "baseline": null,
+      "target_proposed": 3,
+      "target_approved": false,
+      "period": "weekly",
+      "target_type": "OUTPUT_CAP",
+      "direction": "at_most",
+      "data_source": "Decision register",
+      "status": "AWAITING_FIRST_WEEKLY_REVIEW"
+    },
+    {
+      "agent": "Growth Manager",
+      "metric_id": "GM-2",
+      "metric": "Decisions with owner/date/metric",
+      "unit": "percent",
+      "baseline": null,
+      "target_proposed": 100,
+      "target_approved": false,
+      "period": "weekly",
+      "target_type": "PROCESS_TARGET",
+      "direction": "higher",
+      "data_source": "Task board",
+      "status": "BASELINE_UNKNOWN"
+    },
+    {
+      "agent": "Data Agent",
+      "metric_id": "DA-1",
+      "metric": "Verified weekly data reports",
+      "unit": "count",
+      "baseline": null,
+      "target_proposed": 1,
+      "target_approved": false,
+      "period": "weekly",
+      "target_type": "OUTPUT_TARGET",
+      "direction": "higher",
+      "data_source": "ChatGPT scheduled report (NOT native Agent run)",
+      "status": "FIRST_RUN_2026_10_19"
+    },
+    {
+      "agent": "Data Agent",
+      "metric_id": "DA-2",
+      "metric": "GA4-to-Wix purchase reconciliation completeness",
+      "unit": "percent",
+      "baseline": null,
+      "target_proposed": null,
+      "target_approved": false,
+      "period": "monthly",
+      "target_type": "DIAGNOSTIC_KPI",
+      "direction": "higher",
+      "data_source": "Wix/GA4 subject to validation",
+      "status": "UNKNOWN_NOT_ZERO"
+    },
+    {
+      "agent": "SEO Agent",
+      "metric_id": "SEO-1",
+      "metric": "Organic search clicks (28 settled GSC days)",
+      "unit": "clicks",
+      "baseline": 273,
+      "baseline_start": "2026-09-13",
+      "baseline_end": "2026-10-10",
+      "target_proposed": null,
+      "target_approved": false,
+      "period": "rolling_28_settled_days",
+      "target_type": "BUSINESS_OUTCOME",
+      "direction": "higher",
+      "data_source": "GSC verified historical baseline",
+      "status": "BASELINE_ESTABLISHED_TARGET_UNSET"
+    },
+    {
+      "agent": "SEO Agent",
+      "metric_id": "SEO-2",
+      "metric": "Organic CTR (28 settled GSC days)",
+      "unit": "percent",
+      "baseline": 8.0674,
+      "target_proposed": null,
+      "target_approved": false,
+      "period": "rolling_28_settled_days",
+      "target_type": "GUARDRAIL",
+      "direction": "maintain_or_improve",
+      "data_source": "GSC verified baseline; match scope/window",
+      "status": "BASELINE_ESTABLISHED_TARGET_UNSET"
+    },
+    {
+      "agent": "SEO Agent",
+      "metric_id": "SEO-3",
+      "metric": "Weekly prioritized opportunities",
+      "unit": "count",
+      "baseline": null,
+      "target_proposed": 3,
+      "target_approved": false,
+      "period": "weekly",
+      "target_type": "OUTPUT_CAP",
+      "direction": "at_most",
+      "data_source": "Weekly SEO report",
+      "status": "FIRST_SCHEDULED_2026_10_19"
+    },
+    {
+      "agent": "Website & Conversion Agent",
+      "metric_id": "WEB-1",
+      "metric": "Owner-ready improvement packets",
+      "unit": "count",
+      "baseline": 1,
+      "baseline_as_of": "2026-10-13",
+      "target_proposed": 1,
+      "target_approved": false,
+      "period": "weekly",
+      "target_type": "OUTPUT_TARGET",
+      "direction": "higher",
+      "data_source": "GROW-SEO-01 owner-submitted 11-page draft",
+      "status": "OWNER_REPORTED_ONE_COMPLETED_DRAFT"
+    },
+    {
+      "agent": "Website & Conversion Agent",
+      "metric_id": "WEB-2",
+      "metric": "Verified category/CTA destinations in approved drafts",
+      "unit": "percent",
+      "baseline": null,
+      "target_proposed": 100,
+      "target_approved": false,
+      "period": "per_approved_draft",
+      "target_type": "QUALITY_GUARDRAIL",
+      "direction": "higher",
+      "data_source": "Page-link evidence and QA",
+      "status": "NOT_MEASURED"
+    },
+    {
+      "agent": "Website & Conversion Agent",
+      "metric_id": "WEB-3",
+      "metric": "Conversion rate of eligible website visits",
+      "unit": "percent",
+      "baseline": null,
+      "target_proposed": null,
+      "target_approved": false,
+      "period": "monthly",
+      "target_type": "BUSINESS_OUTCOME",
+      "direction": "higher",
+      "data_source": "Data Agent verified funnel; currently not validated for target setting",
+      "status": "UNKNOWN_NOT_ZERO"
+    },
+    {
+      "agent": "Festival Sales Agent",
+      "metric_id": "FS-1",
+      "metric": "Verified event-level gross contribution",
+      "unit": "ILS",
+      "baseline": null,
+      "target_proposed": null,
+      "target_approved": false,
+      "period": "per_festival",
+      "target_type": "DEFERRED",
+      "direction": "higher",
+      "data_source": "Approved booth sales and costs, currently absent",
+      "status": "BLOCKED_NO_SOURCE"
+    }
+  ],
+  "actuals": [],
+  "weekly_review": {
+    "first_review": "2026-10-19",
+    "owner": "Growth Manager",
+    "input_sources": [
+      "Scheduled Data report",
+      "Scheduled SEO report",
+      "Website drafts",
+      "Owner approvals"
+    ],
+    "status": "NOT_STARTED"
+  },
+  "guardrails": [
+    "No conversion/revenue target without credible baseline",
+    "Do not conflate SEO acquisition, GA4 tracked transactions and Wix order ledger",
+    "No unapproved implementation; proposals do not grant Wix/Slack/agent write rights"
+  ]
+}

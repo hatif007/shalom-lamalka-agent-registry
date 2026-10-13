@@ -28,3 +28,5 @@ jobs:
         run: python scripts/validate_registry.py
       - name: Verify reference Data Agent fail-closed action guard (synthetic)
         run: python security/data_agent_action_guard.py
+      - name: Validate Growth Manager calendar, scorecard and task board
+        run: python scripts/validate_management.py

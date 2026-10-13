@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "timezone": "Asia/Jerusalem",
+  "owner": "Growth Manager",
+  "effective_date": "2026-10-13",
+  "mode": "MANUAL_COORDINATION_WITH_TWO_SEPARATE_CHATGPT_SCHEDULES",
+  "meeting_policy": "A calendar entry is not proof of a meeting or native agent run. Record occurrence evidence separately.",
+  "events": [
+    {
+      "id": "CAL-DAILY",
+      "title": "Daily exception triage",
+      "cadence": "DAILY_WORKDAYS",
+      "time": "NOT_SCHEDULED",
+      "facilitator": "Growth Manager",
+      "participants": [
+        "Data Agent",
+        "SEO Agent",
+        "Website & Conversion Agent"
+      ],
+      "activation": "MANUAL_ONLY",
+      "status": "PLANNED_NOT_SCHEDULED",
+      "agenda": [
+        "New critical website/customer-journey issues",
+        "Source freshness and data access blockers",
+        "Blockers, overdue tasks and owner decisions"
+      ],
+      "output": "Exceptions-only update and task board review",
+      "success_metric": "Critical exceptions have a named owner and review date",
+      "autonomous_agent_run": false
+    },
+    {
+      "id": "CAL-DATA-WEEKLY",
+      "title": "Weekly data snapshot",
+      "cadence": "WEEKLY_MONDAY",
+      "time": "APPROX_08:00",
+      "first_date": "2026-10-19",
+      "facilitator": "ChatGPT scheduled task, NOT installed Data Agent",
+      "activation": "CHATGPT_AUTOMATION_ENABLED",
+      "status": "SCHEDULED_NOT_YET_RUN",
+      "output": "Wix/GA4 data quality and business-funnel facts; at most 3 recommendations",
+      "evidence": "ChatGPT automation id 6acde30256148191b0d5703012afc6d3",
+      "autonomous_agent_run": false
+    },
+    {
+      "id": "CAL-SEO-WEEKLY",
+      "title": "Weekly SEO opportunity report",
+      "cadence": "WEEKLY_MONDAY",
+      "time": "APPROX_10:00",
+      "first_date": "2026-10-19",
+      "facilitator": "ChatGPT scheduled task, NOT installed SEO Agent",
+      "activation": "CHATGPT_AUTOMATION_ENABLED",
+      "status": "SCHEDULED_NOT_YET_RUN",
+      "output": "GSC 28 settled days and 3 opportunities",
+      "evidence": "ChatGPT automation id 6acde4ecd2ec8191806456471534b7f7",
+      "autonomous_agent_run": false
+    },
+    {
+      "id": "CAL-GROWTH-WEEKLY",
+      "title": "Weekly Growth review",
+      "cadence": "WEEKLY_MONDAY",
+      "time": "PROPOSED_11:00_NOT_SCHEDULED",
+      "first_date": "2026-10-19",
+      "facilitator": "Growth Manager",
+      "participants": [
+        "Owner",
+        "Data Agent evidence",
+        "SEO Agent evidence",
+        "Website & Conversion Agent evidence"
+      ],
+      "activation": "MANUAL_ONLY",
+      "status": "PROPOSED_AWAITING_SCHEDULING",
+      "agenda": [
+        "Validate weekly data and source coverage",
+        "Decide up to 3 weekly priorities",
+        "Review prior actions and constraints",
+        "Record owner approvals and task due dates"
+      ],
+      "output": "Weekly decision packet; task board and Scorecard updates",
+      "autonomous_agent_run": false
+    },
+    {
+      "id": "CAL-WEBSITE-WEEKLY",
+      "title": "Website UX and merchandising audit",
+      "cadence": "WEEKLY",
+      "time": "NOT_SCHEDULED",
+      "facilitator": "Website & Conversion Agent",
+      "activation": "MANUAL_ONLY",
+      "status": "CHECKLIST_READY_RUNTIME_V1_1_DRAFT_UNVERIFIED",
+      "agenda": [
+        "Homepage/category/product paths",
+        "Mobile RTL and accessibility",
+        "Working destinations and stock caveats",
+        "CTA and conversion hypothesis"
+      ],
+      "output": "Evidence-backed draft findings to Growth Manager",
+      "autonomous_agent_run": false
+    },
+    {
+      "id": "CAL-MONTHLY",
+      "title": "Monthly business performance and agent review",
+      "cadence": "MONTHLY",
+      "time": "NOT_SCHEDULED",
+      "facilitator": "Growth Manager",
+      "participants": [
+        "Owner",
+        "Specialists as source evidence"
+      ],
+      "activation": "MANUAL_ONLY",
+      "status": "PLANNED_AFTER_FIRST_WEEKLY_CYCLE",
+      "agenda": [
+        "Month-over-month comparable source metrics",
+        "Action/experiment review and attributable limits",
+        "Scorecard on-time and quality measures",
+        "Next month 3 approved priorities"
+      ],
+      "output": "Monthly owner decision memo",
+      "autonomous_agent_run": false
+    }
+  ],
+  "operating_rules": [
+    "Growth Manager is sole orchestration/priority owner; owner retains approval over website/public changes.",
+    "Never infer a meeting occurred from a calendar record or scheduled report.",
+    "No autonomous agent-to-agent dispatch or Slack send enabled by this file.",
+    "Scheduled SEO and Data ChatGPT reports are not separate installed-agent executions.",
+    "Escalate urgent security/privacy/site outage immediately by a separately approved manual process; do not use unsafe tools."
+  ]
+}

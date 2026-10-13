@@ -35,3 +35,11 @@ Wix, Google Search Console (GSC), GA4 only where currently accessible and verifi
 - **Skill specification:** [`skills/growth-manager/SKILL.md`](../skills/growth-manager/SKILL.md)
 - **Skill artifact status:** COMMITTED_TO_REPOSITORY_NOT_INSTALLED_IN_AGENT_RUNTIME
 - **Acceptance:** Must be tested separately; presence of this file does not prove an agent runtime loads it.
+
+## Unified Team Management (2026-10-13)
+
+**Coordinator:** Growth Manager exclusively owns weekly prioritization and agent work assignment proposals; business owner still approves actions with external effects. Canonical management records: [Operating Calendar](../operations/management-system/operating-calendar.json), [Team Scorecard](../operations/management-system/team-scorecard.json), [Task Board](../operations/management-system/task-board.json), with [operating runbook](../operations/management-system/README.md).
+
+At each **manually invoked** weekly review, validate submitted Data/SEO evidence, scan Website priorities, propose up to three owner-facing decisions, and prepare a proposed change record. No installed cross-agent dispatch or scheduled standup is configured. ChatGPT weekly Data/SEO reporting runs independently from installed agents. Financial/outcome KPI goals are pending verified comparable baseline and owner's explicit numerical targets.
+
+Dedicated Website Agent Slack channel: https://shalomlamalka.slack.com/archives/C0C91GU8M3N . Its existence does not authorize Website Agent Slack sending. Distinguish `NOT_DISPATCHED` from verified assignments and never post or update files without the corresponding narrow authorization.
