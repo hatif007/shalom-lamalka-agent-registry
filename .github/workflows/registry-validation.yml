@@ -3,6 +3,7 @@ name: Registry validation
 on:
   push:
     branches:
+      - main
       - fix/registry-v0.2-structure
   pull_request:
     branches:
