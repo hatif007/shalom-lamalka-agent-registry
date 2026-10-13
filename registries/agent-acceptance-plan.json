@@ -58,18 +58,18 @@
         "GA4": "Data Agent reported direct read of property 558438175; orchestrator independently queried 2026-10-06 through 2026-10-12: 11 sessions, 9 active users, 0 tracked transactions, 0 purchase revenue. User reports no orders last week; not a complete Wix reconciliation.",
         "Slack": "One orchestrator-authored approved #sales-data diagnostic message confirmed in prior test; Data Agent own acceptance test sent zero Slack messages. This does not prove an agent-run Slack send."
       },
-      "acceptance_status": "PARTIAL_PASS_RUNTIME_SELF_REPORTED_SOURCE_READS_INDEPENDENTLY_REPLAYED",
+      "acceptance_status": "PARTIAL_PASS_NATIVE_READS_REPORTED_FULL_OPERATIONAL_APPROVAL_PENDING",
       "passed": [
-        "Canonical v2.0 SKILL.md confirmed at blob e4f2a91c5117001a42da259d8ffd0554345ebe51.",
-        "User-submitted Data Agent runtime report identifies installed shalom-lamalka-data-analysis-v2 and documents successful Wix two-page and GA4 reads.",
-        "Independent orchestrator source checks reproduced Wix limited pagination and GA4 scoped reporting.",
-        "Reported Data Agent run made no Wix/GA4/Registry/GitHub changes and sent no Slack messages."
+        "Canonical Data Agent skill v2.0 at GitHub blob e4f2a91c5117001a42da259d8ffd0554345ebe51, with limited Slack exception.",
+        "Agent-local skill loading, Wix Catalog V3 sample and GA4 read were reported by installed Data Agent with timestamp 2026-10-13T05:43:58Z (T-016); independent source reads in prior orchestrator sessions corroborate connector availability.",
+        "Agent reported no business/config changes, no Registry/GitHub writes and no Slack messages during T-016.",
+        "Registry validation CI passed at commit a3c1f004d3caec2062b55eff271ff0617534ea52 before T-016 update."
       ],
       "not_yet_verified": [
-        "Independent inspection of installed agent configuration and captured native execution trace (user report only).",
-        "Full catalog/order ledger, all statuses, date boundaries and GA4/Wix revenue reconciliation.",
-        "Direct Data Agent Slack reporting under task-specific approval (orchestrator Slack test is separate).",
-        "Technical prevention of prohibited writes and prohibited channels through negative tests; current test exercised read-only behavior only."
+        "Independent native tool execution trace/config inspection of the installed Data Agent (the actual local run is user-submitted).",
+        "Proof of technical connector/backend write-denial and disallowed Slack destinations; instruction review alone is insufficient.",
+        "Agent-native Slack send under a fresh, explicitly authorized task naming #sales-data or #agent-team, with actual message permalink (prior orchestrator send does not count).",
+        "Complete catalog/order ledger and all statuses plus GA4/Wix sales reconciliation if broad sales completeness approval is sought."
       ],
       "runtime_platform": "ChatGPT",
       "runtime_instance_verified": false,
@@ -80,9 +80,16 @@
       "agent_runtime_report_received": true,
       "agent_runtime_reported_skill_name": "shalom-lamalka-data-analysis-v2",
       "agent_runtime_reported_version": "v2",
-      "agent_runtime_report_time": "2026-10-13T05:34:53Z",
-      "acceptance_test_id": "T-014",
-      "allowed_side_effects": "Read-only sources; one authorized, PII-free Slack report per separately approved task only to #sales-data or #agent-team. No Data Agent Registry/GitHub writes."
+      "agent_runtime_report_time": "2026-10-13T05:43:58Z",
+      "acceptance_test_id": "T-016",
+      "allowed_side_effects": "Read-only sources; one authorized, PII-free Slack report per separately approved task only to #sales-data or #agent-team. No Data Agent Registry/GitHub writes.",
+      "runtime_test_evidence_class": "USER_SUBMITTED_AGENT_EXECUTION_REPORT_NOT_INDEPENDENT_NATIVE_TRACE",
+      "agent_native_read_reported": true,
+      "runtime_reported_wix_read": "POST /stores/v3/products/query; limit=1; one product; hasNext=true; ILS; numeric HTTP status unavailable",
+      "runtime_reported_ga4_read": "Property 558438175; 2026-10-06 to 2026-10-12; 11 sessions, 9 users, 18 views, 78 events",
+      "runtime_reported_changes_made": false,
+      "runtime_reported_slack_messages_sent": 0,
+      "pass_scope": "Read-only positive operations and instruction-level boundaries verified according to user-submitted Data Agent runtime test. Underlying connector permission scope and explicit negative write-denial tests are not verified."
     },
     {
       "agent": "SEO Agent",
