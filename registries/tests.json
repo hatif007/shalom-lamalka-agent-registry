@@ -741,5 +741,40 @@
     "slack_messages_sent_by_agent": 0,
     "approved_use": "VERIFIED_READ_ONLY_WIX_GA4_WORKFLOWS_ONLY",
     "technical_permission_gate": "PENDING_PROVIDER_OAUTH_AND_FULL_ACTION_ENFORCEMENT"
+  },
+  {
+    "id": "T-022",
+    "operator": "ORCHESTRATOR_INDEPENDENT_GSC_READ_ONLY_REPLAY_PLUS_OWNER_SUBMITTED_NATIVE_SEO_REPORT",
+    "status": "PASS_GSC_METRICS_AND_PAIR_COUNTS; NATIVE_INSTANCE_TOOL_TRACE_NOT_INDEPENDENTLY_INSPECTED",
+    "purpose": "Verify the first native-SEO-reported weekly operational opportunity report against live GSC data before passing draft recommendations to Growth Manager.",
+    "source": "GSC Wizard live Search Analytics, property https://www.shalomlamalka.com/; owner-pasted SEO Agent report of first weekly run.",
+    "date": "2026-10-13",
+    "date_range": "current 2026-09-13..2026-10-10; prior 2026-08-16..2026-09-12 (GSC date basis America/Los_Angeles, settledThrough 2026-10-10)",
+    "sample_size": "GSC current 181 query+page pairs; previous 161; rowLimit 1000, no further page; 4 exact queries replayed in both windows.",
+    "steps_performed": [
+      "Independently read GSC site summary for both exact 28-day periods, confirming 273 vs 205 clicks, 3384 vs 2751 impressions, CTR 8.067% vs 7.452%, position 7.045 vs 7.547.",
+      "Queried dimension pair (query,page) in both periods, confirming 181 and 161 rows, pagination.hasMore=false for each response.",
+      "Compared exact current/prior query+page rows for 'בגדים למסיבות טבע' (23/222 vs 8/139) and 'בגדים לפסטיבלים' (4/91 vs 0/47), both landing on homepage.",
+      "Verified 'בגדים למסיבות' (5/69 vs 1/41) and distinct 'בגדי מסיבות' (1/49 vs 0/30) separately to prevent mixing similarly spelled exact queries.",
+      "Read SEO Agent skill and Growth Manager operating instructions; created draft-only workstream handoff and F-008/F-009 recommendations. No content publication, Slack send, analytics write or site mutation."
+    ],
+    "result": "GSC aggregate and exact query+page metrics in user-submitted first native SEO Agent report were independently corroborated, including pagination pair counts. Read-only SEO work can feed Growth Manager recommendations. Proposed website changes remain unapproved, with no conversion/casual effect established.",
+    "limitations": [
+      "An owner-pasted agent report is evidence of claimed native execution, not independent invocation or proof the installed agent's runtime loaded the skill or its tool calls.",
+      "The reported collection-page 'copy-of' URL/title mismatch was not independently page-inspected; keep as investigation hypothesis until audited.",
+      "GSC query rows may omit anonymized traffic; hasMore=false is not proof of raw completeness.",
+      "No native SEO Agent delegation/autonomous orchestration or permission enforcement was tested.",
+      "GA4 conversions, revenue and website modifications were NOT RUN."
+    ],
+    "changes_made": false,
+    "slack_report": null,
+    "registry_update_separate_orchestration": true,
+    "skill_sha": "f386cd8f56f4b6286fbae2ae87be131725515fae",
+    "playbook_sha": "5a30a2b25475bc7fc1c444751cc386d188da64a7",
+    "handoff_path": "operations/growth-seo-handoff-2026-10-13.md",
+    "findings": [
+      "F-008",
+      "F-009"
+    ]
   }
 ]
