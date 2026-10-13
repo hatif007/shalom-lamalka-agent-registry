@@ -633,7 +633,7 @@
     "date": "2026-10-13",
     "observed_at": "2026-10-13 (exact instant not recorded)",
     "date_range": "Current connector configuration inspected 2026-10-13; no business data query required.",
-    "sample_size": "Three active connected-app permission settings inspected; Wix/GA4/GitHub/Slack exposed action families reviewed; reference guard 8 positive and 17 negative synthetic cases in GitHub CI.",
+    "sample_size": "Three active connected-app permission settings and one GA4 property canEdit flag inspected; Wix/GA4/GitHub/Slack exposed action families reviewed; reference guard 8 positive and 17 negative synthetic cases in GitHub CI.",
     "steps_performed": [
       "Read permission settings for Wix - Shalom La Malka, GitHub, Slack: app specific Use my default and global Allow low-risk actions.",
       "Observed Wix CallWixSiteAPI supports arbitrary HTTP methods and URLs; ExecuteWixAPI allows arbitrary JavaScript request construction. This is mixed capability, not enforceable read-only through Skill instructions.",
@@ -643,7 +643,8 @@
       "Created security/data_agent_action_guard.py as fail-closed reference policy: allows narrowly scoped Wix, GA4, GitHub reads and one Slack send with trusted context; denies all other tool/action types by default.",
       "Wired reference guard synthetic allow/deny self-test into GitHub Actions CI workflow; this tests reference code only and is NOT connected to installed Workspace Agent's live calls.",
       "Created security/DATA_AGENT_CONNECTOR_HARDENING.md with precise per-agent builder action controls, alternate narrow scopes and safe non-mutating acceptance checks.",
-      "Did not alter workspace-wide plugin permissions, provider OAuth scopes, connected accounts or the installed Workspace Agent without a supported editor/action configuration interface."
+      "Did not alter workspace-wide plugin permissions, provider OAuth scopes, connected accounts or the installed Workspace Agent without a supported editor/action configuration interface.",
+      "Independently fetched GA4 get_account_summaries for property 558438175 on 2026-10-13; property summary reports canEdit=true for the connected principal, while this hosted GA4 MCP advertises only read/report actions. canEdit does not prove a write endpoint is exposed via this connector, but confirms that provider-side read-only status cannot be claimed."
     ],
     "result": "Reference least-privilege policy, safe denied-action regression checks and configuration/deployment instructions were added to GitHub, with CI proving only that the reference model behaves as specified. Actual effective provider scopes, published Workspace Agent tool allowlist and connector action constraints remain unverified and were not changed. Full operational enforcement status remains BLOCKED/PENDING; do not label this a live backend permission PASS.",
     "limitations": [
@@ -652,7 +653,8 @@
       "Reference Slack guard requires a trusted external mediator to set authorization_verified, pii_review_passed and send counter; no mediator is deployed.",
       "Reference email matching does not replace comprehensive PII prevention; no actual production negative write calls were performed.",
       "User broadly approved security changes, but making global shared-connection changes or revoking credentials without a validated replacement could disrupt unrelated agents.",
-      "No update was made to any live Wix/GA4/Slack settings, data, users, or permissions."
+      "No update was made to any live Wix/GA4/Slack settings, data, users, or permissions.",
+      "GA4 property summary reports canEdit=true, so GA4 user/property-level editing ability cannot be assumed denied; the currently available GA4 MCP tool surface itself exposes no mutation action."
     ],
     "changes_made": false,
     "slack_report": null,
