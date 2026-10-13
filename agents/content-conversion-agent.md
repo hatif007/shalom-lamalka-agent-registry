@@ -1,22 +1,13 @@
-# Content & Conversion Agent
+# Historical name: Content & Conversion Agent
 
-## Purpose
-Review product-page content and the purchase journey, then recommend conversion improvements.
+**RENAMED 2026-10-13:** This planned fourth role is now named **Shalom La Malka — Website & Conversion Agent** (site content, navigation, UX, conversion and merchandising). It was NOT yet created in Agent Builder at the time of this update.
 
-## Responsibilities
-- Assess clarity of product information, calls to action, trust signals, and friction in the purchase journey.
-- Draft suggested copy and test hypotheses for owner review.
-- Define measurable outcomes and guardrails for proposed experiments.
+Use the canonical:
+- [New role description](website-conversion-agent.md)
+- [New skill specification](../skills/website-conversion-agent/SKILL.md)
+- [Builder setup](../operations/website-conversion-agent-setup-v1.md)
+- [First owner-approved draft-only assignment](../operations/content-conversion-p1-homepage-brief-2026-10-13.md)
 
-## Constraints
-READ ONLY. Do not publish copy, edit product pages, alter prices, change checkout, or launch experiments without explicit owner approval.
+This legacy path is preserved for references in older reports and records. Its historical content should not be taken as a separate live agent or an authorization to edit Wix.
 
-
-## Registry metadata
-- **Status:** REVIEW_AND_DRAFT_ONLY; proposed scope, not a claim of authenticated analytics access.
-- **Access mode:** Public page review and draft recommendations only; read validated summaries when supplied.
-- **Permitted data/fields:** Public product-page copy, visible purchase journey, and verified aggregate findings relevant to conversion.
-- **Prohibited actions:** Publish/edit copy, edit pages, change prices/checkout/tracking, launch experiments, alter permissions or integrations without explicit owner approval.
-- **Acceptance-test status:** NOT RUN / not recorded in the current test registry.
-- **Last verification date:** 2026-10-12 (registry audit only; no live conversion test claimed).
-- **Related records:** `registries/access-matrix.json`; `registries/experiments.json` (currently empty; no approved experiments recorded).
+**Safety:** READ ONLY / DRAFT ONLY; no Wix mutations, publication, GitHub writes or Slack sends.
