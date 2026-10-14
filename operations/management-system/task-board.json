@@ -204,17 +204,17 @@
       "title": "Ensure every scheduled ChatGPT report has a retrievable durable artifact and safe final-only delivery",
       "agent": "Growth Manager",
       "approver": "Owner — A-005 2026-10-14 standing access and reporting permission",
-      "status": "BLOCKED",
+      "status": "EVIDENCE_PENDING",
       "priority": "P1_ENABLEMENT",
       "next_review": "2026-10-19",
-      "evidence": "registries/approvals.json A-005; operations/management-system/team-drill-2026-10-14.md",
-      "next_step": "Establish and test a supported authenticated task-conversation report retrieval or explicit result-export path. Acceptance requires original task report, source evidence, stable URL/file, safe channel delivery and transcript/metadata reconciliation. Scheduled task metadata alone is not enough; Slack sends may be denied by task/agent safety restrictions. Use only authorized output destinations and no duplicate AI report reruns.",
+      "evidence": "operations/management-system/reports/README.md; operations/management-system/reports/runs/2026-10-14/system/ARCHIVE-SMOKE-COORDINATOR-2026-10-14.md; scripts/validate_report_archive.py",
+      "next_step": "Source archive schema, validator and coordinator-only SYNTHETIC storage test committed via PR. After green CI and merge, run exactly one tiny scheduled ChatGPT task that tries to create a separate report artifact in GitHub via connected app. Verify the task itself created it, read back exact content, and record link. If blocked, do NOT claim end-to-end automation; route supported results via authorized ChatGPT Work/task conversation export or await a native transcript connector. Do not re-run expensive research.",
       "depends_on": [
-        "Native transcript/artifact retrieval connector or compatible ChatGPT Work mode browser access to task conversation",
-        "Report writer's actual tool permissions for one final-only Slack/GitHub artifact",
-        "Evidence of successful test with original report link"
+        "Original ChatGPT task generation-time report archive action via authorized GitHub connector, to be tested",
+        "Scheduled-task full report content/connector permissions verifiably accessible",
+        "No customer PII; no business data writes; honest provenance and no duplicate run"
       ],
-      "dispatch_status": "OWNER_AUTHORIZED_BUT_NO_NATIVE_REPORT_ARTIFACT_API_CONNECTED"
+      "dispatch_status": "STORAGE_AND_VALIDATOR_IN_PR; COORDINATOR_SYNTHETIC_TEST_ONLY; SCHEDULED_CHATGPT_WRITER_NOT_TESTED"
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
