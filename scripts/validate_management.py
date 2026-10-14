@@ -84,6 +84,15 @@ for x in tasks:
             errors.append(f"Task {x.get('id')} missing {key}")
     if x.get("dispatch_status")=="DISPATCHED" and x.get("status")=="BACKLOG":
         errors.append(f"Unverified dispatch: {x.get('id')}")
+# Preserve owner decision inbox and avoid re-surfacing superseded decisions.
+if board.get("owner_decision_slack_channel_id")!="C0C8PNALALR":
+    errors.append("Owner decision inbox must route to designated business-insights channel")
+ops=next((t for t in tasks if t.get("id")=="OPS-004"),{})
+if "#business-insights" in ops.get("next_step","") and "PRESERVE #business-insights" not in ops.get("next_step",""):
+    errors.append("Do not archive/delete business-insights owner inbox")
+home=next((t for t in tasks if t.get("id")=="GROW-SEO-01"),{})
+if home.get("owner_decision")!="HOLD":
+    errors.append("Owner homepage HOLD must remain in force unless explicit newer approval")
 if errors:
     print("GROWTH MANAGEMENT VALIDATION: FAIL")
     for item in errors: print("ERROR:",item)
