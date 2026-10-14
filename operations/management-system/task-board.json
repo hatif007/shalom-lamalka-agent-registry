@@ -90,7 +90,7 @@
       "title": "Verify weekly SEO and Data scheduled runs",
       "agent": "Growth Manager",
       "approver": "Owner",
-      "status": "BACKLOG",
+      "status": "EVIDENCE_PENDING",
       "priority": "P1",
       "due_date": "2026-10-19",
       "next_review": "2026-10-19",
@@ -99,8 +99,8 @@
       "depends_on": [
         "First scheduled ChatGPT reports"
       ],
-      "next_step": "Log ACTUAL run status and evidence; do not imply installed agents ran",
-      "dispatch_status": "MANUAL_REVIEW_REQUIRED"
+      "next_step": "Growth task 6acf3958d22881918996ab9518e903ce enabled for Monday 12:00; existing Data/SEO weekly tasks also enabled. Verify first ACTUAL 2026-10-19 run timestamps, delivered reports, no duplication and final Slack delivery if authorized; one-time Growth pilot task shows last_run but content-level QA not independently observed.",
+      "dispatch_status": "SCHEDULED_CHATGPT_WORKFLOW_ACTIVE_WEEKLY_FIRST_RUN_PENDING"
     },
     {
       "id": "OPS-002",
@@ -182,5 +182,6 @@
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
   "last_owner_decision_record": "operations/management-system/owner-decisions-2026-10-14.md",
   "owner_decision_inbox": "operations/management-system/owner-decision-inbox-2026-10-14.md",
-  "owner_decision_slack_channel_id": "C0C8PNALALR"
+  "owner_decision_slack_channel_id": "C0C8PNALALR",
+  "pilot_verification_2026_10_14": "operations/management-system/growth-pilot-review-2026-10-14.md"
 }
