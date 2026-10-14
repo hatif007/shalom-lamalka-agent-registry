@@ -67,15 +67,15 @@
       "cadence": "WEEKLY_MONDAY",
       "time": "12:00",
       "first_date": "2026-10-19",
-      "facilitator": "Growth Manager",
+      "facilitator": "ChatGPT scheduled Growth coordinator report; NOT installed Growth Manager",
       "participants": [
         "Owner",
         "Data Agent evidence",
         "SEO Agent evidence",
         "Website & Conversion Agent evidence"
       ],
-      "activation": "MANUAL_ONLY",
-      "status": "OWNER_APPROVED_WINDOW_NOT_AUTOMATED",
+      "activation": "CHATGPT_AUTOMATION_ENABLED",
+      "status": "SCHEDULED_FIRST_RUN_PENDING",
       "agenda": [
         "Validate weekly data and source coverage",
         "Decide up to 3 weekly priorities",
@@ -86,7 +86,8 @@
       "autonomous_agent_run": false,
       "timezone": "Asia/Jerusalem",
       "approved_time_slot": true,
-      "execution_policy": "Read Data (~08:00), SEO (~10:00) and prior-night Website reports; do not replicate specialist research; review maximum three prioritized business actions; requires explicit run/schedule configuration before execution."
+      "execution_policy": "Read Registry main, collect existing Data/SEO reports, propose up to 3 read-only decisions and owner action gates; don't autonomously run specialist agent runtimes or claim Slack delivery without proof. No new task created in 2026-10-14 QA review.",
+      "evidence": "ChatGPT task id 6acf3958d22881918996ab9518e903ce; enabled, first 2026-10-19 12:00 Asia/Jerusalem"
     },
     {
       "id": "CAL-WEBSITE-WEEKLY",
