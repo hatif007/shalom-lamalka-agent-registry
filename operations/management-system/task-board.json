@@ -207,14 +207,14 @@
       "status": "EVIDENCE_PENDING",
       "priority": "P1_ENABLEMENT",
       "next_review": "2026-10-19",
-      "evidence": "operations/management-system/reports/README.md; operations/management-system/reports/runs/2026-10-14/system/ARCHIVE-SMOKE-COORDINATOR-2026-10-14.md; scripts/validate_report_archive.py",
-      "next_step": "Source archive schema, validator and coordinator-only SYNTHETIC storage test committed via PR. After green CI and merge, run exactly one tiny scheduled ChatGPT task that tries to create a separate report artifact in GitHub via connected app. Verify the task itself created it, read back exact content, and record link. If blocked, do NOT claim end-to-end automation; route supported results via authorized ChatGPT Work/task conversation export or await a native transcript connector. Do not re-run expensive research.",
+      "evidence": "operations/management-system/reports/README.md; operations/management-system/reports/runs/2026-10-14/system/ARCHIVE-SMOKE-COORDINATOR-2026-10-14.md; operations/management-system/report-archive-acceptance-2026-10-14.md",
+      "next_step": "GitHub archive storage and fail-closed CI are live (PR #13). Three existing Data/SEO/Growth Monday ChatGPT task prompts now include report-only full-text GitHub archival with full task-chat fallback. Acceptance smoke A: scheduled task created an empty GitHub topic branch but NO report file/PR; smoke B: scheduled one-action issue handoff recorded a run timestamp but no GitHub issue was observed. Do not claim end-to-end report auto-archival. Need supported scheduled Work task with GitHub connected actions and approval flow, or authenticated native task transcript/export tool. Verify one genuine full-report write from within task, CI, merged URL before CLOSE.",
       "depends_on": [
         "Original ChatGPT task generation-time report archive action via authorized GitHub connector, to be tested",
         "Scheduled-task full report content/connector permissions verifiably accessible",
         "No customer PII; no business data writes; honest provenance and no duplicate run"
       ],
-      "dispatch_status": "STORAGE_AND_VALIDATOR_IN_PR; COORDINATOR_SYNTHETIC_TEST_ONLY; SCHEDULED_CHATGPT_WRITER_NOT_TESTED"
+      "dispatch_status": "ARCHIVE_STORAGE_PASS_CI; THREE_TASK_PROMPTS_UPDATED; SCHEDULED_WRITER_PARTIAL_BRANCH_ONLY; ISSUE_INGEST_NOT_OBSERVED; AUTOMATED_FULL_REPORT_DELIVERY_NOT_VERIFIED"
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
