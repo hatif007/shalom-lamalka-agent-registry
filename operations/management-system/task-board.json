@@ -177,6 +177,27 @@
       "next_step": "Discover a supported direct native-agent invocation/chat interface. When available, test one bounded GROW-SEO-03 read-only task, confirm real runtime run/session ID and source reads, inspect intermediate evidence, request correction if necessary, and document final Slack permalink. Do not substitute a recreated agent or simulated Slack conversation.",
       "dispatch_status": "OWNER_AUTHORIZED_DIRECT_INVOKE_TECHNICALLY_UNAVAILABLE",
       "owner_approved_on": "2026-10-14"
+    },
+    {
+      "id": "OPS-006",
+      "title": "2026-10-14 one-time immediate ChatGPT team cycle: Data, SEO, Website, Growth",
+      "agent": "Growth Manager",
+      "approver": "Owner (immediate weekly cycle explicitly requested 2026-10-14)",
+      "status": "EVIDENCE_PENDING",
+      "priority": "P1_ACCEPTANCE",
+      "due_date": "2026-10-14",
+      "next_review": "2026-10-14",
+      "business_impact": "Verify what reports were actually produced and identify outstanding source evidence without duplicate agent research",
+      "evidence": "operations/management-system/team-drill-2026-10-14.md",
+      "depends_on": [
+        "Observe completion receipts for four one-time ChatGPT tasks",
+        "Access actual report text or verified final Slack posts",
+        "Correctly separate installed agent invocations from ChatGPT scheduled tasks"
+      ],
+      "next_step": "After the four short-delay tasks run, verify task last-run timestamps, accessible substantive output/permalinks, source-backed findings, scope and owner decisions; provide a final cross-agent matrix of COMPLETED/EVIDENCE_PENDING/BLOCKED. Never mark source report verified from task metadata alone.",
+      "dispatch_status": "FOUR_ONE_TIME_CHATGPT_TASKS_CREATED_EXECUTION_AND_REPORT_QA_PENDING",
+      "no_native_agent_run_claim": true,
+      "report": "operations/management-system/team-drill-2026-10-14.md"
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
