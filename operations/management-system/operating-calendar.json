@@ -3,7 +3,7 @@
   "timezone": "Asia/Jerusalem",
   "owner": "Growth Manager",
   "effective_date": "2026-10-13",
-  "mode": "MANUAL_COORDINATION_WITH_TWO_SEPARATE_CHATGPT_SCHEDULES",
+  "mode": "FOUR_SCHEDULED_CHATGPT_REPORTS_NO_NATIVE_AGENT_RUNTIME_VERIFIED",
   "meeting_policy": "A calendar entry is not proof of a meeting or native agent run. Record occurrence evidence separately.",
   "events": [
     {
@@ -94,21 +94,22 @@
       "title": "Website UX and merchandising audit",
       "cadence": "WEEKLY_SUNDAY",
       "time": "22:30",
-      "facilitator": "Website & Conversion Agent",
-      "activation": "MANUAL_ONLY",
-      "status": "OWNER_APPROVED_WINDOW_NOT_AUTOMATED",
+      "facilitator": "ChatGPT scheduled Website infrastructure report; NOT installed Website & Conversion Agent",
+      "activation": "CHATGPT_AUTOMATION_ENABLED",
+      "status": "SCHEDULED_FIRST_RUN_PENDING",
       "agenda": [
         "Homepage/category/product paths",
         "Mobile RTL and accessibility",
         "Working destinations and stock caveats",
         "CTA and conversion hypothesis"
       ],
-      "output": "Evidence-backed draft findings to Growth Manager",
+      "output": "Existing category/link/infrastructure exception report and installed Website v1.1 runtime parity UNKNOWN; do not open homepage audit",
       "autonomous_agent_run": false,
       "first_date": "2026-10-18",
       "timezone": "Asia/Jerusalem",
       "approved_time_slot": true,
-      "execution_policy": "One bounded weekly deep audit when agent capacity is available; review only public pages and supplied verified evidence; cap standard report to three significant findings; no retries on quota exhaustion. First Monday of month use same weekly run for deeper review, no extra run."
+      "execution_policy": "Owner-authorized 2026-10-14 scheduled ChatGPT Website infrastructure check; first actual run pending. GROW-SEO-01=HOLD, no homepage drafts, hero, Preview or publication. No Wix writes or installed GPT invoke claim; report full body in task and attempt report-only GitHub archive if tool supports it.",
+      "evidence": "ChatGPT task 6acf4648c1f48191a4b3a2c685a8f075; enabled 2026-10-14; first expected 2026-10-18 22:30 Asia/Jerusalem"
     },
     {
       "id": "CAL-MONTHLY",
@@ -140,10 +141,10 @@
     "No autonomous agent-to-agent dispatch or Slack send enabled by this file.",
     "Scheduled SEO and Data ChatGPT reports are not separate installed-agent executions.",
     "Escalate urgent security/privacy/site outage immediately by a separately approved manual process; do not use unsafe tools.",
-    "Owner approved the Sunday 22:30 Website and Monday 12:00 Growth official windows on 2026-10-13; neither is currently registered as a native agent schedule.",
+    "Owner-approved Sunday Website and Monday Growth windows now have enabled CHATGPT scheduled reports as of 2026-10-14; these are NOT native installed-agent schedules or verified full report delivery.",
     "Monthly review replaces/extends first Monday Growth review rather than requiring a separate invocation."
   ],
-  "version": "1.1",
+  "version": "1.2",
   "cadence_approval": {
     "approved_by": "Owner",
     "approved_on": "2026-10-13",
@@ -156,12 +157,13 @@
     "priority": "AVOID_UNNECESSARY_AGENT_CONSUMPTION",
     "reporting_period": "WEEKLY",
     "existing_chatgpt_automations": [
-      "One weekly Data report (approx Monday 08:00)",
-      "One weekly SEO report (approx Monday 10:00)"
+      "One weekly Website infrastructure check (Sunday 22:30)",
+      "One weekly Data report (Monday approx 08:00)",
+      "One weekly SEO report (Monday approx 10:00)",
+      "One weekly Growth consolidation (Monday 12:00)"
     ],
     "planned_native_windows": [
-      "One Website review Sunday 22:30, subject to agent capacity and manual invocation",
-      "One Growth review Monday 12:00, subject to agent capacity and manual invocation"
+      "Native installed-agent invocation NOT proven; requires a separate real runtime interface and acceptance evidence"
     ],
     "batching": "Aggregate evidence for each review; don't launch multiple agents for a question one validated report can answer.",
     "content_limits": "Up to three material findings / opportunities per regular specialist report, not a prohibition on reporting critical risks.",

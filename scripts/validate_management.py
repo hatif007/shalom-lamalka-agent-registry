@@ -32,13 +32,18 @@ for x in events:
         errors.append(f"Manual-only calendar item {x.get('id')} is falsely marked active/done")
     if x.get("activation")=="CHATGPT_AUTOMATION_ENABLED" and x.get("status") not in ("SCHEDULED_NOT_YET_RUN","SCHEDULED_FIRST_RUN_PENDING"):
         errors.append(f"Unverified scheduled task {x.get('id')} was misclassified")
-    if x.get("status")=="SCHEDULED_FIRST_RUN_PENDING" and (x.get("id")!="CAL-GROWTH-WEEKLY" or "6acf3958d22881918996ab9518e903ce" not in x.get("evidence","") or x.get("autonomous_agent_run") is not False):
-        errors.append("Growth scheduled task evidence or native-agent guard missing")
+    if x.get("status")=="SCHEDULED_FIRST_RUN_PENDING":
+        expected_task_id={
+            "CAL-GROWTH-WEEKLY":"6acf3958d22881918996ab9518e903ce",
+            "CAL-WEBSITE-WEEKLY":"6acf4648c1f48191a4b3a2c685a8f075",
+        }.get(x.get("id"))
+        if not expected_task_id or expected_task_id not in x.get("evidence","") or x.get("autonomous_agent_run") is not False:
+            errors.append(f"Scheduled ChatGPT first-run evidence or native-agent guard missing: {x.get('id')}")
 
 # Owner-approved work windows are not native-agent schedules.
 by_id={e.get("id"):e for e in events}
 expected={
-    "CAL-WEBSITE-WEEKLY":("WEEKLY_SUNDAY","22:30","MANUAL_ONLY"),
+    "CAL-WEBSITE-WEEKLY":("WEEKLY_SUNDAY","22:30","CHATGPT_AUTOMATION_ENABLED"),
     "CAL-DATA-WEEKLY":("WEEKLY_MONDAY","APPROX_08:00","CHATGPT_AUTOMATION_ENABLED"),
     "CAL-SEO-WEEKLY":("WEEKLY_MONDAY","APPROX_10:00","CHATGPT_AUTOMATION_ENABLED"),
     "CAL-GROWTH-WEEKLY":("WEEKLY_MONDAY","12:00","CHATGPT_AUTOMATION_ENABLED"),
@@ -49,9 +54,8 @@ for event_id,(cadence,time,activation) in expected.items():
         errors.append(f"Owner-approved schedule drift: {event_id}")
     if e.get("approved_time_slot") is not True:
         errors.append(f"Owner-approved time not recorded: {event_id}")
-for event_id in ("CAL-WEBSITE-WEEKLY",):
-    if by_id.get(event_id,{}).get("status")!="OWNER_APPROVED_WINDOW_NOT_AUTOMATED":
-        errors.append(f"Native agent falsely marked scheduled: {event_id}")
+if by_id.get("CAL-WEBSITE-WEEKLY",{}).get("status")!="SCHEDULED_FIRST_RUN_PENDING":
+    errors.append("Website ChatGPT task is enabled but first scheduled run is not yet observed")
 if by_id.get("CAL-GROWTH-WEEKLY",{}).get("status")!="SCHEDULED_FIRST_RUN_PENDING":
     errors.append("Growth ChatGPT schedule must remain pending until first weekly result")
 monthly=by_id.get("CAL-MONTHLY",{})
