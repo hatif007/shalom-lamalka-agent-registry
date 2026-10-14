@@ -207,19 +207,20 @@
       "status": "EVIDENCE_PENDING",
       "priority": "P1_ENABLEMENT",
       "next_review": "2026-10-19",
-      "evidence": "operations/management-system/reports/README.md; operations/management-system/reports/runs/2026-10-14/system/ARCHIVE-SMOKE-COORDINATOR-2026-10-14.md; operations/management-system/report-archive-acceptance-2026-10-14.md",
-      "next_step": "GitHub archive storage and fail-closed CI are live (PR #13). Three existing Data/SEO/Growth Monday ChatGPT task prompts now include report-only full-text GitHub archival with full task-chat fallback. Acceptance smoke A: scheduled task created an empty GitHub topic branch but NO report file/PR; smoke B: scheduled one-action issue handoff recorded a run timestamp but no GitHub issue was observed. Do not claim end-to-end report auto-archival. Need supported scheduled Work task with GitHub connected actions and approval flow, or authenticated native task transcript/export tool. Verify one genuine full-report write from within task, CI, merged URL before CLOSE.",
+      "evidence": "operations/management-system/report-archive-acceptance-2026-10-14.md; operations/management-system/agent-system-e2e-acceptance-2026-10-14.md; operations/management-system/reports/runs/2026-10-14/system/ARCHIVE-E2E-SCHEDULED-2026-10-14.md",
+      "next_step": "One-action scheduled create_file in pre-created GitHub branch passed synthetic acceptance (PR #15 CI PASS, identical blob read back from main). Four Monday/Sunday recurring ChatGPT task prompts now write full report to their existing per-role inbox branches. For first 2026-10-18/19 real runs, verify full original generated report, date/source metadata, no PII, branch file, PR+CI+merge, genuine Slack receipt or NOT_POSTED. Full ChatGPT transcript API and native installed-agent activation still unavailable; do not claim closed.",
       "depends_on": [
         "Original ChatGPT task generation-time report archive action via authorized GitHub connector, to be tested",
         "Scheduled-task full report content/connector permissions verifiably accessible",
         "No customer PII; no business data writes; honest provenance and no duplicate run"
       ],
-      "dispatch_status": "ARCHIVE_STORAGE_PASS_CI; THREE_TASK_PROMPTS_UPDATED; SCHEDULED_WRITER_PARTIAL_BRANCH_ONLY; ISSUE_INGEST_NOT_OBSERVED; AUTOMATED_FULL_REPORT_DELIVERY_NOT_VERIFIED"
+      "dispatch_status": "SCHEDULED_CHATGPT_SYNTHETIC_FULL_FILE_WRITE_PASS; FOUR_PRECREATED_REPORT_INBOX_BRANCHES; REAL_WEEKLY_FULL_REPORT_PENDING; RAW_TASK_TRANSCRIPT_API_UNAVAILABLE"
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
   "last_owner_decision_record": "operations/management-system/owner-decisions-2026-10-14.md",
   "owner_decision_inbox": "operations/management-system/owner-decision-inbox-2026-10-14.md",
   "owner_decision_slack_channel_id": "C0C8PNALALR",
-  "pilot_verification_2026_10_14": "operations/management-system/growth-pilot-review-2026-10-14.md"
+  "pilot_verification_2026_10_14": "operations/management-system/growth-pilot-review-2026-10-14.md",
+  "last_agent_acceptance_record": "operations/management-system/agent-system-e2e-acceptance-2026-10-14.md"
 }
