@@ -60,3 +60,15 @@ Use only non-sensitive metadata and findings: **no personal customer information
 - Direct invocation of installed GPT agents remains unverified/unavailable in this connection.
 
 See [Task Board](../task-board.json), [Owner Decisions](../owner-decisions-2026-10-14.md) and \`OPS-007\`.
+
+## Accepted scheduled one-step writer architecture — 2026-10-14
+
+**Historical attempts A/B:** the scheduled task succeeded in creating a topic branch but did not save a file; a synthetic issue handoff was not observed. **New reduced-action smoke C: PASS.** A one-time ChatGPT Scheduled Task directly created a [full synthetic Markdown file](runs/2026-10-14/system/ARCHIVE-E2E-SCHEDULED-2026-10-14.md) on an already-existing topic branch. The coordinator **read back exact file contents**, [PR #15](https://github.com/hatif007/shalom-lamalka-agent-registry/pull/15) passed Registry CI and was merged; a subsequent read of `main` returned the identical blob. **This proves technical scheduled-task file persistence, not a production business report or full ChatGPT conversation transcript.**
+
+**Dedicated permanent report-only inbox branches (created and verified):** `report/inbox-data`, `report/inbox-seo`, `report/inbox-website`, and `report/inbox-growth`.
+
+**New authorized write sequence:** each existing weekly *ChatGPT Scheduled Task*, after producing its full report once, performs **one GitHub `create_file` call on its own PRE-CREATED inbox branch** to `reports/runs/YYYY-MM-DD/<role>/<report-id>.md` using this metadata schema, no branch/PR/issue creation in the scheduled context. This route was tested with a small synthetic file; genuine full report persistence still requires first scheduled weekly evidence. Tasks must also return their full authored Markdown report in their task conversation, even if a write fails. An authorized GitHub operator checks source quality, opens a PR, gets CI pass and merges to `main`, then optionally posts only final verified findings to Slack. No automated CI merge or automatically archived *transcript* is implied.
+
+**Role-specific write policies:** the installed Data Agent v2 still forbids all GitHub/Registry writes; this narrowly approved reporting workflow belongs only to the separate ChatGPT Scheduled Data *task*, not to the installed Data Agent v2. Other installed agent runtimes also do not acquire GitHub write permission by this schedule. A report archived in a private GitHub repository is the **full authored deliverable**, not ChatGPT raw conversation metadata, tool-call logs, or a native agent invocation trace.
+
+**Growth source fallback:** before running any new source queries, inspect relevant existing files in `report/inbox-data`, `report/inbox-seo` and `report/inbox-website` and `main`. If an original specialist report is missing/unverified, write `EVIDENCE_PENDING` rather than inventing a report or rerunning the specialist. Avoid treating `SYNTHETIC_TEST` as evidence of sales/SEO outcomes. The coordinator performs the branch-to-`main` PR/CI review outside scheduled task execution.
