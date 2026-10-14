@@ -26,5 +26,20 @@
     "execution_status": "PARTIALLY_EXECUTED_REMEDIATION_IN_PROGRESS",
     "evidence": "https://github.com/hatif007/shalom-lamalka-agent-registry/tree/fix/registry-v0.2-structure",
     "limitations": "Initial structure was pushed by owner via local Git CLI. Current consistency remediation is being committed to the same branch; no claim that external systems or permissions were changed."
+  },
+  {
+    "id": "A-003",
+    "decision": "Consolidate all topics awaiting owner decisions in #business-insights; keep the channel active",
+    "scope": "Governance and a one-time owner-authorized consolidated findings/owner-decision Slack post, plus Registry workflow documentation. Owner decision inbox is public task-metadata only.",
+    "approver": "Owner",
+    "date": "2026-10-14",
+    "systems_affected": [
+      "GitHub Registry documentation",
+      "Slack #business-insights C0C8PNALALR"
+    ],
+    "conditions": "Preserve HOLD GROW-SEO-01; do not ask for approval already granted to research-only SEO/Data; distinguish owner-action needs from future gates; no PII/customer details; no autonomous installed-agent Slack posting without separate runtime approval; no new scheduled automations.",
+    "execution_status": "APPROVED_PENDING_ONE_TIME_POST",
+    "evidence": "Owner explicitly requested all awaiting decisions in Slack findings channel in current conversation.",
+    "limitations": "This approval does not authorize website/analytics/permission changes and does not configure native agent-to-Slack automation."
   }
 ]
