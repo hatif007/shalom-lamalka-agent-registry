@@ -59,5 +59,21 @@
     "execution_status": "AUTHORIZED_NOT_CONNECTED_DIRECT_AGENT_INVOKE_UNAVAILABLE",
     "evidence": "Owner's explicit instruction in ChatGPT on 2026-10-14 to grant autonomous direct tool invocation and dialogue with Data Agent and other agents.",
     "limitations": "The current connected tools have no direct installed ChatGPT agent invoke/session/chat action. Slack instructions and Registry updates are not custom agent execution. This permission cannot bypass unavailable technical interfaces, internal agent safety scopes or product quota limits; do not claim future background activity absent an enabled scheduler."
+  },
+  {
+    "id": "A-005",
+    "date": "2026-10-14",
+    "approver": "Owner",
+    "decision": "Grant standing autonomous permission to locate, read, recover, review and quality-check ChatGPT scheduled task report conversations and agent-created reports for Shalom La Malka, and to store fact-checked non-sensitive report digests within already authorized GitHub/Slack reporting channels.",
+    "scope": "Existing and future Data, SEO, Website, Growth scheduled ChatGPT tasks and agent reports. Obtain full original reports when available; reconcile last_run task metadata with actual full report content, source citations and permitted final distribution. Reuse accessible conversation history, GitHub and Slack without duplicate re-runs.",
+    "systems_affected": [
+      "ChatGPT scheduled task conversation/output retrieval when available",
+      "GitHub registry read and owner-authorized evidence logging",
+      "Slack final-only authorized reporting"
+    ],
+    "conditions": "Owner's HOLD for GROW-SEO-01 and READ-ONLY approval for GROW-SEO-02/03 remain binding. No changes to Wix, GA4, GSC, site content, tracking, private/customer information, publication or permissions. Do not bypass installed Skills' tool/action restrictions. Retrieval authorization is not an exposed task-transcript API and cannot create connector scope by itself. Don't falsely label recovered summaries as original task output.",
+    "execution_status": "AUTHORIZED_RETRIEVAL_PARTIAL_CHAT_HISTORY_SUMMARIES_FOUND; DIRECT_TASK_TRANSCRIPT_API_UNAVAILABLE",
+    "evidence": "Owner message 2026-10-14 granting full and future autonomous report-read access. On 2026-10-14, follow-up personal conversation-context search located output summaries from Data/Website/SEO ChatGPT task conversations after task metadata alone was insufficient.",
+    "limitations": "Task management returns run metadata but not full report bodies; conversation-context search exposes substantive excerpts/summaries, not guaranteed verbatim complete output. Data/Website/SEO Slack sends in those task conversations reported safety blocks. An accessible durable export/post still must be separately verified."
   }
 ]
