@@ -20,10 +20,10 @@
       "title": "Homepage hero and verified-category discovery owner review",
       "agent": "Website & Conversion Agent",
       "approver": "Owner",
-      "status": "OWNER_REVIEW",
-      "priority": "P1",
+      "status": "BLOCKED",
+      "priority": "PAUSED_BY_OWNER",
       "due_date": null,
-      "next_review": "2026-10-19",
+      "next_review": "ON_OWNER_REQUEST",
       "business_impact": "Better query-to-page clarity and category discovery; uplift unproven",
       "evidence": "Owner supplied 11-page GROW-SEO-01-homepage-owner-review-he.docx on 2026-10-13",
       "depends_on": [
@@ -31,18 +31,21 @@
         "Data Agent validated stock/measurement",
         "Wix mobile preview before any publish"
       ],
-      "next_step": "Owner selects copy direction and approves draft-only scope; do not publish",
-      "dispatch_status": "DRAFT_COMPLETED_OWNER_REPORTED_NO_AUTONOMOUS_DISPATCH",
+      "next_step": "HOLD: do not dispatch Website Agent on this task or prepare Wix Preview until owner explicitly reopens; preserve source packet.",
+      "dispatch_status": "OWNER_HOLD_NO_DISPATCH",
       "full_source_text_extract": "operations/management-system/source-extracts/grow-seo-01-owner-report-2026-10-13.md",
       "curated_handoff": "operations/management-system/growth-manager-consolidated-intake-2026-10-13.md",
-      "source_format_note": "Original owner supplied DOCX exists in ChatGPT conversation; GitHub source extract preserves parsed text but not DOCX formatting; actual Website Agent native run/approval unverified."
+      "source_format_note": "Original owner supplied DOCX exists in ChatGPT conversation; GitHub source extract preserves parsed text but not DOCX formatting; actual Website Agent native run/approval unverified.",
+      "owner_decision": "HOLD",
+      "owner_decision_date": "2026-10-14",
+      "owner_decision_scope": "Pause homepage hero/draft selection, related preview and implementation; preserve complete packet unchanged until owner revisits."
     },
     {
       "id": "GROW-SEO-02",
       "title": "Festival-category landing-page feasibility",
       "agent": "SEO Agent",
       "approver": "Growth Manager / Owner",
-      "status": "BACKLOG",
+      "status": "APPROVED_FOR_PLANNING",
       "priority": "P1_RESEARCH",
       "due_date": null,
       "next_review": "2026-10-19",
@@ -51,16 +54,19 @@
       "depends_on": [
         "Verified live category URLs and canonical mapping"
       ],
-      "next_step": "Assess reuse existing category vs new landing page vs no change",
-      "dispatch_status": "NOT_DISPATCHED",
-      "curated_handoff": "operations/management-system/growth-manager-consolidated-intake-2026-10-13.md"
+      "next_step": "At existing Monday 10:00 SEO ChatGPT report, include a bounded research-only assessment of live URL/canonical, redirects, locale, inventory evidence, cannibalization; if unavailable report UNKNOWN; return reuse/fix/new page/no change GO/NO-GO.",
+      "dispatch_status": "APPROVED_RESEARCH_READY_FOR_EXISTING_WEEKLY_REPORT_NOT_NATIVE_DISPATCH",
+      "curated_handoff": "operations/management-system/growth-manager-consolidated-intake-2026-10-13.md",
+      "owner_decision": "APPROVE READ-ONLY",
+      "owner_decision_date": "2026-10-14",
+      "owner_decision_scope": "SEO source verification and research-only feasibility GO/NO-GO; no URL, redirect, metadata, page, link or site changes."
     },
     {
       "id": "GROW-SEO-03",
       "title": "Measure CTA, category journeys and purchase-funnel source coverage",
       "agent": "Data Agent",
       "approver": "Growth Manager",
-      "status": "EVIDENCE_PENDING",
+      "status": "APPROVED_FOR_PLANNING",
       "priority": "P2",
       "due_date": null,
       "next_review": "2026-10-19",
@@ -69,9 +75,12 @@
       "depends_on": [
         "Read-only validated GA4 event coverage"
       ],
-      "next_step": "Report event names, date scope, baseline, GA4-vs-Wix limitations",
-      "dispatch_status": "NOT_DISPATCHED",
-      "curated_handoff": "operations/management-system/growth-manager-consolidated-intake-2026-10-13.md"
+      "next_step": "At existing Monday 08:00 Data ChatGPT report, assess available event names/dimensions/consent and comparable Wix orders, label unsupported values UNKNOWN; request scoped follow-up only if truly required.",
+      "dispatch_status": "APPROVED_RESEARCH_READY_FOR_EXISTING_WEEKLY_REPORT_NOT_NATIVE_DISPATCH",
+      "curated_handoff": "operations/management-system/growth-manager-consolidated-intake-2026-10-13.md",
+      "owner_decision": "APPROVE READ-ONLY",
+      "owner_decision_date": "2026-10-14",
+      "owner_decision_scope": "Data Agent evidence and measurement-coverage review only; no analytics/tracking/permission/Wix changes."
     },
     {
       "id": "OPS-001",
@@ -145,5 +154,6 @@
       "auto_deletion_performed": false
     }
   ],
-  "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection."
+  "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
+  "last_owner_decision_record": "operations/management-system/owner-decisions-2026-10-14.md"
 }
