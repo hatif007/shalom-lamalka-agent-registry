@@ -146,14 +146,18 @@
       "business_impact": "Reduce Slack clutter without losing active agent evidence",
       "evidence": "operations/management-system/slack-channel-cleanup-audit-2026-10-13.md",
       "depends_on": [
-        "Slack workspace channel archive/delete admin UI access",
-        "Check external channel routing and preserve active history"
+        "Slack admin UI access for channel archival",
+        "Check external links and legacy routing",
+        "Do not archive #business-insights (new canonical owner decision hub)"
       ],
-      "next_step": "Manually archive #content-conversion, #new-channel, #business-insights; optionally #social after workspace needs review; no channel archive/delete tool connected.",
+      "next_step": "Slack admin: archive redundant #content-conversion and #new-channel after route check; optionally #social if no social use. PRESERVE #business-insights as the owner decision inbox (2026-10-14 override). The connector cannot archive/delete channels.",
       "dispatch_status": "ADMIN_UI_ACTION_REQUIRED",
-      "auto_deletion_performed": false
+      "auto_deletion_performed": false,
+      "audit_override": "2026-10-14 owner directs all pending owner decisions to #business-insights, superseding prior archive suggestion."
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
-  "last_owner_decision_record": "operations/management-system/owner-decisions-2026-10-14.md"
+  "last_owner_decision_record": "operations/management-system/owner-decisions-2026-10-14.md",
+  "owner_decision_inbox": "operations/management-system/owner-decision-inbox-2026-10-14.md",
+  "owner_decision_slack_channel_id": "C0C8PNALALR"
 }
