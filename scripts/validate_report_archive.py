@@ -114,16 +114,11 @@ def inspect(path):
 def main():
     paths = sorted(BASE.rglob("*.md"))
     failures = []
-    seen = set()
     for path in paths:
         relative = path.relative_to(BASE)
         if len(relative.parts) != 3:
             failures.append(f"{relative}: unexpected path depth")
             continue
-        if path.name in seen and False:
-            # Names may repeat across dates; uniqueness is by complete path.
-            failures.append(f"{relative}: duplicate")
-        seen.add(relative)
         failures.extend(inspect(path))
     if failures:
         print("REPORT ARCHIVE VALIDATION: FAIL")
