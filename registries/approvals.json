@@ -43,5 +43,21 @@
     "limitations": "One-time operator-authorized Slack post only. No scheduled digest automation or installed Growth Manager runtime Slack delivery configured; no website/analytics/permission changes.",
     "slack_message_url": "https://shalomlamalka.slack.com/archives/C0C8PNALALR/p1791963255855629",
     "execution_evidence": "Slack send returned verified message_link 2026-10-14"
+  },
+  {
+    "id": "A-004",
+    "date": "2026-10-14",
+    "approver": "Owner",
+    "decision": "Authorize autonomous, direct read-only collaboration and quality-control handoffs among the owner, orchestration assistant, Growth Manager and installed specialist agents, including invoking the installed Data Agent when a compatible direct runtime tool is available.",
+    "scope": "Task-specific approved READ-ONLY investigation, direct installed-agent invocation and chat/feedback loops where technically supported, quality sampling, requests for revisions, and reporting verified final results in the designated channels. Authorization includes evaluating or configuring a compatible safe integration for agent invocation subject to available capabilities and workspace access.",
+    "systems_affected": [
+      "ChatGPT installed agent runtime when exposed by a compatible tool",
+      "GitHub Registry coordination",
+      "Slack #agent-team coordination; #sales-data final Data findings; #business-insights owner decisions"
+    ],
+    "conditions": "Preserve GROW-SEO-01 HOLD, GROW-SEO-02/03 read-only decisions. Use verified source evidence, avoid duplicate costly runs and use minimal necessary scopes. Intermediate QA stays in coordination/agent threads rather than the final-results channel. Protect customer privacy. Manual workflow changes to Wix, GA4, tracking, checkout, permissions, pricing, publication or business records still require separate exact owner approval.",
+    "execution_status": "AUTHORIZED_NOT_CONNECTED_DIRECT_AGENT_INVOKE_UNAVAILABLE",
+    "evidence": "Owner's explicit instruction in ChatGPT on 2026-10-14 to grant autonomous direct tool invocation and dialogue with Data Agent and other agents.",
+    "limitations": "The current connected tools have no direct installed ChatGPT agent invoke/session/chat action. Slack instructions and Registry updates are not custom agent execution. This permission cannot bypass unavailable technical interfaces, internal agent safety scopes or product quota limits; do not claim future background activity absent an enabled scheduler."
   }
 ]

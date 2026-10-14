@@ -80,7 +80,10 @@
       "curated_handoff": "operations/management-system/growth-manager-consolidated-intake-2026-10-13.md",
       "owner_decision": "APPROVE READ-ONLY",
       "owner_decision_date": "2026-10-14",
-      "owner_decision_scope": "Data Agent evidence and measurement-coverage review only; no analytics/tracking/permission/Wix changes."
+      "owner_decision_scope": "Data Agent evidence and measurement-coverage review only; no analytics/tracking/permission/Wix changes.",
+      "execution_monitoring_authorization": "Owner authorized direct iterative read-only Data Agent invocation and QA on 2026-10-14, when technically supported; direct runtime interface currently unavailable.",
+      "execution_monitoring_status": "SLACK_HANDOFF_SENT_NATIVE_AGENT_NOT_VERIFIED",
+      "coordination_handoff_url": "https://shalomlamalka.slack.com/archives/C0C86D1C3D5/p1791963851645069"
     },
     {
       "id": "OPS-001",
@@ -154,6 +157,26 @@
       "dispatch_status": "ADMIN_UI_ACTION_REQUIRED",
       "auto_deletion_performed": false,
       "audit_override": "2026-10-14 owner directs all pending owner decisions to #business-insights, superseding prior archive suggestion."
+    },
+    {
+      "id": "OPS-005",
+      "title": "Enable and verify direct installed-agent invocation and iterative read-only QA workflow",
+      "agent": "Growth Manager",
+      "approver": "Owner — direct read-only collaboration approved 2026-10-14",
+      "status": "BLOCKED",
+      "priority": "P1_ENABLEMENT",
+      "due_date": null,
+      "next_review": "2026-10-19",
+      "business_impact": "Remove manual handoff friction and make approved agent tasks verifiably executable without duplicate work",
+      "evidence": "registries/approvals.json (A-004)",
+      "depends_on": [
+        "A compatible authenticated invoke/chat interface for the actual installed ChatGPT agents",
+        "Verification of installed Data Agent identity/version, Skill and current permissions",
+        "Task-specific permission gates, quota and execution logs"
+      ],
+      "next_step": "Discover a supported direct native-agent invocation/chat interface. When available, test one bounded GROW-SEO-03 read-only task, confirm real runtime run/session ID and source reads, inspect intermediate evidence, request correction if necessary, and document final Slack permalink. Do not substitute a recreated agent or simulated Slack conversation.",
+      "dispatch_status": "OWNER_AUTHORIZED_DIRECT_INVOKE_TECHNICALLY_UNAVAILABLE",
+      "owner_approved_on": "2026-10-14"
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
