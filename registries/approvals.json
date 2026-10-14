@@ -38,8 +38,10 @@
       "Slack #business-insights C0C8PNALALR"
     ],
     "conditions": "Preserve HOLD GROW-SEO-01; do not ask for approval already granted to research-only SEO/Data; distinguish owner-action needs from future gates; no PII/customer details; no autonomous installed-agent Slack posting without separate runtime approval; no new scheduled automations.",
-    "execution_status": "APPROVED_PENDING_ONE_TIME_POST",
+    "execution_status": "RECORDED_AND_ONE_TIME_SLACK_SUMMARY_SENT",
     "evidence": "Owner explicitly requested all awaiting decisions in Slack findings channel in current conversation.",
-    "limitations": "This approval does not authorize website/analytics/permission changes and does not configure native agent-to-Slack automation."
+    "limitations": "One-time operator-authorized Slack post only. No scheduled digest automation or installed Growth Manager runtime Slack delivery configured; no website/analytics/permission changes.",
+    "slack_message_url": "https://shalomlamalka.slack.com/archives/C0C8PNALALR/p1791963255855629",
+    "execution_evidence": "Slack send returned verified message_link 2026-10-14"
   }
 ]
