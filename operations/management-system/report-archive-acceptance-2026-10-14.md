@@ -39,3 +39,14 @@
 - Execute **one** new bounded synthetic storage test inside that supported runtime only after a genuine new interface is available. The acceptance gate is: scheduled task itself creates the complete Markdown report **and** an accessible GitHub PR → CI passes → PR merges → exact report file can be read from `main`; record stable link plus task evidence.
 - Keep `OPS-007=EVIDENCE_PENDING` until that test and at least one non-synthetic scheduled report archive succeed; do not claim closed.
 - Owner boundaries unchanged: `GROW-SEO-01=HOLD`, `GROW-SEO-02/03=READ-ONLY`, Festival Sales deferred. No site/Wix/GA4/GSC/permissions/tracking changes.
+
+## Follow-up successful acceptance (2026-10-14) — smoke C
+
+The earlier branch-only and issue-only failures above remain preserved as history. A new **one-action `GitHub create_file`** scheduled ChatGPT smoke task, using a *pre-created GitHub branch*, **succeeded**. File:
+[ARCHIVE-E2E-SCHEDULED-2026-10-14.md](reports/runs/2026-10-14/system/ARCHIVE-E2E-SCHEDULED-2026-10-14.md).
+
+- Scheduled task instruction: write exactly one SYNTHETIC_TEST Markdown file in `report/scheduled-direct-file-smoke-2026-10-14`, with no branch/PR creation and no business source access.
+- Observed result: file blob SHA `9260139ee333763249da76fab2b92c54627a0057`, 1,090 characters, machine-readable REPORT_ARCHIVE_V1 metadata, 489-character labeled synthetic body.
+- Review: [PR #15](https://github.com/hatif007/shalom-lamalka-agent-registry/pull/15), [green PR CI](https://github.com/hatif007/shalom-lamalka-agent-registry/actions/runs/38541374368), merged into `main` commit `53b076ba4e75beeb479d67cf945d7b35ecabde26`. [Main CI also passed](https://github.com/hatif007/shalom-lamalka-agent-registry/actions/runs/38541539551). Exact same file blob was read from `main` after merge.
+- **New verdict:** `SCHEDULED_TASK_SYNTHETIC_FILE_WRITE_PASS`; genuine weekly `FULL_GENERATED_REPORT` delivery `PENDING_FIRST_REAL_RUN`, original ChatGPT task conversation transcript API `BLOCKED`, independent installed GPT runtime `BLOCKED`.
+- Four real weekly ChatGPT tasks now point to respective existing inbox branches, with at most a single create_file write per generated report. First full weekly cycle due Sunday 2026-10-18 / Monday 2026-10-19. No native installed agent activation claim.
