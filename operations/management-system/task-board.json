@@ -188,16 +188,33 @@
       "due_date": "2026-10-14",
       "next_review": "2026-10-14",
       "business_impact": "Verify what reports were actually produced and identify outstanding source evidence without duplicate agent research",
-      "evidence": "operations/management-system/team-drill-2026-10-14.md",
+      "evidence": "operations/management-system/team-drill-2026-10-14.md; registries/approvals.json (A-005)",
       "depends_on": [
         "Observe completion receipts for four one-time ChatGPT tasks",
         "Access actual report text or verified final Slack posts",
         "Correctly separate installed agent invocations from ChatGPT scheduled tasks"
       ],
-      "next_step": "After the four short-delay tasks run, verify task last-run timestamps, accessible substantive output/permalinks, source-backed findings, scope and owner decisions; provide a final cross-agent matrix of COMPLETED/EVIDENCE_PENDING/BLOCKED. Never mark source report verified from task metadata alone.",
-      "dispatch_status": "FOUR_ONE_TIME_CHATGPT_TASKS_CREATED_EXECUTION_AND_REPORT_QA_PENDING",
+      "next_step": "Use conversation-history recovery for completed Data, Website, SEO task report summaries (retrieved 2026-10-14); request/locate original full report bodies and source links before content-level QA. Final-only Slack delivery within authorized tool/safety policy. Verify remaining Growth and independent acceptance results; never mistake report recovery for installed-agent invocation.",
+      "dispatch_status": "SCHEDULED_CHATGPT_DATA_WEBSITE_SEO_OUTPUT_SUMMARIES_RECOVERED_OR_REPORTED; ORIGINALS_NOT_FULLY_ACCESSIBLE; SLACK_DELIVERY_BLOCKED; GROWTH_EVIDENCE_PENDING",
       "no_native_agent_run_claim": true,
       "report": "operations/management-system/team-drill-2026-10-14.md"
+    },
+    {
+      "id": "OPS-007",
+      "title": "Ensure every scheduled ChatGPT report has a retrievable durable artifact and safe final-only delivery",
+      "agent": "Growth Manager",
+      "approver": "Owner — A-005 2026-10-14 standing access and reporting permission",
+      "status": "BLOCKED",
+      "priority": "P1_ENABLEMENT",
+      "next_review": "2026-10-19",
+      "evidence": "registries/approvals.json A-005; operations/management-system/team-drill-2026-10-14.md",
+      "next_step": "Establish and test a supported authenticated task-conversation report retrieval or explicit result-export path. Acceptance requires original task report, source evidence, stable URL/file, safe channel delivery and transcript/metadata reconciliation. Scheduled task metadata alone is not enough; Slack sends may be denied by task/agent safety restrictions. Use only authorized output destinations and no duplicate AI report reruns.",
+      "depends_on": [
+        "Native transcript/artifact retrieval connector or compatible ChatGPT Work mode browser access to task conversation",
+        "Report writer's actual tool permissions for one final-only Slack/GitHub artifact",
+        "Evidence of successful test with original report link"
+      ],
+      "dispatch_status": "OWNER_AUTHORIZED_BUT_NO_NATIVE_REPORT_ARTIFACT_API_CONNECTED"
     }
   ],
   "notes": "2026-10-13: Consolidated intake and original Website owner-report plain-text extract saved to the Registry. Native Growth Agent handoff still NOT_DISPATCHED. Slack cleanup audit is ready but no channel archive/delete was possible through current connection.",
