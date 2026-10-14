@@ -59,4 +59,4 @@ Use only non-sensitive metadata and findings: **no personal customer information
 - Festival Sales is \`DEFERRED\`.
 - Direct invocation of installed GPT agents remains unverified/unavailable in this connection.
 
-See [Task Board](../../task-board.json), [Owner Decisions](../../owner-decisions-2026-10-14.md) and \`OPS-007\`.
+See [Task Board](../task-board.json), [Owner Decisions](../owner-decisions-2026-10-14.md) and \`OPS-007\`.
