@@ -30,6 +30,8 @@ jobs:
         run: python security/data_agent_action_guard.py
       - name: Validate Growth Manager calendar, scorecard and task board
         run: python scripts/validate_management.py
+      - name: Unit-test native installed-agent API trigger flow (no network)
+        run: python -m unittest discover -s tests -p 'test_ops007_workspace_agents_e2e.py'
       - name: Unit-test allowlisted report promotion and immutable copies
         run: python -m unittest discover -s tests -p 'test_promote_agent_inbox.py'
       - name: Validate source-linked report archive and provenance
