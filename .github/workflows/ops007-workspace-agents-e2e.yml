@@ -1,0 +1,54 @@
+name: OPS-007 Native Workspace Agents E2E
+
+on:
+  workflow_dispatch:
+    inputs:
+      data_channel:
+        description: "Data Agent API channel ID (agtch_...)"
+        required: true
+        type: string
+      seo_channel:
+        description: "SEO Agent API channel ID (agtch_...)"
+        required: true
+        type: string
+      website_channel:
+        description: "Website Director V2 API channel ID (agtch_...)"
+        required: true
+        type: string
+      growth_pilot_channel:
+        description: "Growth Manager PILOT channel ID (agtch_...), NOT the original Growth"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ops007-native-api-e2e
+  cancel-in-progress: false
+
+jobs:
+  installed-agents-e2e:
+    name: Four native agents, GitHub reports, Growth Pilot
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native four-agent test
+        env:
+          WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN }}
+          GH_READ_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DATA_CHANNEL: ${{ inputs.data_channel }}
+          SEO_CHANNEL: ${{ inputs.seo_channel }}
+          WEBSITE_CHANNEL: ${{ inputs.website_channel }}
+          GROWTH_PILOT_CHANNEL: ${{ inputs.growth_pilot_channel }}
+        run: |
+          python scripts/ops007_workspace_agents_e2e.py \
+            --cycle "OPS007-NATIVE-$GITHUB_RUN_ID" \
+            --data-channel "$DATA_CHANNEL" \
+            --seo-channel "$SEO_CHANNEL" \
+            --website-channel "$WEBSITE_CHANNEL" \
+            --growth-pilot-channel "$GROWTH_PILOT_CHANNEL"
