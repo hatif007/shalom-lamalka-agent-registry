@@ -1,0 +1,90 @@
+name: Promote agent inbox reports
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '45 9 * * 1'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: promote-agent-inbox
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Avoid duplicate unreviewed archive PRs
+        id: guard
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          open_count="$(gh pr list --state open --json headRefName --jq '[.[] | select(.headRefName | startswith("archive/inbox-batch-"))] | length')"
+          if [[ "$open_count" -gt 0 ]]; then
+            echo "pending=true" >> "$GITHUB_OUTPUT"
+            echo "Existing archive PR needs review; no duplicate PR created"
+          else
+            echo "pending=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Fetch approved inbox branches
+        if: steps.guard.outputs.pending == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          for role in data seo website growth; do
+            git fetch --no-tags origin "refs/heads/report/inbox-$role:refs/remotes/origin/report/inbox-$role"
+          done
+      - name: Byte-for-byte intake and canonical report validation
+        if: steps.guard.outputs.pending == 'false'
+        shell: bash
+        id: ingest
+        run: |
+          set -euo pipefail
+          count=0
+          for role in data seo website growth; do
+            while IFS= read -r path; do
+              [[ -n "$path" ]] || continue
+              day="$(printf '%s' "$path" | cut -d/ -f3)"
+              role_folder="$(printf '%s' "$path" | cut -d/ -f4)"
+              name="$(printf '%s' "$path" | cut -d/ -f5)"
+              report_id="${name%.md}"
+              if [[ "$role_folder" != "$role" || "$path" != "reports/runs/$day/$role/$report_id.md" ]]; then
+                echo "SKIP unexpected source path: $path" >&2
+                continue
+              fi
+              python scripts/promote_agent_inbox.py --role "$role" --run-date "$day" --report-id "$report_id" --dry-run
+              target="operations/management-system/reports/runs/$day/$role/$report_id.md"
+              if [[ ! -f "$target" ]]; then
+                python scripts/promote_agent_inbox.py --role "$role" --run-date "$day" --report-id "$report_id"
+                count=$((count + 1))
+              fi
+            done < <(git ls-tree -r --name-only "refs/remotes/origin/report/inbox-$role" -- reports/runs/)
+          done
+          python scripts/validate_report_archive.py
+          python -m unittest discover -s tests -p 'test_promote_agent_inbox.py'
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          if [[ "$count" -gt 0 ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git switch -c "archive/inbox-batch-$GITHUB_RUN_ID"
+            git add -- operations/management-system/reports/runs
+            git commit -m "Archive $count exact inbox report(s)"
+            git push origin "archive/inbox-batch-$GITHUB_RUN_ID"
+          fi
+      - name: Open reviewable PR - no automatic merge
+        if: steps.guard.outputs.pending == 'false' && steps.ingest.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --base main --head "archive/inbox-batch-$GITHUB_RUN_ID" \
+            --title "Archive allowlisted inbox reports ($GITHUB_RUN_ID)" \
+            --body "Reports were copied byte-for-byte from pre-existing, role-scoped inbox branches. Review origin, provenance, and payload_type; no claim of native agent execution. Requires human review and CI. No automatic merge."
