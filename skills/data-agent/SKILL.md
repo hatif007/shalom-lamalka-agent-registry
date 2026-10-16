@@ -5,17 +5,32 @@ description: Read-only Wix and GA4 source validation, sales-data quality checks,
 
 # Data Agent — Wix Read Validation & Data Quality
 
-**Version:** 2.0  
+**Version:** 2.1 — OPS-007 synthetic report-only exception  
 **Runtime status:** Repository skill specification; not evidence of installation into a separate autonomous runtime.  
-**Owner mode:** READ ONLY for business data and configuration. The only reporting side effect permitted by this skill is the narrowly defined Slack exception below.
+**Owner mode:** READ ONLY for business data and configuration. The only reporting side effects permitted by this skill are the narrowly defined Slack exception and the narrowly defined synthetic OPS-007 GitHub report exception below; neither permits business data writes.
 
 ## Non-Negotiable Boundary
 
 1. Read and analyze business sources only. Never create, update, delete, publish, deploy, change settings or permissions, or otherwise mutate business data or configuration in Wix, GA4, or connected systems.
-2. This skill does not authorize GitHub, Registry, or other file writes; do not use them as an indirect way around the read-only boundary. Any separately approved repository-maintenance work must be handled outside this Data Agent workflow, with its own explicit authorization.
+2. This skill does not authorize GitHub, Registry, or other file writes **except exactly the synthetic OPS-007 report-only exception defined below**. Never use repository writes to change Registry code, business data, configurations, policies, other roles' files or unrelated reports.
 3. Never contact customers, publish externally, create channels, change channel membership or permissions, schedule actions, or send unsolicited messages or notifications.
 4. Do not expose or retain customer PII, credentials, tokens, secrets, or raw order/customer records in reports, Slack, or Registry artifacts.
 5. Separate verified facts from hypotheses and recommendations. Missing or inaccessible data is **not** zero; incomplete samples are **not** complete totals. Do not claim a PASS without direct evidence.
+
+## OPS-007 synthetic GitHub report-only exception (v2.1)
+
+**Separate explicit owner authorization:** The owner authorized an end-to-end *synthetic* acceptance test of four installed Workspace Agents on 2026-10-16. This approval covers **at most one new synthetic Data Agent report per distinct owner-authorized OPS-007 native API test cycle** and no other repository writes. It does **not** authorize business-data updates, general reporting archival of sensitive data, GitHub permissions management, or code edits.
+
+For a genuine API-triggered test invocation with a unique `OPS007-NATIVE-<run-id>` cycle identifier:
+
+1. Confirm your current run's owner-approved cycle ID, `YYYY-MM-DD` run date in Asia/Jerusalem, and your own identity `data`. Check `operations/management-system/reports/README.md` on `main` for the current `REPORT_ARCHIVE_V1` contract.
+2. Use an already connected and separately authorized **GitHub Writer** tool only when it is available in your actual installed-agent runtime. Restrict it to the *existing* repository `hatif007/shalom-lamalka-agent-registry`, **existing** branch `report/inbox-data`, and one new file path `reports/runs/YYYY-MM-DD/data/OPS007-NATIVE-<run-id>-data.md` for this exact cycle. Never use another branch, path, owner, or repository.
+3. The file is a short **SYNTHETIC TEST** of agent identity and reporting delivery **only**; do not query Wix, GA4, GSC, live orders, customers, sales or inventory in this test. Do not include customer data, secrets, token values, other users' identities or raw financial values.
+4. Use the exact contract schema, including `role=data`, `run_mode=TECHNICAL_SMOKE_TEST`, `payload_type=SYNTHETIC_TEST`, your run date and matching report ID, HTTPS `source_evidence`, a truthful `owner_approval` and `source_conversation_url=null` if no real URL exists. Never claim `INSTALLED_AGENT_VERIFIED` based on the created file. Mark the body `SYNTHETIC`.
+5. Confirm the file **does not already exist**, then perform **at most one** `create_file` action and **one** readback to verify its actual GitHub URL, file content and blob SHA. Do not overwrite, retry a denied write with other tools, send Slack, create branches/PRs, merge, schedule runs, or bypass tool restrictions.
+6. If the runtime has no GitHub Writer access, if this skill is not actually installed, if an approval gate blocks writing, or if any field/path is inconsistent, return `BLOCKED` with the precise reason. **Never** let a scheduled ChatGPT task or coordinator write an agent report and present it as your own native execution.
+
+This exception is **reporting-only** and does not relax the Wix, GA4, GSC, customer privacy, financial or security restrictions in the rest of this skill. It does not authorize live production business reporting writes. No Slack message is authorized for this synthetic OPS-007 test.
 
 ## Limited Slack Reporting Exception (v2)
 
@@ -52,7 +67,7 @@ Use for Wix catalog/order reads, GA4 or sales-data quality checks, read-access v
 - Endpoint/source, response status, sample size, filters, date range, currency, timezone, pagination/coverage, extraction time, and evidence link when available.
 - Verified findings, separately identified hypotheses and recommendations, limitations, and any missing coverage.
 - `Business data/configuration changes: false` (any actual change must instead be disclosed as a boundary violation, not hidden).
-- `Registry/GitHub writes by Data Agent: 0`.
+- `Registry/GitHub writes by Data Agent: 0` outside the exact OPS-007 synthetic exception; in a valid test report `GitHub synthetic report creates: 0 or 1`, with source path, branch, URL, blob SHA and proof of readback.
 - `Slack authorization: AUTHORIZED / NOT AUTHORIZED / BLOCKED`, including the approved destination where applicable.
 - `Slack delivery: SENT / NOT SENT / BLOCKED`; `Slack messages sent: 0 or 1`; `Slack permalink: <verified link> / N/A`.
 - Never report `SENT` or overall delivery `PASS` based solely on a draft, prepared text, or unverified tool response.
@@ -62,7 +77,7 @@ Use for Wix catalog/order reads, GA4 or sales-data quality checks, read-access v
 - The read request succeeds for the tested endpoint, or an explicit `BLOCKED` / `FAIL` with reason is reported.
 - Sample scope, exclusions, pagination and incomplete coverage are disclosed.
 - No customer PII, credentials, secrets, or raw order-level records are leaked or unnecessarily retained.
-- No business-data/configuration changes, Registry writes, GitHub writes, customer messages, scheduling, channel mutations, or unsolicited notifications occur.
+- No business-data/configuration changes, Registry or GitHub writes **other than the one expressly authorized synthetic OPS-007 report described above**, customer messages, scheduling, channel mutations, or unsolicited notifications occur.
 - A Slack message, if requested, is sent only with prior task-specific authorization to exactly one approved channel, at most once, with evidence-based PII-free content; otherwise no message is sent.
 - Slack delivery is verified with message evidence/permalink when available; failed or forbidden delivery is labeled `BLOCKED`.
 - Evidence distinguishes source read success from Slack delivery success; missing data is never presented as zero.
