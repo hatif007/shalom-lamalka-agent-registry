@@ -3,7 +3,7 @@ name: Promote agent inbox reports
 on:
   workflow_dispatch:
   schedule:
-    - cron: '25,55 * * * *'
+    - cron: '45 9 * * 1'
 
 permissions:
   contents: write
