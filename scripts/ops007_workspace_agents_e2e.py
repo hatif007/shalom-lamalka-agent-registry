@@ -88,7 +88,7 @@ def report_location(cycle, day, role):
     return report_id, f"reports/runs/{day}/{role}/{report_id}.md"
 
 
-def github_read_report(gh_token, cycle, day, role, attempts=16):
+def github_read_report(gh_token, cycle, day, role, attempts=16, required_sources=None):
     report_id, path = report_location(cycle, day, role)
     ref = f"report/inbox-{role}"
     url = f"{GITHUB}/contents/{path}?ref={urllib.parse.quote(ref, safe='')}"
@@ -106,6 +106,11 @@ def github_read_report(gh_token, cycle, day, role, attempts=16):
             raise RuntimeError(f"{role}: report response is not a base64 file")
         data = base64.b64decode(result["content"])
         meta = validate_report(data, role, day, report_id)
+        if required_sources:
+            body = data.decode("utf-8")
+            for source in required_sources:
+                if source["url"] not in body or source["sha"] not in body:
+                    raise RuntimeError("Growth report missing actual specialist source link or SHA")
         if meta["payload_type"] != "SYNTHETIC_TEST" or meta["run_mode"] != "TECHNICAL_SMOKE_TEST":
             raise RuntimeError(f"{role}: wrong metadata for test")
         calculated = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
@@ -193,7 +198,7 @@ def main():
     growth_run = trigger(channels["growth"], token, a.cycle,
                          growth_message(a.cycle, day, reports), "growth-pilot")
     await_completion(channels["growth"], token, growth_run, "growth-pilot")
-    growth = github_read_report(gh_token, a.cycle, day, "growth")
+    growth = github_read_report(gh_token, a.cycle, day, "growth", required_sources=reports)
     print(json.dumps({"overall": "PARTIAL_UNTIL_SLACK_PERMALINK_VERIFIED",
                       "native_agent_runs": {**active, "growth": growth_run},
                       "reports": reports, "growth_report": growth,
