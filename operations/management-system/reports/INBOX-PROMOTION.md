@@ -8,7 +8,7 @@
 - **Canonical archive:** `main:operations/management-system/reports/runs/YYYY-MM-DD/ROLE/REPORT_ID.md`. Only files promoted and merged here count as canonical.
 - **Allowed roles:** data, seo, website, growth. Each role uses its own pre-existing inbox branch.
 
-The workflow `.github/workflows/promote-agent-inbox.yml` is available by manual dispatch and a 30-minute schedule. It fetches the four existing inbox branches, validates paths and the REPORT_ARCHIVE_V1 header, and copies **identical bytes** into a dedicated archive branch. It never overwrites conflicting content and never merges automatically. It opens a reviewable pull request to `main` only if new valid reports exist. Each promotion is auditable using the workflow log's source branch, source commit, SHA-256, path and the PR diff. `scripts/validate_report_archive.py` continues to validate the canonical location.
+The workflow `.github/workflows/promote-agent-inbox.yml` is available by manual dispatch and a weekly Monday schedule. It fetches the four existing inbox branches, validates paths and the REPORT_ARCHIVE_V1 header, and copies **identical bytes** into a dedicated archive branch. It never overwrites conflicting content and never merges automatically. It opens a reviewable pull request to `main` only if new valid reports exist. Each promotion is auditable using the workflow log's source branch, source commit, SHA-256, path and the PR diff. `scripts/validate_report_archive.py` continues to validate the canonical location.
 
 **Permissions:** GitHub Actions requires repository settings allowing Actions to create PRs, with `contents:write` and `pull-requests:write`. If unavailable, record the permission blocker; do not bypass.
 
