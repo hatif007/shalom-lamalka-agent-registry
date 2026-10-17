@@ -17,7 +17,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -39,35 +39,65 @@ def request_json(method, url, token, payload=None, headers=None):
     if headers:
         h.update(headers)
     req = urllib.request.Request(url, headers=h, data=data, method=method)
+    request_time = datetime.now(timezone.utc)
     try:
         with urllib.request.urlopen(req, timeout=25) as response:
             return response.status, json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
-        # Report bounded, sanitized API error details; never log bearer tokens,
-        # credentials, arbitrary error bodies, or unrelated response headers.
-        detail = ""
+        # The Actions log may be public. Only allowlist non-sensitive correlation
+        # headers, and never print arbitrary response bodies or request headers.
+        received_time = datetime.now(timezone.utc)
+        error_info = {}
         try:
             body = json.loads(e.read(4096).decode("utf-8"))
             err = body.get("error", body) if isinstance(body, dict) else {}
             if isinstance(err, dict):
-                code = str(err.get("code") or err.get("type") or "")
-                if re.fullmatch(r"[A-Za-z0-9_.-]{1,80}", code):
-                    detail = f"; API error code={code}"
+                code = err.get("code") or err.get("type")
+                if isinstance(code, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,80}", code):
+                    error_info["code"] = code
+                param = err.get("param")
+                if isinstance(param, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,80}", param):
+                    error_info["param"] = param
+                elif param is None:
+                    error_info["param"] = None
                 message = err.get("message")
                 if isinstance(message, str):
-                    # Avoid printing secrets, bearer tokens or high-entropy identifiers.
                     message = re.sub(r"(?i)bearer\s+\S+", "Bearer [REDACTED]", message)
                     message = re.sub(r"(?i)(authorization|access[_ -]?token|api[_ -]?key)\s*[:=]\s*\S+", r"\1=[REDACTED]", message)
                     message = re.sub(r"(?i)\b(?:sk-|agtch_|apirun_)[A-Za-z0-9_-]{8,}", "[REDACTED]", message)
                     message = re.sub(r"\b[A-Za-z0-9_-]{32,}\b", "[REDACTED]", message)
                     message = "".join(c for c in message if c.isprintable())[:220]
                     if message:
-                        detail += f"; API message={message}"
+                        error_info["message"] = message
         except (ValueError, UnicodeError, OSError):
             pass
+        allowed = {
+            "x-request-id", "request-id", "openai-request-id",
+            "date", "retry-after", "cf-ray",
+            "x-ratelimit-limit-requests", "x-ratelimit-remaining-requests",
+            "x-ratelimit-reset-requests",
+        }
+        header_map = {str(k).lower(): str(v) for k, v in (e.headers or {}).items()}
+        safe_headers = {
+            k: v for k, v in header_map.items()
+            if k in allowed and re.fullmatch(r"[A-Za-z0-9 .,/:;=_+-]{1,180}", v)
+        }
+        diagnostic = {
+            "request_started_utc": request_time.isoformat(),
+            "response_received_utc": received_time.isoformat(),
+            "response_received_asia_jerusalem": received_time.astimezone(
+                ZoneInfo("Asia/Jerusalem")
+            ).isoformat(),
+            "http_status": e.code,
+            "method": method,
+            "endpoint": urllib.parse.urlsplit(url).path,
+            "response_headers_safe": safe_headers,
+            "error": error_info,
+        }
         raise RuntimeError(
             f"{method} request failed: HTTP {e.code} at "
-            f"{urllib.parse.urlsplit(url).path}{detail}"
+            f"{urllib.parse.urlsplit(url).path}; "
+            f"SUPPORT_DIAGNOSTIC={json.dumps(diagnostic, ensure_ascii=True)}"
         ) from e
 
 

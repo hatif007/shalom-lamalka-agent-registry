@@ -88,6 +88,40 @@ class NativeAgentE2ETests(unittest.TestCase):
         self.assertNotIn("sk-ABCDEFGHIJKLMNOPQRSTUVWX123456", diagnostic)
         self.assertNotIn("secret", diagnostic)
 
+    def test_api_http_conflict_captures_request_id_and_timestamp(self):
+        import io
+        import json
+        import urllib.error
+        error_body = json.dumps({
+            "error": {
+                "code": "invalid_request_error",
+                "message": "The workspace agent trigger is not currently available.",
+                "param": "agent_channel_id",
+            }
+        }).encode()
+        def reject(request, timeout):
+            raise urllib.error.HTTPError(request.full_url, 409, "Conflict", {
+                "X-Request-Id": "req_test-123",
+                "Date": "Sat, 17 Oct 2026 08:00:00 GMT",
+                "Set-Cookie": "private-cookie-value",
+                "Authorization": "Bearer very-secret-value",
+            }, io.BytesIO(error_body))
+        with patch.object(e2e.urllib.request, "urlopen", side_effect=reject):
+            with self.assertRaises(RuntimeError) as caught:
+                e2e.request_json("POST", "https://api.chatgpt.com/v1/workspace_agents/agtch_test/trigger", "secret")
+        message = str(caught.exception)
+        self.assertIn("SUPPORT_DIAGNOSTIC=", message)
+        record = json.loads(message.split("SUPPORT_DIAGNOSTIC=", 1)[1])
+        self.assertEqual(record["http_status"], 409)
+        self.assertEqual(record["response_headers_safe"]["x-request-id"], "req_test-123")
+        self.assertEqual(record["error"]["code"], "invalid_request_error")
+        self.assertEqual(record["error"]["param"], "agent_channel_id")
+        self.assertIn("+00:00", record["request_started_utc"])
+        self.assertIn("response_received_asia_jerusalem", record)
+        self.assertNotIn("Set-Cookie", message)
+        self.assertNotIn("private-cookie-value", message)
+        self.assertNotIn("very-secret-value", message)
+
     def test_api_http_non_json_response_remains_redacted(self):
         import io
         import urllib.error
