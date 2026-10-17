@@ -1,0 +1,36 @@
+name: OPS-007 Data Agent API Diagnostic (Single Trigger)
+
+on:
+  workflow_dispatch:
+    inputs:
+      data_channel:
+        description: "Data Agent API channel ID (agtch_...)"
+        required: true
+        type: string
+        default: "agtch_6ad25b00eabc81918aba1159e3fcfa03"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ops007-data-api-diagnostic
+  cancel-in-progress: false
+
+jobs:
+  data-trigger-diagnostic:
+    name: One Data Agent API trigger; no GitHub/Slack writes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Make exactly one availability request
+        env:
+          WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN }}
+          DATA_CHANNEL: ${{ inputs.data_channel }}
+        run: |
+          python scripts/ops007_data_api_probe.py \
+            --data-channel "$DATA_CHANNEL" \
+            --run-id "$GITHUB_RUN_ID"
