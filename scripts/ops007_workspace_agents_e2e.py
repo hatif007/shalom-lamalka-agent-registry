@@ -43,8 +43,32 @@ def request_json(method, url, token, payload=None, headers=None):
         with urllib.request.urlopen(req, timeout=25) as response:
             return response.status, json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
-        # Never print bearer credentials or arbitrary response bodies.
-        raise RuntimeError(f"{method} request failed: HTTP {e.code} at {urllib.parse.urlsplit(url).path}") from e
+        # Report bounded, sanitized API error details; never log bearer tokens,
+        # credentials, arbitrary error bodies, or unrelated response headers.
+        detail = ""
+        try:
+            body = json.loads(e.read(4096).decode("utf-8"))
+            err = body.get("error", body) if isinstance(body, dict) else {}
+            if isinstance(err, dict):
+                code = str(err.get("code") or err.get("type") or "")
+                if re.fullmatch(r"[A-Za-z0-9_.-]{1,80}", code):
+                    detail = f"; API error code={code}"
+                message = err.get("message")
+                if isinstance(message, str):
+                    # Avoid printing secrets, bearer tokens or high-entropy identifiers.
+                    message = re.sub(r"(?i)bearer\s+\S+", "Bearer [REDACTED]", message)
+                    message = re.sub(r"(?i)(authorization|access[_ -]?token|api[_ -]?key)\s*[:=]\s*\S+", r"\1=[REDACTED]", message)
+                    message = re.sub(r"(?i)\b(?:sk-|agtch_|apirun_)[A-Za-z0-9_-]{8,}", "[REDACTED]", message)
+                    message = re.sub(r"\b[A-Za-z0-9_-]{32,}\b", "[REDACTED]", message)
+                    message = "".join(c for c in message if c.isprintable())[:220]
+                    if message:
+                        detail += f"; API message={message}"
+        except (ValueError, UnicodeError, OSError):
+            pass
+        raise RuntimeError(
+            f"{method} request failed: HTTP {e.code} at "
+            f"{urllib.parse.urlsplit(url).path}{detail}"
+        ) from e
 
 
 def trigger(channel, token, cycle, text, label):
