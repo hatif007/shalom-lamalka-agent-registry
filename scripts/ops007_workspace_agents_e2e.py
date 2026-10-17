@@ -56,10 +56,10 @@ def request_json(method, url, token, payload=None, headers=None):
                 message = err.get("message")
                 if isinstance(message, str):
                     # Avoid printing secrets, bearer tokens or high-entropy identifiers.
-                    message = re.sub(r"(?i)bearer\\s+\\S+", "Bearer [REDACTED]", message)
-                    message = re.sub(r"(?i)(authorization|access[_ -]?token|api[_ -]?key)\\s*[:=]\\s*\\S+", r"\\1=[REDACTED]", message)
-                    message = re.sub(r"(?i)\\b(?:sk-|agtch_|apirun_)[A-Za-z0-9_-]{8,}", "[REDACTED]", message)
-                    message = re.sub(r"\\b[A-Za-z0-9_-]{32,}\\b", "[REDACTED]", message)
+                    message = re.sub(r"(?i)bearer\s+\S+", "Bearer [REDACTED]", message)
+                    message = re.sub(r"(?i)(authorization|access[_ -]?token|api[_ -]?key)\s*[:=]\s*\S+", r"\1=[REDACTED]", message)
+                    message = re.sub(r"(?i)\b(?:sk-|agtch_|apirun_)[A-Za-z0-9_-]{8,}", "[REDACTED]", message)
+                    message = re.sub(r"\b[A-Za-z0-9_-]{32,}\b", "[REDACTED]", message)
                     message = "".join(c for c in message if c.isprintable())[:220]
                     if message:
                         detail += f"; API message={message}"
