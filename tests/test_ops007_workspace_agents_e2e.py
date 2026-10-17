@@ -37,6 +37,33 @@ class NativeAgentE2ETests(unittest.TestCase):
         self.assertIn("#business-insights", text)
         self.assertIn("Growth Manager PILOT", text)
 
+    def test_four_distinct_workspace_channels_required(self):
+        valid = {
+            "data": "agtch_data123",
+            "seo": "agtch_seo123",
+            "website": "agtch_website123",
+            "growth": "agtch_growth123",
+        }
+        self.assertIsNone(e2e.validate_channels(valid))
+        duplicate = {**valid, "website": valid["growth"]}
+        with self.assertRaisesRegex(ValueError, "Duplicate Workspace Agent channel IDs"):
+            e2e.validate_channels(duplicate)
+        with self.assertRaisesRegex(ValueError, "start with agtch_"):
+            e2e.validate_channels({**valid, "website": "website_channel"})
+
+    def test_duplicated_channel_aborts_before_any_agent_api_call(self):
+        args = [
+            "runner", "--cycle", "OPS007-NATIVE-123",
+            "--data-channel", "agtch_data123",
+            "--seo-channel", "agtch_seo123",
+            "--website-channel", "agtch_same123",
+            "--growth-pilot-channel", "agtch_same123",
+        ]
+        with patch.object(sys, "argv", args), patch.object(e2e, "trigger") as mocked:
+            with self.assertRaisesRegex(ValueError, "Duplicate Workspace Agent channel IDs"):
+                e2e.main()
+            mocked.assert_not_called()
+
     def test_api_trigger_requires_verifiable_run_id(self):
         with patch.object(e2e, "request_json", return_value=(202, {"conversation_url": "https://chatgpt.com/c/1"})):
             with self.assertRaisesRegex(RuntimeError, "verifiable beta run ID"):
