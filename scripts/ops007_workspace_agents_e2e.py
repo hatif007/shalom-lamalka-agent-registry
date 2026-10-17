@@ -168,6 +168,19 @@ GROW-SEO-01=HOLD. No coordinator-generated message may stand in for your Slack s
 """
 
 
+def validate_channels(channels):
+    """Fail before any API trigger if channels are invalid or roles share an agent."""
+    if set(channels) != {"data", "seo", "website", "growth"}:
+        raise ValueError("Exactly four roles (data, seo, website, growth) are required")
+    if any(not CHANNEL.fullmatch(c) for c in channels.values()):
+        raise ValueError("All four real Workspace Agent channel IDs must start with agtch_")
+    if len(set(channels.values())) != len(channels):
+        raise ValueError(
+            "Duplicate Workspace Agent channel IDs: all four roles must use distinct agtch_ IDs. "
+            "NO AGENTS TRIGGERED"
+        )
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cycle", required=True)
@@ -180,8 +193,7 @@ def main():
         raise ValueError("Invalid cycle identifier")
     channels = {"data": a.data_channel, "seo": a.seo_channel,
                 "website": a.website_channel, "growth": a.growth_pilot_channel}
-    if any(not CHANNEL.fullmatch(c) for c in channels.values()):
-        raise ValueError("All four real Workspace Agent channel IDs must start with agtch_")
+    validate_channels(channels)
     token = os.environ.get("WORKSPACE_AGENTS_TOKEN", "")
     gh_token = os.environ.get("GH_READ_TOKEN", "")
     if not token or not gh_token:
