@@ -1,5 +1,9 @@
 # Central Agent Report Archive (v1)
 
+> **Active OPS-007 policy (2026-10-17): API trigger currently BLOCKED (HTTP 409). No four-agent native E2E pass has been established. Automated GitHub inbox promotion is intentionally paused; manual \`workflow_dispatch\` remains available for individually inspected, provenance-correct files. This pause does NOT disable separately configured ChatGPT Scheduled Tasks. Preserve historic synthetic files for audit, not as business findings. Do not trigger a new production report, change Wix, or automatically publish to Slack based on these technical tests.**
+
+> **Authoritative roles and paths:** Native or separately authorized scheduled report writers use only the already-created role branch \`report/inbox-<role>\` with new file \`reports/runs/YYYY-MM-DD/<role>/<report-id>.md\`. The reviewed archive promotion workflow copies the file to \`main:operations/management-system/reports/runs/YYYY-MM-DD/<role>/<report-id>.md\`; the originating agent never creates branches, opens PRs or merges. This current workflow supersedes historical examples elsewhere in this document.
+
 **Owner:** Growth Manager | **Canonical branch:** \`main\` | **Status:** STORAGE_CONTRACT_READY; AUTONOMOUS_CHATGPT_TASK_WRITER_NOT_YET_PROVEN
 **Source of truth for completed reports:** \`operations/management-system/reports/runs/YYYY-MM-DD/<role>/<report-id>.md\` after the report file is committed and merged. The original ChatGPT task conversation is a **different asset**.
 
@@ -34,14 +38,16 @@ Valid \`run_mode\` values: \`CHATGPT_SCHEDULED_TASK\`, \`INSTALLED_AGENT_VERIFIE
 \`INSTALLED_AGENT_VERIFIED\` **requires genuine runtime evidence**; choose ChatGPT Scheduled for ordinary scheduled tasks. \`source_conversation_url\` may remain \`null\` until an actual conversation permalink can be obtained.
 Use only non-sensitive metadata and findings: **no personal customer information, email addresses, individual order details, secrets, authentication tokens or raw financial exports**. Archive is a reporting record; do not change business data, configurations, analytics, permissions or the website.
 
-## Write sequence (no silent gaps)
+## Active role-inbox write sequence (no silent gaps)
 
-1. Run the scheduled research **once**, subject to existing owner decisions and connected-source permissions. Generate the **complete source-grounded report once**.
-2. If GitHub write tools are available *during that run*, create **one new exact Markdown report** on a fresh \`report/<date>-<role>\` branch, using this contract. **No silent replacements or modifications to unrelated Registry files.**
-3. Open a PR to \`main\`, run Registry validation/CI; merge only when the active tool permissions and repo policy allow it. If merge is blocked, include the PR link and report \`REPORT_READY_PR_PENDING\`. The committed file is the source-linked artifact after merge.
-4. Post a short final-only summary in the role's **authorized** channel, **only if the installed Skill/task/tool policy allows sending**; include the actual GitHub report URL. Growth Manager collects links in \`#business-insights\` for decisions only. Do not claim Slack delivery without its actual permalink.
-5. If GitHub app actions are unavailable/refused, **print the full report in the task conversation** with \`ARCHIVE_BLOCKED\`, the exact attempted action and missing connector/permission. Never invent a GitHub link. Do not re-run expensive source research to fix storage.
-6. If the task can only return narrative, a separately authorized coordinator can file that **same exact report text** with a backlink and truthful provenance. A summary is not a verbatim original.
+1. Require a specific owner-approved run and an installed-agent runtime that can execute it. Check role-level tool constraints, the existing \`report/inbox-<role>\` branch, valid scope and data privacy before requesting any report. During the OPS-007 API 409 freeze, do not infer a run from a scheduled task configuration, local GitHub Actions job, or archived file.
+2. If the run is expressly authorized, the **originating agent** produces exactly one original UTF-8 Markdown report, with truthful \`REPORT_ARCHIVE_V1\` metadata and \`source_evidence\`. For a purely synthetic OPS-007 test use \`TECHNICAL_SMOKE_TEST\` and \`SYNTHETIC_TEST\`. Never label the same test a business report or verified production output.
+3. The report writer may create only \`reports/runs/YYYY-MM-DD/<role>/<report-id>.md\` on its PRE-EXISTING role branch \`report/inbox-<role>\`, provided tool-level permissions allow it. Never create another branch, write \`main\`, overwrite prior reports, open or merge PRs, or modify other roles' files. Read back the exact new file and verify its Git blob SHA. If any step fails, mark \`ARCHIVE_BLOCKED\` with the real cause.
+4. A separately authorized review operator may run \`.github/workflows/promote-agent-inbox.yml\` manually **after** inspecting the original reports and their runtime provenance; it stages byte-for-byte copies under \`operations/management-system/reports/runs/YYYY-MM-DD/<role>/<report-id>.md\` on a dedicated archive branch, opens a reviewable PR and never auto-merges. The weekly cron is paused pending OPS-007 native E2E acceptance. Only after merge/readback does the report exist in the canonical \`main\` archive.
+5. Growth Manager Pilot must read the three separate verified specialist reports before preparing its own original report. Any authorized Slack send must be separately allowed, deduplicated by exact cycle, and independently verified by a real permalink. A GitHub coordinator never impersonates a native role or substitutes its own report/message for the role's output.
+6. The originating agent should include the complete authored report in its own conversation when feasible, especially when archiving fails, and preserve \`UNKNOWN\` for unsupported business claims. Avoid costly repeat research solely to fix storage. No customer PII, credentials or raw transaction data.
+
+**Historical notes below document prior Scheduled Task trials and are not authority to override the above current role-inbox/write policy.**
 
 ## Acceptance checks
 
