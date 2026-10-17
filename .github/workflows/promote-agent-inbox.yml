@@ -1,9 +1,10 @@
 name: Promote agent inbox reports
 
+# PAUSED pending genuine native four-agent E2E acceptance (OPS-007).
+# Existing synthetic/historical files remain for provenance. Manual dispatch only;
+# re-enable a timezone-aware schedule only after the owner accepts real source reports.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '45 9 * * 1'
 
 permissions:
   contents: write
