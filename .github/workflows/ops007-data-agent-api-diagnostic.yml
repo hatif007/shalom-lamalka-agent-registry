@@ -28,7 +28,7 @@ jobs:
           python-version: '3.12'
       - name: Make exactly one availability request
         env:
-          WORKSPACE_AGENTS_TOKEN: ${{ secrets.ORKSPACE_AGENTS_TOKEN1 }}
+          WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN1 }}
           DATA_CHANNEL: ${{ inputs.data_channel }}
         run: |
           python scripts/ops007_data_api_probe.py \
