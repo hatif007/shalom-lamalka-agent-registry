@@ -64,6 +64,40 @@ class NativeAgentE2ETests(unittest.TestCase):
                 e2e.main()
             mocked.assert_not_called()
 
+    def test_api_http_conflict_reports_sanitized_details(self):
+        import io
+        import json
+        import urllib.error
+        error_body = json.dumps({
+            "error": {
+                "code": "agent_not_runnable",
+                "message": "Agent not published; token=sk-ABCDEFGHIJKLMNOPQRSTUVWX123456",
+            }
+        }).encode()
+        def reject(request, timeout):
+            raise urllib.error.HTTPError(
+                request.full_url, 409, "Conflict", {},
+                io.BytesIO(error_body),
+            )
+        with patch.object(e2e.urllib.request, "urlopen", side_effect=reject):
+            with self.assertRaises(RuntimeError) as capture:
+                e2e.request_json("POST", "https://api.chatgpt.com/v1/workspace_agents/agtch_test/trigger", "secret", {"input": "hello"})
+        diagnostic = str(capture.exception)
+        self.assertIn("HTTP 409", diagnostic)
+        self.assertIn("agent_not_runnable", diagnostic)
+        self.assertNotIn("sk-ABCDEFGHIJKLMNOPQRSTUVWX123456", diagnostic)
+        self.assertNotIn("secret", diagnostic)
+
+    def test_api_http_non_json_response_remains_redacted(self):
+        import io
+        import urllib.error
+        def reject(request, timeout):
+            raise urllib.error.HTTPError(request.full_url, 409, "Conflict", {}, io.BytesIO(b"unexpected raw secret"))
+        with patch.object(e2e.urllib.request, "urlopen", side_effect=reject):
+            with self.assertRaises(RuntimeError) as capture:
+                e2e.request_json("POST", "https://api.chatgpt.com/v1/workspace_agents/agtch_test/trigger", "secret", {"input": "hello"})
+        self.assertNotIn("raw secret", str(capture.exception))
+
     def test_api_trigger_requires_verifiable_run_id(self):
         with patch.object(e2e, "request_json", return_value=(202, {"conversation_url": "https://chatgpt.com/c/1"})):
             with self.assertRaisesRegex(RuntimeError, "verifiable beta run ID"):
