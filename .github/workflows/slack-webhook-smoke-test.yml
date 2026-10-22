@@ -1,0 +1,49 @@
+name: Slack Webhook Smoke Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  slack-smoke-test:
+    name: Send one synthetic Slack message
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+      - name: Verify secret availability
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${SLACK_WEBHOOK_URL:-}" ]]; then
+            echo "::error::Missing repository Actions secret SLACK_WEBHOOK_URL"
+            exit 1
+          fi
+          if [[ "$SLACK_WEBHOOK_URL" != https://hooks.slack.com/services/* ]]; then
+            echo "::error::SLACK_WEBHOOK_URL is not a standard Slack incoming webhook URL"
+            exit 1
+          fi
+          echo "Slack webhook secret is present (value hidden)."
+
+      - name: Send synthetic test to configured Slack channel
+        shell: bash
+        run: |
+          set -euo pipefail
+          test_id="SLACK-GH-SMOKE-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          message="*SYNTHETIC TEST* | Shalom La Malka Reports | ${test_id} | GitHub Actions to Slack webhook delivery test. No customer or sales data."
+          payload="$(jq -nc --arg text "$message" '{text: $text}')"
+          response="$(curl --silent --show-error --fail --retry 0 --max-time 20 \
+            --request POST \
+            --header 'Content-Type: application/json' \
+            --data "$payload" \
+            "$SLACK_WEBHOOK_URL")"
+          if [[ "$response" != "ok" ]]; then
+            echo "::error::Slack did not return the expected success response"
+            exit 1
+          fi
+          echo "Slack accepted synthetic test ${test_id}."
+          echo "Verify the message in the configured Slack channel."
