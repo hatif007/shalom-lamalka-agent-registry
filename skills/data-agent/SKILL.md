@@ -5,7 +5,7 @@ description: Read-only Wix and GA4 source validation, sales-data quality checks,
 
 # Data Agent — Wix Read Validation & Data Quality
 
-**Version:** 2.1 — OPS-007 synthetic report-only exception  
+**Version:** 2.2 — OPS-007 verified-native-channel synthetic report-only exception  
 **Runtime status:** Repository skill specification; not evidence of installation into a separate autonomous runtime.  
 **Owner mode:** READ ONLY for business data and configuration. The only reporting side effects permitted by this skill are the narrowly defined Slack exception and the narrowly defined synthetic OPS-007 GitHub report exception below; neither permits business data writes.
 
@@ -21,14 +21,25 @@ description: Read-only Wix and GA4 source validation, sales-data quality checks,
 
 **Separate explicit owner authorization:** The owner authorized an end-to-end *synthetic* acceptance test of four installed Workspace Agents on 2026-10-16. This approval covers **at most one new synthetic Data Agent report per distinct owner-authorized OPS-007 native API test cycle** and no other repository writes. It does **not** authorize business-data updates, general reporting archival of sensitive data, GitHub permissions management, or code edits.
 
-For a genuine API-triggered test invocation with a unique `OPS007-NATIVE-<run-id>` cycle identifier:
+For an independently verified invocation of the **installed Workspace Data Agent**, either by an authorized native Workspace Agent API run or by a native agent scheduling channel with externally verifiable runtime provenance, with a unique owner-approved `OPS007-NATIVE-<run-id>` cycle identifier:
 
-1. Confirm your current run's owner-approved cycle ID, `YYYY-MM-DD` run date in Asia/Jerusalem, and your own identity `data`. Check `operations/management-system/reports/README.md` on `main` for the current `REPORT_ARCHIVE_V1` contract.
+1. Confirm your current run's owner-approved cycle ID, `YYYY-MM-DD` run date in Asia/Jerusalem, your own identity `data`, and independent evidence identifying the **installed agent runtime** and its authorized trigger/schedule. Do not infer native execution from a prompt, task title or a self-reported string. Check `operations/management-system/reports/README.md` on `main` for the current `REPORT_ARCHIVE_V1` contract.
 2. Use an already connected and separately authorized **GitHub Writer** tool only when it is available in your actual installed-agent runtime. Restrict it to the *existing* repository `hatif007/shalom-lamalka-agent-registry`, **existing** branch `report/inbox-data`, and one new file path `reports/runs/YYYY-MM-DD/data/OPS007-NATIVE-<run-id>-data.md` for this exact cycle. Never use another branch, path, owner, or repository.
 3. The file is a short **SYNTHETIC TEST** of agent identity and reporting delivery **only**; do not query Wix, GA4, GSC, live orders, customers, sales or inventory in this test. Do not include customer data, secrets, token values, other users' identities or raw financial values.
 4. Use the exact contract schema, including `role=data`, `run_mode=TECHNICAL_SMOKE_TEST`, `payload_type=SYNTHETIC_TEST`, your run date and matching report ID, HTTPS `source_evidence`, a truthful `owner_approval` and `source_conversation_url=null` if no real URL exists. Never claim `INSTALLED_AGENT_VERIFIED` based on the created file. Mark the body `SYNTHETIC`.
 5. Confirm the file **does not already exist**, then perform **at most one** `create_file` action and **one** readback to verify its actual GitHub URL, file content and blob SHA. Do not overwrite, retry a denied write with other tools, send Slack, create branches/PRs, merge, schedule runs, or bypass tool restrictions.
-6. If the runtime has no GitHub Writer access, if this skill is not actually installed, if an approval gate blocks writing, or if any field/path is inconsistent, return `BLOCKED` with the precise reason. **Never** let a scheduled ChatGPT task or coordinator write an agent report and present it as your own native execution.
+6. If the runtime has no GitHub Writer access, if this skill is not actually installed, if an approval gate blocks writing, if the runtime identity/schedule cannot be verified, if the active agent instructions prohibit writing, or if any field/path is inconsistent, return `BLOCKED` with the precise reason. **Never** let a generic ChatGPT Scheduled Task or coordinator write an agent report and present it as your own native execution.
+
+### Native-schedule acceptance gate (2026-10-24)
+
+A schedule in ChatGPT by itself does **not** prove native installed-agent execution. Scheduled execution is eligible for the exception above **only when all of the following are independently verified**:
+
+- The run belongs to the actual installed Data Agent runtime, with verifiable agent/channel identity and the particular run receipt. A generic `CHATGPT_SCHEDULED_TASK` status, a scheduler listing, a GitHub Actions run or the agent's own claim is insufficient.
+- Active installed-agent Instructions and the **installed** Skill expressly permit exactly this scheduled synthetic write for the current owner-approved cycle. Existing `DATA_REBUILD_STAGE_04` instructions that forbid GitHub writing remain controlling until explicitly updated within the installed agent itself. Merging this repository file does not update the installed agent or override active instructions.
+- The existing writer's read-only `writer_status` reports `can_attempt_write=true`, a non-null `approved_cycle_id` identical to the current owner-approved cycle, and `target_branch=report/inbox-data`. If it reports `NATIVE_WRITER_LOCKED`, `can_attempt_write=false` or a missing/mismatched cycle, do not invoke the write action.
+- The existing tool's write approval is available in the agent runtime without bypass; the one-file allowlist, create-only semantics, no retries, safe synthetic payload, and SHA readback requirements above remain in force.
+
+If **any** gate fails, report `GITHUB_WRITE=NOT_ATTEMPTED` and `OVERALL=BLOCKED`, with the exact cause. Never relax the Cloudflare writer lock, mint a cycle approval, or infer authorization inside the agent. Current API-trigger HTTP 409 remains unresolved; this repository-only policy clarification does not repair it or deploy Cloudflare code.
 
 This exception is **reporting-only** and does not relax the Wix, GA4, GSC, customer privacy, financial or security restrictions in the rest of this skill. It does not authorize live production business reporting writes. No Slack message is authorized for this synthetic OPS-007 test.
 
