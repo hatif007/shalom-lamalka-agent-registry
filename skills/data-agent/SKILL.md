@@ -19,7 +19,7 @@ description: Read-only Wix and GA4 source validation, sales-data quality checks,
 
 ## OPS-007 synthetic GitHub report-only exception (v2.1)
 
-**Separate explicit owner authorization:** The owner authorized an end-to-end *synthetic* acceptance test of four installed Workspace Agents on 2026-10-16. This approval covers **at most one new synthetic Data Agent report per distinct owner-authorized OPS-007 native API test cycle** and no other repository writes. It does **not** authorize business-data updates, general reporting archival of sensitive data, GitHub permissions management, or code edits.
+**Separate explicit owner authorization:** The owner authorized an end-to-end *synthetic* acceptance test of four installed Workspace Agents on 2026-10-16. This approval covers **at most one new synthetic Data Agent report per distinct owner-approved OPS-007 test cycle with independently verified installed-agent runtime provenance** and no other repository writes. It does **not** authorize business-data updates, general reporting archival of sensitive data, GitHub permissions management, or code edits.
 
 For an independently verified invocation of the **installed Workspace Data Agent**, either by an authorized native Workspace Agent API run or by a native agent scheduling channel with externally verifiable runtime provenance, with a unique owner-approved `OPS007-NATIVE-<run-id>` cycle identifier:
 
