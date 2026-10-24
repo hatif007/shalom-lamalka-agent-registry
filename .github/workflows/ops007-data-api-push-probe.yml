@@ -1,0 +1,46 @@
+name: OPS-007 Data Agent Fresh-Token API Diagnostic
+
+# Isolated one-shot diagnostic on a test branch only.
+# No repository reports, Slack messages, or business-source access.
+on:
+  push:
+    branches:
+      - test/ops007-data-api-20261024-refresh-token
+    paths:
+      - .github/workflows/ops007-data-api-push-probe.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ops007-data-fresh-token-push-probe
+  cancel-in-progress: false
+
+jobs:
+  data-api-probe:
+    name: Test one Data Agent API trigger with refreshed secret
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify token is configured without exposing it
+        shell: bash
+        env:
+          WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN1 }}
+        run: |
+          if [ -z "$WORKSPACE_AGENTS_TOKEN" ]; then
+            echo "::error::WORKSPACE_AGENTS_TOKEN1 is unavailable to this workflow"
+            exit 1
+          fi
+          echo "WORKSPACE_AGENTS_TOKEN1_PRESENT=true"
+      - name: Make exactly one Data Agent trigger request
+        shell: bash
+        env:
+          WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN1 }}
+        run: |
+          python scripts/ops007_data_api_probe.py \
+            --data-channel "agtch_6ad25b00eabc81918aba1159e3fcfa03" \
+            --run-id "$GITHUB_RUN_ID"
