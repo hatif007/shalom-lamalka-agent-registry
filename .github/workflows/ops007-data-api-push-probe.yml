@@ -26,21 +26,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify token is configured without exposing it
+      - name: Validate and trim token safely, then make one API request
         shell: bash
         env:
           WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN1 }}
         run: |
-          if [ -z "$WORKSPACE_AGENTS_TOKEN" ]; then
-            echo "::error::WORKSPACE_AGENTS_TOKEN1 is unavailable to this workflow"
-            exit 1
-          fi
-          echo "WORKSPACE_AGENTS_TOKEN1_PRESENT=true"
-      - name: Make exactly one Data Agent trigger request
-        shell: bash
-        env:
-          WORKSPACE_AGENTS_TOKEN: ${{ secrets.WORKSPACE_AGENTS_TOKEN1 }}
-        run: |
-          python scripts/ops007_data_api_probe.py \
-            --data-channel "agtch_6ad25b00eabc81918aba1159e3fcfa03" \
-            --run-id "$GITHUB_RUN_ID"
+          python - <<'PY'
+          import os
+          import subprocess
+          import sys
+
+          raw = os.environ.get("WORKSPACE_AGENTS_TOKEN", "")
+          cleaned = raw.strip()
+          print("TOKEN_SECRET_PRESENT=" + str(bool(raw)).lower(), flush=True)
+          print("TOKEN_OUTER_WHITESPACE_PRESENT=" + str(cleaned != raw).lower(), flush=True)
+          print("TOKEN_INNER_INVALID_CHARACTERS=" + str(any(not 33 <= ord(c) <= 126 for c in cleaned)).lower(), flush=True)
+          if not cleaned or any(not 33 <= ord(c) <= 126 for c in cleaned):
+              print("ERROR: Secret contains inner whitespace/control/non-ASCII; update GitHub secret with one raw token value only.", flush=True)
+              sys.exit(1)
+          env = os.environ.copy()
+          env["WORKSPACE_AGENTS_TOKEN"] = cleaned
+          cmd = [sys.executable, "scripts/ops007_data_api_probe.py",
+                 "--data-channel", "agtch_6ad25b00eabc81918aba1159e3fcfa03",
+                 "--run-id", os.environ["GITHUB_RUN_ID"]]
+          sys.exit(subprocess.run(cmd, env=env, check=False).returncode)
+          PY
